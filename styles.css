@@ -1,0 +1,262 @@
+* {
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 10px;
+    height: 60px;
+    
+    border: solid 2px black;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    font-weight: bold;
+    font-size: 30px;
+
+    background-color: lime;
+}
+
+button:hover {
+    background-color: rgb(21, 168, 21);
+}
+
+
+
+.signature-input {
+    border: solid 2px black;
+    border-radius: 20px;
+    
+    padding: 10px;
+    margin: 10px;
+
+    min-width: 100px;
+}
+
+.form-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hangman Styles */
+
+.hangman-image {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.hangman-title {
+    display: flex;
+    justify-content: center;
+}
+
+.hangman-guesses-left {
+    font-size: 30px;
+}
+
+.hangman-controls > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: auto;
+}
+
+.hangman-guessed-letters {
+    min-width: 600px;
+    max-width: 800px;
+
+    min-height: 140px;
+    max-height: 140px;
+
+    border: solid 3px white;
+    border-radius: 40px;
+    box-shadow: 0 0 10px 5px lightgray;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.hangman-guessed-letters.hr {
+    color: black;
+    background-color: black;
+    line-height: 1px;
+}
+
+.letters {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    font-weight: bold;
+    font-size: 30px;
+
+    letter-spacing: 20px;
+}
+
+.notification {
+    font-size: 25px;
+    color: red;
+
+    font-weight: bold;
+}
+
+.hangman-controls {
+    padding: 5px;
+    margin: 10px;
+}
+
+.hangman-word {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Segoe UI Black", Arial, sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+
+    letter-spacing: 20px;
+
+    border: solid 1px white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 5px lightgray inset;
+
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 20px;
+}
+
+.hangman-guess-input {
+    border-color: black;
+    border-style: solid;
+    border-width: 2px 2px 2px 0px;
+    border-radius: 0px 10px 10px 0px;
+
+    padding: 10px;
+
+    width: 300px;
+    height: 60px;
+
+    font-size: 30px;
+}
+
+.hangman-guess-button {
+    border-color: black;
+    border-style: solid;
+    border-width: 2px 1px 2px 2px;
+    border-radius: 10px 0px 0px 10px;
+
+    padding: 10px;
+
+    font-weight: bold;
+
+    height: 60px;
+    font-size: 30px;
+
+    background-color: lime;
+}
+
+.notification {
+    font-size: 25px;
+    color: rgb(175, 0, 0);
+}
+
+.hangman-guess-button:hover {
+    background-color: rgb(21, 168, 21);
+}
+
+.letter-popup {
+    animation: letter-popup linear .5s;
+}
+
+.alert-show-text {
+    animation: alert-show linear 2s;
+}
+
+.word-shake {
+    animation: shake-word ease-in-out .5s;
+}
+
+.letter-win-flash {
+    animation: green-flash linear 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes letter-popup {
+    from {
+        font-size: 65px;
+        color: yellow;
+        transform: translateY(-20px)
+    }
+
+    to {
+        font-size: 70px;
+        color: black;
+        transform: translateY(2px)
+    }
+}
+
+@keyframes alert-show {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 100%;
+    }
+
+    75% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+    }
+}
+
+@keyframes shake-word {
+
+    33% {
+        transform: translateX(30px);
+    }
+
+    66% {
+        transform: translateX(-60px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+    
+}
+
+@keyframes green-flash {
+    from {
+        color: limegreen;
+        font-weight: 700;
+    }
+
+    to {
+        color: black;
+        font-weight: 100;
+    }
+}
