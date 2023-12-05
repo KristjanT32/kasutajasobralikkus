@@ -199,6 +199,19 @@ button:hover {
 .letter-win-flash {
     animation: green-flash linear 1s;
     animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.guessed-words-glow-green {
+    animation: guessed-words-glow-green ease-in-out 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.guessed-words-glow-red {
+    animation: guessed-words-glow-red ease-in-out 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
 }
 
 @keyframes letter-popup {
@@ -236,27 +249,64 @@ button:hover {
 @keyframes shake-word {
 
     33% {
-        transform: translateX(30px);
+        padding-left: 20px;
     }
 
     66% {
-        transform: translateX(-60px);
+        padding-left: 10px;
     }
 
     100% {
-        transform: translateX(0);
+        padding-left: 20px;
     }
     
 }
 
 @keyframes green-flash {
-    from {
+    25% {
         color: limegreen;
-        font-weight: 700;
+        letter-spacing: 20px;
     }
 
-    to {
+    50% {
         color: black;
-        font-weight: 100;
+        letter-spacing: normal;
+    }
+
+    75% {
+        color: limegreen;
+    }
+
+    100% {
+        color: black;
+        letter-spacing: normal;
+    }
+}
+
+@keyframes guessed-words-glow-green {
+    33% {
+        box-shadow: 0 0 10px 5px lightgray inset;
+    }
+
+    66% {
+        box-shadow: 0 0 10px 5px green inset;
+    }
+
+    100% {
+        box-shadow: 0 0 10px 5px lightgray inset;
+    }
+}
+
+@keyframes guessed-words-glow-red {
+    33% {
+        box-shadow: 0 0 10px 5px lightgray inset;
+    }
+
+    66% {
+        box-shadow: 0 0 10px 5px red inset;
+    }
+
+    100% {
+        box-shadow: 0 0 10px 5px lightgray inset;
     }
 }

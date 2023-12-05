@@ -5,6 +5,7 @@ let last_word = "";
 let word = "";
 let lastDiscoveredLetter = "";
 let guessedLetters = [];
+let gameLost = false;
 
 // HTML Elements
 const canvas = document.querySelector(".drawing-canvas").getContext("2d");
@@ -129,7 +130,8 @@ formSubmit.addEventListener('submit', (e) => {
 
 function initializeGame() {
     hangman_state = 0;
-
+    gameLost = false;
+    
     canvas.beginPath();
     canvas.clearRect(0, 0, canvas.canvas.width, canvas.canvas.height);
 
@@ -171,6 +173,7 @@ function guess() {
                 lastDiscoveredLetter = guess;
                 showNotification("Sellist tähte selles sõnas ei ole!");
                 advanceState();
+                showWrongGuessAnimation();
                 refreshUI();
                 guessField.value = "";
                 return;
@@ -185,13 +188,16 @@ function guess() {
         if (guess == word.toLowerCase()) {
             lastDiscoveredLetter = "_word";
             guessWord();
-            refreshUI();
+            //refreshUI();
             guessField.value = "";
             return;
         } else {
             showNotification("See pole paraku õige!");
+            if (hangman_state + 1 < hangman_states.length - 1) {
+                refreshUI();
+            }
             advanceState();
-            refreshUI();
+            showWrongGuessAnimation();
             guessField.value = "";
             return;
         }
@@ -208,14 +214,13 @@ function advanceState() {
     } else {
         hangman_state = hangman_states.length - 1;
         triesLeft.innerHTML = "Eksimusi jäänud: <b style='color: red'>" + (hangman_states.length - hangman_state - 1) + "</b>"
-
+        gameLost = true;
         loseGame();
         return;
     }
 }
 
-function refreshUI() {
-
+function refreshWordPreview() {
     wordPreview.innerHTML = "";
     for (const char of word) {
         if (guessedLetters.includes(char.toLowerCase())) {
@@ -229,8 +234,11 @@ function refreshUI() {
         } else {
             wordPreview.innerHTML += "_"
         }
+        wordPreview.innerHTML = wordPreview.innerHTML.trim()
     }
+}
 
+function clearAnimationMarkup() {
     for (character of guessedLetters) {
         setTimeout(() => {
             console.log("Replacing letter animation for " + "<span class=\"letter-popup\">" + character + "</span>")
@@ -239,10 +247,11 @@ function refreshUI() {
             checkWin();
         }, 2000);   
     }
+}
 
-    letterSpan.innerHTML = ""
-
+function refreshGuessedLetters() {
     let counter = 0;
+    letterSpan.innerHTML = ""
     guessedLetters.forEach((letter) => {
         if (word.toLowerCase().includes(letter.toLowerCase())) {
             letterSpan.innerHTML += "<span style='color:green'>" + letter.toUpperCase() + "</span>"
@@ -254,13 +263,15 @@ function refreshUI() {
         }
         counter++;
     });
+}
+
+function refreshUI() {
+
+    refreshWordPreview();
+    clearAnimationMarkup();
+    refreshGuessedLetters();
 
     triesLeft.innerHTML = "Eksimusi jäänud: <b style='color: red'>" + (hangman_states.length - hangman_state - 1) + "</b>"
-    wordPreview.innerHTML = wordPreview.innerHTML.trim()
-
-    if (wordPreview.innerText == word) {
-        winGame();
-    }
 }
 
 function guessWord() {
@@ -269,9 +280,12 @@ function guessWord() {
             guessedLetters.push(char.toLowerCase())
         }   
     }
+    refreshWordPreview();
+    winGame();
 }
 
 function winGame() {
+    if (gameLost) { return }
     gameControls.style.display = "none"
     endControls.style.display = "flex"
     showWinAnimation();
@@ -293,7 +307,16 @@ function checkWin() {
 }
 
 function showWinAnimation() {
+
+    if (wordPreview.innerHTML.includes("<span class='letter-win-flash'")) { return }
+
     wordPreview.innerHTML = "";
+
+    wordPreview.classList.add("guessed-words-glow-green");
+    setTimeout(() => {
+        wordPreview.classList.remove("guessed-words-glow-green")
+    }, 2000)
+
     let delay = 50;
     for (let character of word) {
         wordPreview.innerHTML += "<span class='letter-win-flash' style='animation-delay: " + delay + "ms'>" + character + "</span>";
@@ -301,11 +324,13 @@ function showWinAnimation() {
     }
 }
 
-function shakeWord() {
+function showWrongGuessAnimation() {
     wordPreview.classList.add("word-shake");
+    wordPreview.classList.add("guessed-words-glow-red");
     wordPreview.style.color = "red";
     setTimeout(() => {
         wordPreview.classList.remove("word-shake");
+        wordPreview.classList.remove("guessed-words-glow-red")
         wordPreview.style.color = "black";
     }, 1000);
 }
