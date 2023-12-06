@@ -2,6 +2,11 @@
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
+@font-face {
+    font-family: "Comic Sans";
+    src: url("");
+}
+
 .centered {
     display: flex;
     justify-content: center;
@@ -62,7 +67,17 @@ button:hover {
 }
 
 .hangman-guesses-left {
-    font-size: 30px;
+    font-size: 25px;
+    margin-bottom: 5px;
+
+    border: solid 2px white;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 1px darkred;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .hangman-controls > span {
@@ -126,9 +141,13 @@ button:hover {
 }
 
 .hangman-word {
+    text-align: center;
+
     display: flex;
     justify-content: center;
-    align-items: center;
+
+    margin-left: 20px;
+    margin-right: 20px;
 
     font-family: "Segoe UI Black", Arial, sans-serif;
     font-size: 70px;
@@ -140,9 +159,11 @@ button:hover {
     border-radius: 20px;
     box-shadow: 0 0 10px 5px lightgray inset;
 
-    margin-left: 300px;
-    margin-right: 300px;
     padding: 20px;
+}
+
+.hangman-word.span {
+    font-weight: inherit;
 }
 
 .hangman-guess-input {
@@ -212,6 +233,10 @@ button:hover {
     animation: guessed-words-glow-red ease-in-out 1s;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
+}
+
+.guessesleft-warning {
+    animation: warning-guessesleft 3s ease-in-out infinite;
 }
 
 @keyframes letter-popup {
@@ -308,5 +333,16 @@ button:hover {
 
     100% {
         box-shadow: 0 0 10px 5px lightgray inset;
+    }
+}
+
+@keyframes warning-guessesleft {
+
+    from {
+        box-shadow: 0 0 5px 1px lightgray;
+    }
+
+    to {
+        box-shadow: 0 0 5px 1px darkred;
     }
 }

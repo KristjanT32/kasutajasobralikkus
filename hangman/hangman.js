@@ -6,6 +6,7 @@ let word = "";
 let lastDiscoveredLetter = "";
 let guessedLetters = [];
 let gameLost = false;
+let winAnimationLocked = false;
 
 // HTML Elements
 const canvas = document.querySelector(".drawing-canvas").getContext("2d");
@@ -20,6 +21,7 @@ const notification = document.querySelector(".notification");
 const triesLeft = document.querySelector(".hangman-guesses-left");
 const formSubmit = document.querySelector(".hangman-submit");
 
+guessedLetters.pop("")
 
 // Hangman words
 const wordlist = [
@@ -131,9 +133,12 @@ formSubmit.addEventListener('submit', (e) => {
 function initializeGame() {
     hangman_state = 0;
     gameLost = false;
+    winAnimationLocked = false
     
     canvas.beginPath();
     canvas.clearRect(0, 0, canvas.canvas.width, canvas.canvas.height);
+
+    triesLeft.classList.remove("guessesleft-warning");
 
     word = pickWord();
 
@@ -162,7 +167,6 @@ function guess() {
                 guessField.value = "";
                 return;
             } else {
-                showNotification("Oled seda tähte juba arvanud!")
                 refreshUI();
                 guessField.value = "";
                 return;
@@ -170,32 +174,26 @@ function guess() {
         } else {
             if (!guessedLetters.includes(guess)) {
                 guessedLetters.push(guess);
-                lastDiscoveredLetter = guess;
-                showNotification("Sellist tähte selles sõnas ei ole!");
+            }
+
+            lastDiscoveredLetter = guess;
                 advanceState();
                 showWrongGuessAnimation();
                 refreshUI();
                 guessField.value = "";
                 return;
-            } else {
-                showNotification("Oled seda tähte juba arvanud!")
-                refreshUI();
-                guessField.value = "";
-                return;
-            }
         }
     } else if (guess.length > 1) {
         if (guess == word.toLowerCase()) {
             lastDiscoveredLetter = "_word";
             guessWord();
-            //refreshUI();
             guessField.value = "";
             return;
         } else {
-            showNotification("See pole paraku õige!");
             if (hangman_state + 1 < hangman_states.length - 1) {
-                refreshUI();
+                
             }
+            refreshUI();
             advanceState();
             showWrongGuessAnimation();
             guessField.value = "";
@@ -217,6 +215,12 @@ function advanceState() {
         gameLost = true;
         loseGame();
         return;
+    }
+
+    if (hangman_state >= 4) {
+        if (!triesLeft.classList.contains("guessesleft-warning")) {
+            triesLeft.classList.add("guessesleft-warning")
+        }
     }
 }
 
@@ -272,6 +276,9 @@ function refreshUI() {
     refreshGuessedLetters();
 
     triesLeft.innerHTML = "Eksimusi jäänud: <b style='color: red'>" + (hangman_states.length - hangman_state - 1) + "</b>"
+
+    wordPreview.classList.remove("guessed-words-glow-red")
+    wordPreview.style.color = "black";
 }
 
 function guessWord() {
@@ -286,10 +293,12 @@ function guessWord() {
 
 function winGame() {
     if (gameLost) { return }
+    if (winAnimationLocked) { return }
     gameControls.style.display = "none"
     endControls.style.display = "flex"
     showWinAnimation();
 }
+
 
 function loseGame() {
     gameControls.style.display = "none"
@@ -308,7 +317,8 @@ function checkWin() {
 
 function showWinAnimation() {
 
-    if (wordPreview.innerHTML.includes("<span class='letter-win-flash'")) { return }
+    if (winAnimationLocked) { return }
+    winAnimationLocked = true;
 
     wordPreview.innerHTML = "";
 
@@ -325,14 +335,12 @@ function showWinAnimation() {
 }
 
 function showWrongGuessAnimation() {
-    wordPreview.classList.add("word-shake");
     wordPreview.classList.add("guessed-words-glow-red");
     wordPreview.style.color = "red";
     setTimeout(() => {
-        wordPreview.classList.remove("word-shake");
         wordPreview.classList.remove("guessed-words-glow-red")
         wordPreview.style.color = "black";
-    }, 1000);
+    }, 1005);
 }
 
 function showNotification(notificationText) {
@@ -342,7 +350,7 @@ function showNotification(notificationText) {
     setTimeout(() => {
         notification.classList.remove("alert-show-text");
         notification.style.display = "none";
-    }, 2000);
+    }, 3000);
 }
 
 function pickWord() {
