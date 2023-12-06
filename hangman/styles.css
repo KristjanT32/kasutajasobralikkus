@@ -2,6 +2,11 @@
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
+@font-face {
+    font-family: "Comic Sans";
+    src: url("");
+}
+
 .centered {
     display: flex;
     justify-content: center;
@@ -62,7 +67,64 @@ button:hover {
 }
 
 .hangman-guesses-left {
-    font-size: 30px;
+    font-size: 25px;
+    margin-bottom: 5px;
+
+    border: solid 2px white;
+    box-shadow: 0 0 5px 1px darkred;
+    border-radius: 20px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+
+    height: 35px;
+}
+
+.hangman-guess-streak {
+    font-size: 25px;
+    margin-bottom: 5px;
+
+    border: solid 2px white;
+    box-shadow: 0 0 5px 1px darkred;
+    border-radius: 20px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+
+    height: 35px;
+}
+
+.tries-left-number {
+    background-color: rgb(255, 155, 155);
+
+    border-radius: 20px;
+    border: solid 2px darkred;
+    box-shadow: 0 0 5px 1px darkred;
+
+    color: rgb(220, 0, 0);
+
+    padding: 10px 20px 10px 20px;
+    
+    position: relative;
+    left: 5px;
+}
+
+.guess-streak-number {
+    background-color: rgb(255, 221, 72);
+
+    border-radius: 20px;
+    border: solid 2px rgb(232, 112, 0);
+    box-shadow: 0 0 5px 1px rgb(232, 112, 0);
+
+    color: rgb(255, 136, 0);
+
+    padding: 10px 20px 10px 20px;
+    
+    position: relative;
+    left: 5px;
+    top: 0px;
 }
 
 .hangman-controls > span {
@@ -126,9 +188,13 @@ button:hover {
 }
 
 .hangman-word {
+    text-align: center;
+
     display: flex;
     justify-content: center;
-    align-items: center;
+
+    margin-left: 20px;
+    margin-right: 20px;
 
     font-family: "Segoe UI Black", Arial, sans-serif;
     font-size: 70px;
@@ -140,9 +206,11 @@ button:hover {
     border-radius: 20px;
     box-shadow: 0 0 10px 5px lightgray inset;
 
-    margin-left: 300px;
-    margin-right: 300px;
     padding: 20px;
+}
+
+.hangman-word.span {
+    font-weight: inherit;
 }
 
 .hangman-guess-input {
@@ -189,7 +257,8 @@ button:hover {
 }
 
 .alert-show-text {
-    animation: alert-show linear 2s;
+    animation: alert-show ease-in-out 1.5s forwards;
+    animation-iteration-count: 1;
 }
 
 .word-shake {
@@ -203,15 +272,18 @@ button:hover {
 }
 
 .guessed-words-glow-green {
-    animation: guessed-words-glow-green ease-in-out 1s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
+    animation: guessed-words-glow-green ease-in-out 1s forwards;
 }
 
 .guessed-words-glow-red {
-    animation: guessed-words-glow-red ease-in-out 1s;
+    animation: guessed-words-glow-red linear 1s infinite forwards alternate;
+}
+
+.guessesleft-warning {
+    animation: warning-guessesleft 0.5s linear infinite;
     animation-fill-mode: forwards;
-    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-delay: 50ms;
 }
 
 @keyframes letter-popup {
@@ -229,12 +301,12 @@ button:hover {
 }
 
 @keyframes alert-show {
-    0% {
-        opacity: 0;
+    25% {
+        opacity: 100%;
     }
 
     50% {
-        opacity: 100%;
+        opacity: 0%;
     }
 
     75% {
@@ -244,22 +316,6 @@ button:hover {
     100% {
         opacity: 0%;
     }
-}
-
-@keyframes shake-word {
-
-    33% {
-        padding-left: 20px;
-    }
-
-    66% {
-        padding-left: 10px;
-    }
-
-    100% {
-        padding-left: 20px;
-    }
-    
 }
 
 @keyframes green-flash {
@@ -308,5 +364,17 @@ button:hover {
 
     100% {
         box-shadow: 0 0 10px 5px lightgray inset;
+    }
+}
+
+@keyframes warning-guessesleft {
+    from {
+        box-shadow: 0 0 5px 1px lightgray;
+        color: initial;
+    }
+
+    to {
+        box-shadow: 0 0 5px 1px darkred;
+        color: red;
     }
 }
