@@ -8,6 +8,7 @@ let lastDiscoveredLetter = "";
 let guessedLetters = [];
 let gameLost = false;
 let winAnimationLocked = false;
+let winAnimationLocked = false;
 
 // HTML Elements
 const canvas = document.querySelector(".drawing-canvas").getContext("2d");
@@ -142,6 +143,8 @@ function initializeGame() {
 
     triesLeft.classList.remove("guessesleft-warning");
 
+    triesLeft.classList.remove("guessesleft-warning");
+
     word = pickWord();
 
     guessedLetters = [];
@@ -213,6 +216,12 @@ function advanceState() {
         gameLost = true;
         loseGame();
         return;
+    }
+
+    if (hangman_state >= 4) {
+        if (!triesLeft.classList.contains("guessesleft-warning")) {
+            triesLeft.classList.add("guessesleft-warning")
+        }
     }
 
     if (hangman_state >= 4) {
@@ -296,10 +305,12 @@ function guessWord() {
 function winGame() {
     if (gameLost) { return }
     if (winAnimationLocked) { return }
+    if (winAnimationLocked) { return }
     gameControls.style.display = "none"
     endControls.style.display = "flex"
     showWinAnimation();
 }
+
 
 
 function loseGame() {
@@ -345,6 +356,7 @@ function showWrongGuessAnimation() {
     setTimeout(() => {
         wordPreview.classList.remove("guessed-words-glow-red")
         wordPreview.style.color = "black";
+    }, 1005);
     }, 1005);
 }
 
