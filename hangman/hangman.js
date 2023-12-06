@@ -8,7 +8,6 @@ let lastDiscoveredLetter = "";
 let guessedLetters = [];
 let gameLost = false;
 let winAnimationLocked = false;
-let winAnimationLocked = false;
 
 // HTML Elements
 const canvas = document.querySelector(".drawing-canvas").getContext("2d");
@@ -178,7 +177,7 @@ function guess() {
             guess_streak++;
             guessField.value = "";
             lastDiscoveredLetter = guess;
-            refreshUI();   
+            refreshUI();
             return;
         }
     } else {
@@ -236,7 +235,12 @@ function refreshWordPreview() {
     for (const char of word) {
         if (guessedLetters.includes(char.toLowerCase())) {
             if (lastDiscoveredLetter == char.toLowerCase()) {
-                wordPreview.innerHTML += "<span class='letter-popup'>" + char + "</span>";
+                let character = char;
+                wordPreview.innerHTML += "<span class='letter-popup'>" + character + "</span>";
+                setTimeout(() => {
+                    wordPreview.innerHTML = wordPreview.innerHTML.replace('<span class="letter-popup">' + character + '</span>', character);
+                    checkWin();
+                }, 700, character)
             } else if (lastDiscoveredLetter == "_word") {
                 wordPreview.innerHTML = "<span class='letter-popup'>" + word + "</span>";
             } else {
@@ -246,17 +250,6 @@ function refreshWordPreview() {
             wordPreview.innerHTML += "_"
         }
         wordPreview.innerHTML = wordPreview.innerHTML.trim()
-    }
-}
-
-function clearAnimationMarkup() {
-    for (character of guessedLetters) {
-        setTimeout(() => {
-            console.log("Replacing letter animation for " + "<span class=\"letter-popup\">" + character + "</span>")
-            wordPreview.innerHTML = wordPreview.innerHTML.replace("<span class=\"letter-popup\">" + character + "</span>", character).trim();
-            wordPreview.innerHTML = wordPreview.innerHTML.replace("<span class=\"letter-popup\">" + character.toUpperCase() + "</span>", character.toUpperCase()).trim();
-            checkWin();
-        }, 600);   
     }
 }
 
@@ -284,7 +277,6 @@ function refreshSecondaryInfo() {
 function refreshUI() {
 
     refreshWordPreview();
-    clearAnimationMarkup();
     refreshGuessedLetters();
     refreshSecondaryInfo();
 
@@ -304,10 +296,10 @@ function guessWord() {
 
 function winGame() {
     if (gameLost) { return }
-    if (winAnimationLocked) { return }
-    if (winAnimationLocked) { return }
+
     gameControls.style.display = "none"
     endControls.style.display = "flex"
+
     showWinAnimation();
 }
 
@@ -323,17 +315,14 @@ function loseGame() {
 }
 
 function checkWin() {
-    if (wordPreview.innerText == word) {
+    if (wordPreview.innerHTML.replace("<span class=\"letter-popup\">", "").replace("</span>", "") == word) {
         winGame();
     }
 }
 
 function showWinAnimation() {
-
-    if (winAnimationLocked) { return }
+    if (winAnimationLocked) { return; }
     winAnimationLocked = true;
-
-    console.log("Võit!")
 
     wordPreview.innerHTML = "";
 
@@ -357,7 +346,6 @@ function showWrongGuessAnimation() {
         wordPreview.classList.remove("guessed-words-glow-red")
         wordPreview.style.color = "black";
     }, 1005);
-    }, 1005);
 }
 
 function showNotification(notificationText) {
@@ -372,6 +360,11 @@ function showNotification(notificationText) {
 
 function pickWord() {
     const word_id = getRandomInt(0, wordlist.length - 1);
+
+    if (wordlist[word_id] == undefined) {
+        pickWord();
+    }
+
     if (last_word == wordlist[word_id]) {
         console.log("Duplicate word, repicking...")
         pickWord();
