@@ -2,6 +2,10 @@
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
+html {
+    font-size: 20px;
+}
+
 @font-face {
     font-family: "Comic Sans";
     src: url("");
@@ -11,6 +15,14 @@
     font-family: "Comic Sans";
     src: url("");
 }
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
 
 .centered {
     display: flex;
@@ -38,23 +50,84 @@ button:hover {
     background-color: rgb(21, 168, 21);
 }
 
+/* Notification Styles */
+.notification-area-wrapper {
+    position: absolute;
 
+    bottom: 50px;
+    right: 30%;
+    left: 30%;
 
-.signature-input {
-    border: solid 2px black;
-    border-radius: 20px;
-    
-    padding: 10px;
-    margin: 10px;
-
-    min-width: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
-.form-controls {
+.hover-notification {
+    position: relative;
+
+    visibility: hidden;
+
+    width: 60vh;
+    height: 6vh;
+
+    border: solid 1px rgb(255, 192, 192);
+    border-radius: 10px;
+
+    box-shadow: 0 0 3px 1px rgb(255, 86, 86);
+
+    background-color: rgb(255, 192, 192);
+
+    z-index: 1;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.notification-show {
+    visibility: visible;
+    animation: move-up .6s ease-in-out forwards;
+}
+
+.notification-hide {
+    visibility: visible;
+    animation: move-down .6s ease-in-out forwards;
+}
+
+.notificationText {
+    font-weight: bolder;
+    font-size: 1rem;
+
+    text-align: center;
+}
+
+@keyframes move-up {
+    from {
+        transform: translateY(40px);
+        opacity: 0%;
+    }
+
+    to {
+        transform: translateY(-10px);
+        opacity: 100%;
+    }
+}
+
+@keyframes move-down {
+    from {
+        transform: translateY(-10px);
+        opacity: 100%;
+    }
+
+    to {
+        transform: translateY(40px);
+        opacity: 0%;
+    }
+}
+
+
+
 
 /* Hangman Styles */
 
@@ -91,7 +164,7 @@ button:hover {
     margin-bottom: 5px;
 
     border: solid 2px white;
-    box-shadow: 0 0 5px 1px darkred;
+    box-shadow: 0 0 5px 1px rgb(232, 112, 0);
     border-radius: 20px;
 
     padding-top: 5px;
