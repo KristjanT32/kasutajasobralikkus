@@ -202,6 +202,11 @@ function guess() {
         lastDiscoveredLetter = guess;
         return;
       }
+    } else if (guess.length > 1) {
+      advanceState();
+      showWrongGuessAnimation();
+      showNotification("Paraku pole see sõna '" + guess + "'");
+      return;
     }
   }
 }
