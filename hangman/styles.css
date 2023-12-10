@@ -61,6 +61,9 @@ button:hover {
     display: flex;
     justify-content: center;
     text-align: center;
+
+    user-select: none;
+    pointer-events: none;
 }
 
 .hover-notification {
@@ -218,7 +221,6 @@ button:hover {
     max-width: 800px;
 
     min-height: 140px;
-    max-height: 140px;
 
     border: solid 3px white;
     border-radius: 40px;
@@ -249,8 +251,12 @@ button:hover {
 
     font-weight: bold;
     font-size: 30px;
+}
 
-    letter-spacing: 20px;
+.letters hr {
+    border: solid 2px rgb(28, 28, 28);
+    border-radius: 3px;
+    box-shadow: none;
 }
 
 .notification {
@@ -290,6 +296,41 @@ button:hover {
     box-shadow: 0 0 10px 5px lightgray inset;
 
     padding: 20px;
+}
+
+.guessed_letter_correct, .guessed_letter_wrong {
+    text-align: center;
+
+    padding: 5px 10px 5px 10px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
+    user-select: none;
+}
+
+.guessed_letter_correct {
+    cursor: pointer;
+}
+
+.guessed_letter_wrong {
+    cursor: not-allowed;
+}
+
+.guessed_letter_correct:hover {
+    background-color: rgb(104, 193, 132);
+    border-radius: 10px;
+}
+
+.guessed_letter_wrong:hover {
+    background-color: rgb(254, 128, 128);
+    border-radius: 10px;
+}
+
+.highlighted_letter {
+    font-family: "Segoe UI Black", Arial, sans-serif;
+    color: rgb(255, 183, 0);
+    transition: .2s ease-in-out;
 }
 
 .hangman-word.span {

@@ -7,6 +7,7 @@ let lastDiscoveredLetter = "";
 let guessedLetters = [];
 let gameLost = false;
 let winAnimationLocked = false;
+let showLocked = false;
 
 // Notifications
 let notificationShowing = false;
@@ -106,16 +107,24 @@ const leftLeg = function () {
   draw(60, 70, 20, 100);
 };
 
+const head = function () {
+  let context = canvas;
+  context.beginPath();
+  context.arc(60, 25, 10, 0, Math.PI * 2, true);
+  context.stroke();
+};
+
 const hangman_states = [
+  head,
+  torso,
   rightLeg,
   leftLeg,
   rightArm,
   leftArm,
-  torso,
-  frame4,
-  frame3,
-  frame2,
   frame1,
+  frame2,
+  frame3,
+  frame4,
 ];
 
 guessButton.addEventListener("click", () => {
@@ -131,8 +140,8 @@ document.body.onload = () => {
 };
 
 formSubmit.addEventListener("submit", (e) => {
-  guess();
   e.preventDefault();
+  guess();
 });
 
 function initializeGame() {
@@ -221,24 +230,26 @@ function checkIfInWord(str) {
 
 function advanceState() {
   guess_streak = 0;
-  if (hangman_state + 1 < hangman_states.length - 1) {
+
+  // The last possible index for a draw function is 9, so the last
+  // allowed index is 8 (therefore, since length is 10, length - 2)
+  if (hangman_state <= hangman_states.length - 2) {
     hangman_states[hangman_state]();
     hangman_state++;
   } else {
-    hangman_state = hangman_states.length - 1;
-    refreshSecondaryInfo();
+    // Still draw the last state, then set the state to the highest possible one.
+    hangman_states[hangman_state]();
+    hangman_state = hangman_states.length;
+
     gameLost = true;
+
+    refreshSecondaryInfo();
     loseGame();
     return;
   }
 
-  if (hangman_state >= 4) {
-    if (!triesLeft.classList.contains("guessesleft-warning")) {
-      triesLeft.classList.add("guessesleft-warning");
-    }
-  }
-
-  if (hangman_state >= 4) {
+  // Flash the guess counter red when it reaches 6 (meaning the user has only 4 guesses left)
+  if (hangman_state >= 6) {
     if (!triesLeft.classList.contains("guessesleft-warning")) {
       triesLeft.classList.add("guessesleft-warning");
     }
@@ -248,7 +259,9 @@ function advanceState() {
 function refreshWordPreview() {
   wordPreview.innerHTML = "";
   for (const char of word) {
+    // Has the user guessed the letter?
     if (guessedLetters.includes(char.toLowerCase())) {
+      // Has the letter already been animated?
       if (lastDiscoveredLetter == char.toLowerCase()) {
         let character = char;
         wordPreview.innerHTML +=
@@ -277,28 +290,81 @@ function refreshWordPreview() {
   }
 }
 
+/**
+ * Refreshes the list of tried letters.
+ */
+
 function refreshGuessedLetters() {
   let counter = 0;
   letterSpan.innerHTML = "";
   guessedLetters.forEach((letter) => {
     if (word.toLowerCase().includes(letter.toLowerCase())) {
       letterSpan.innerHTML +=
-        "<span style='color:green'>" + letter.toUpperCase() + "</span>";
+        "<span style='color:green' class='guessed_letter_correct'>" +
+        letter.toUpperCase() +
+        "</span>";
     } else {
       letterSpan.innerHTML +=
-        "<span style='color:red'>" + letter.toUpperCase() + "</span>";
+        "<span style='color:red' class='guessed_letter_wrong'>" +
+        letter.toUpperCase() +
+        "</span>";
     }
-    if (counter == 14) {
+    if (counter == 13) {
       letterSpan.innerHTML += "<hr>";
     }
     counter++;
   });
+
+  document.querySelectorAll(".guessed_letter_correct").forEach((element) => {
+    element.addEventListener("click", () => {
+      showLetter(element.innerText);
+      console.log("Clicked, '" + element.innerText + "'");
+    });
+  });
+}
+
+let highlightedLetters = [];
+function showLetter(letter) {
+  if (showLocked || winAnimationLocked) {
+    return;
+  }
+  showLocked = true;
+  highlightedLetters = [];
+
+  for (char of wordPreview.innerText) {
+    if (char.toLowerCase() == letter.toLowerCase()) {
+      if (!highlightedLetters.includes(char)) {
+        highlightedLetters.push(char);
+      }
+    }
+  }
+
+  for (char of highlightedLetters) {
+    wordPreview.innerHTML = wordPreview.innerHTML.replaceAll(
+      char,
+      "<span class='highlighted_letter'>" + char + "</span>"
+    );
+
+    setTimeout(() => {
+      wordPreview.innerHTML = wordPreview.innerHTML.replaceAll(
+        '<span class="highlighted_letter">' + char + "</span>",
+        char
+      );
+      highlightedLetters.pop(char);
+
+      if (highlightedLetters.length == 0) {
+        showLocked = false;
+      }
+    }, 300);
+  }
+
+  setTimeout(() => {}, 1000);
 }
 
 function refreshSecondaryInfo() {
   triesLeft.innerHTML =
     "Eksimusi jäänud <b class='tries-left-number'>" +
-    (hangman_states.length - hangman_state - 1) +
+    (hangman_states.length - hangman_state) +
     "</b>";
   guessStreak.innerHTML =
     "Õigeid järjest <b class='guess-streak-number'>" + guess_streak + "</b>";
