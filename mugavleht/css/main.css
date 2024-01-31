@@ -1,13 +1,115 @@
-* {
-    font-family: "Segoe UI", Arial, sans-serif;
+/* Font definitions */
+@font-face {
+    font-family: "SEB Regular";
+    src: url("/mugavleht/assets/fonts/SEBSansSerif-Regular.woff") format("woff");    
+}
+
+@font-face {
+    font-family: "SEB Bold";
+    src: url("/mugavleht/assets/fonts/SEBSansSerif-Bold.woff") format("woff");    
+}
+
+@font-face {
+    font-family: "SEB Medium";
+    src: url("/mugavleht/assets/fonts/SEBSansSerif-Medium.woff") format("woff");    
+}
+
+@font-face {
+    font-family: "SEB Light";
+    src: url("/mugavleht/assets/fonts/SEBSansSerif-Light.woff") format("woff");    
+}
+
+
+
+
+
+
+
+
+/* Styles */
+
+body {
+    margin: 0px;
+}
+
+.top-bar {
+    
 }
 
 .header {
-    width: auto;
-    height: 3.5rem;
 
-    margin: 0;
+    display: flex;
 
-    background-color: #1A1A1A;
+    width: 100vw;
+    height: 105px;
+
+    margin: -5px;
+
+    background-color: #ffffff;
+}
+
+.subheader {
+    width: 100vw;
+    height: 65px;
     
+    background-color: #1A1A1A;
+}
+
+.header-menu {
+    font-family: "SEB Medium";
+
+    width: 100vw;
+    height: auto;
+
+    padding: 20px;
+    
+    align-self: center;
+}
+
+.header-menu > nav {
+    display: flex;
+
+    justify-content: left;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.header-menu nav > a:first-child {
+    text-decoration: none;
+    color: #45B400;
+}
+
+.header-menu nav > a {
+    text-decoration: none;
+    color: #333333;
+}
+
+.header-menu nav > a:hover:not(:first-child), .header-menu-secondary nav > a:hover {
+    color: #0092E1;
+}
+
+
+
+.header-menu-secondary {
+    font-family: "SEB Medium";
+
+    width: 100vw;
+    height: auto;
+
+    padding: 20px;
+    align-self: center;
+}
+
+.header-menu-secondary > nav {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.header-menu-secondary nav > a {
+    text-decoration: none;
+    color: #333333;
 }
