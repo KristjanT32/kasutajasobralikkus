@@ -7,6 +7,28 @@
     <title>Koduleht | SBE</title>
   </head>
   <body>
+    <div class="modal-popup-area">
+      <div class="modal-popup">
+        <div class="text-container">
+          <div class="title">
+            Ligipääs keelatud!
+          </div>
+          <div class="description">
+            See veebilehe funktsioon on saadaval vaid SBE panga <span class="gold-tier">KULD</span> tasemel klientidele.
+          </div>
+          <br>
+          <button class="close-button-fake">
+            Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
+          </button>
+          <br>
+          <button class="close-button-real" onclick="hideModal()">
+            Selge, sule aken
+          </button>
+        </div>
+      </div>
+    </div>
+
+
     <div class="top-bar">
       <div class="header">
         <img
@@ -18,7 +40,7 @@
         />
         <span class="header-menu">
           <nav>
-            <a href="#">Eraklient</a>
+            <a href="javascript:void(0)" onclick="showModal('!default', '!default')">Eraklient</a>
             <a href="#">Äriklient</a>
             <a href="#">Korporatiivpangandus</a>
             <a href="#">Privaatpangandus</a>
@@ -37,5 +59,7 @@
         <nav class="subheader-menu"></nav>
       </div>
     </div>
+
+    <script src="js/index.js"></script>
   </body>
 </html>
