@@ -24,6 +24,22 @@
     src: url("/mugavleht/assets/fonts/Comic Sans MS.ttf") format("ttf");
 }
 
+@font-face {
+    font-family: "Font Awesome 5 Solid";
+    src: url("/mugavleht/assets/fonts/fa-solid-900.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Font Awesome 5 Regular";
+    src: url("/mugavleht/assets/fonts/fa-regular-400.woff2") format("woff2");
+}
+
+
+@font-face {
+    font-family: "Font Awesome 5 Brands";
+    src: url("/mugavleht/assets/fonts/fa-brands-400.woff2") format("woff2");
+}
+
 
 
 
@@ -57,6 +73,14 @@ body {
     height: 65px;
     
     background-color: #1A1A1A;
+}
+
+.subheader-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    height: 100%;
 }
 
 .header-menu {
@@ -122,14 +146,24 @@ body {
 
 
 .modal-popup-area {
-    position: relative;
+    position: absolute;
 
     display: flex;
     justify-content: center;
+
+    z-index: 2;
+    pointer-events: none;
+
+    width: 100%;
+    height: 100%;
 }
 
 .modal-popup {
-    position: absolute;
+    position: relative;
+    pointer-events: auto;
+
+    top: 0;
+    left: 0;
 
     width: 600px;
     height: 500px;
@@ -137,19 +171,18 @@ body {
     margin-top: 25px;
 
     background-color: white;
-    box-shadow: 0 0 25px 0 grey;
-    border-radius: 20px;
+    box-shadow: 0 0 10px 1px grey;
 
-    z-index: 10;
-
-    opacity: 0;
+    display: none;
 }
 
 .modal-popup-show{
+    display: block;
     animation: modal-show 0.5s forwards;
 }
 
 .modal-popup-hide {
+    display: block;
     animation: modal-hide 20s forwards;
 }
 
@@ -158,31 +191,40 @@ body {
     flex-direction: column;
     text-align: center;
     align-items: center;
+
+    margin: 20px;
 }
 
 .modal-popup .title {
-    font-size: 40px;
+    font-size: 25px;
     font-family: "SEB Bold";
 
     margin-top: 40px;
 }
 
 .modal-popup .description {
-    font-size: 40px;
+    font-size: 20px;
     font-family: "SEB Regular";
 
     margin-top: 40px;
 }
 
 .modal-popup .close-button-fake {
-    padding: 30px;
+    padding: 20px;
 
     font-family: "SEB Regular";
     font-size: 30px;
 
-    background-color: white;
-    border: solid 3px rgb(123, 123, 123);
-    border-radius: 20px;
+    width: 500px;
+    height: 200px;
+
+    border-radius: .25rem;
+    border: solid 1px rgb(96,205,24);
+
+    background-color: rgb(96,205,24);
+    color: white;
+
+    font-weight: bold;
 }
 
 .modal-popup .close-button-real {
@@ -191,23 +233,57 @@ body {
     font-family: "SEB Regular";
     font-size: 10px;
 
-    background-color: white;
-    border: solid 1px rgb(123, 123, 123);
-    border-radius: 20px;
+    border-radius: .25rem;
+    border: solid 1px rgb(205, 24, 24);
+
+    background-color: rgb(205, 24, 24);
+    color: white;
+
+    position: absolute;
+    bottom: 30px;
 }
 
 .modal-popup .close-button-fake:hover {
-    border: solid 3px rgb(0, 255, 17);
+    background-color: rgb(70, 149, 17);
 }
 
 .modal-popup .close-button-real:hover {
-    border: solid 1px rgb(255, 0, 0);
+    background-color: rgb(123, 15, 15);
 }
 
 .gold-tier {
     font-family: "Comic Sans MS";
     color: gold;
     text-shadow: yellow;
+}
+
+.ebanking-button {
+    background-color: #0092E1;
+    
+    border: solid 1px #0092E1;
+    border-radius: .25rem;
+
+    padding: .5625rem 1rem;
+
+    font-family: "SEB Medium";
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    line-height: 1.5;
+
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.lock-icon::after {
+    font-family: "Font Awesome 5 Regular";
+    content: \f023;
+
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
 }
 
 @keyframes modal-show {

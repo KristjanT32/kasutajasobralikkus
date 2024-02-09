@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/fontawesome/all.css">
     <title>Koduleht | SBE</title>
   </head>
   <body>
@@ -17,10 +18,10 @@
             See veebilehe funktsioon on saadaval vaid SBE panga <span class="gold-tier">KULD</span> tasemel klientidele.
           </div>
           <br>
+          <br>
           <button class="close-button-fake">
             Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
           </button>
-          <br>
           <button class="close-button-real" onclick="hideModal()">
             Selge, sule aken
           </button>
@@ -41,22 +42,26 @@
         <span class="header-menu">
           <nav>
             <a href="javascript:void(0)" onclick="showModal('!default', '!default')">Eraklient</a>
-            <a href="#">Äriklient</a>
-            <a href="#">Korporatiivpangandus</a>
-            <a href="#">Privaatpangandus</a>
+            <a href="javascript:void(0)" onclick="showModal('!default', '!default')">Äriklient</a>
+            <a href="javascript:void(0)" onclick="showModal('!default', '!default')">Korporatiivpangandus</a>
+            <a href="javascript:void(0)" onclick="showModal('!default', '!default')">Privaatpangandus</a>
           </nav>
         </span>
         <span class="header-menu-secondary">
           <nav>
-            <a href="#">Karjäär</a>
-            <a href="#">Kontaktid</a>
-            <a href="#">SBE-st</a>
-            <a href="#">Foorum</a>
+            <a href="javascript:void(0)" onclick="showModal('!default', '!default')">Karjäär</a>
+            <a href="javascript:void(0)" onclick="showModal('!default', '!default')">Kontaktid</a>
+            <a href="javascript:void(0)" onclick="showModal('!default', '!default')">SBE-st</a>
+            <a href="javascript:void(0)" onclick="showModal('!default', '!default')">Foorum</a>
           </nav>
         </span>
       </div>
       <div class="subheader">
-        <nav class="subheader-menu"></nav>
+        <nav class="subheader-menu">
+          <a href="#" class="ebanking-button">
+            Internetipank   <i class="fas fa-lock" style="font-family: 'Font Awesome 5 Solid';"></i>
+          </a>
+        </nav>
       </div>
     </div>
 
