@@ -10,20 +10,35 @@
   <body>
     <div class="modal-popup-area">
       <div class="modal-popup">
+        <div class="modal-dismiss-button">
+          <i
+            class="fas fa-times"
+            style="font-family: 'Font Awesome 5 Solid'"
+          ></i>
+        </div>
         <div class="text-container">
-          <div class="title">Ligipääs keelatud!</div>
-          <div class="description">
-            See veebilehe funktsioon on saadaval vaid SBE panga
-            <span class="gold-tier">KULD</span> tasemel klientidele.
+          <div class="modal-content">
+            <div class="title">Ligipääs keelatud!</div>
+            <div class="description">
+              See veebilehe funktsioon on saadaval vaid SBE panga
+              <span class="gold-tier">KULD</span> tasemel klientidele.
+            </div>
+            <br style="margin-top: 20px" />
+            <button class="close-button-fake">
+              Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
+            </button>
           </div>
           <br />
-          <br />
-          <button class="close-button-fake">
-            Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
-          </button>
-          <button class="close-button-real" onclick="hideModal()">
-            Selge, sule aken
-          </button>
+          <div class="modal-closing" style="display: none">
+            <div class="title">Töötleme teie otsust...</div>
+            <div class="timer-description">
+              Otsuse töötlemine võib võtta kuni 3 minutit. Palun oodake.
+            </div>
+            <br />
+            <div class="estimated-processing-time">--:--</div>
+            <div class="loading-status"></div>
+            <div class="spinner modal-spinner"></div>
+          </div>
         </div>
       </div>
     </div>

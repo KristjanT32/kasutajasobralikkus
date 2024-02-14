@@ -183,7 +183,7 @@ body {
 
 .modal-popup-hide {
     display: block;
-    animation: modal-hide 20s forwards;
+    animation: modal-hide 0.5s forwards;
 }
 
 .modal-popup .text-container {
@@ -227,20 +227,41 @@ body {
     font-weight: bold;
 }
 
-.modal-popup .close-button-real {
-    padding: 5px;
-
-    font-family: "SEB Regular";
-    font-size: 10px;
-
-    border-radius: .25rem;
-    border: solid 1px rgb(205, 24, 24);
-
-    background-color: rgb(205, 24, 24);
-    color: white;
-
+.modal-popup .modal-dismiss-button {
     position: absolute;
-    bottom: 30px;
+    right: 0;
+
+    margin: 5px 10px 10px 5px;
+    cursor: pointer
+}
+
+.modal-popup .timer-description {
+    font-family: "SEB Regular", Arial, sans-serif;
+    font-size: 15px;
+}
+
+.modal-popup .modal-spinner {
+    margin: 100px auto;
+}
+
+.modal-popup .estimated-processing-time {
+    font-family: "SEB Bold";
+    font-size: 40px;
+
+    background-color: rgb(184, 184, 184);
+
+    border: solid 1px rgb(184, 184, 184);
+    border-radius: .25rem;
+
+    padding: 2.5px;
+}
+
+.modal-popup .loading-status {
+    font-family: "SEB Regular", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+
+    margin-top: 15px;
 }
 
 .modal-popup .close-button-fake:hover {
@@ -309,3 +330,18 @@ body {
         transform: translateY(-20px);
     }
 }
+
+.spinner {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 9px solid;
+    border-color: rgb(96,205,24) white;
+    animation: spinner-spin 1s infinite;
+ }
+ 
+ @keyframes spinner-spin {
+    to {
+       transform: rotate(.5turn);
+    }
+ }
