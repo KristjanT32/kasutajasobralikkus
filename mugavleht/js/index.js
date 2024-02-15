@@ -31,6 +31,11 @@ modalDismiss.addEventListener("click", () => {
   startRandomTimer(180);
 });
 
+/**
+ * Show a modal dialog to the user.
+ * @param {string} title The title of the modal dialog.
+ * @param {string} desc The description text of the modal dialog.
+ */
 function showModal(title, desc) {
   if (modalShown) return;
   modalShown = true;
@@ -52,6 +57,9 @@ function showModal(title, desc) {
   }
 }
 
+/**
+ * Hides the currently visible modal dialog (if any)
+ */
 function hideModal() {
   if (!modalShown) return;
 
@@ -66,6 +74,10 @@ function hideModal() {
   modalShown = false;
 }
 
+/**
+ * Starts a timer for the modal dialog for <b>0 to `max`</b> seconds.
+ * @param {int} max The duration of the timer (in seconds)
+ */
 function startRandomTimer(max) {
   if (timerRunning) return;
 
@@ -89,6 +101,11 @@ function startRandomTimer(max) {
   }, 1000);
 }
 
+/**
+ * Formats a duration in seconds to `MM:SS` (`e.g 125s => 02:05`)
+ * @param {int} seconds The duration to format, in seconds.
+ * @returns {string} The formatted duration string.
+ */
 function formatTime(seconds) {
   let minutes = Math.floor(seconds / 60);
   let secs = Math.floor(seconds - minutes * 60);
