@@ -328,6 +328,31 @@ body {
     line-height: 1;
 }
 
+.header-logo {
+    cursor: pointer;
+}
+
+.img-overlay-text {
+    position: absolute;
+    bottom: -450px;
+    left: 0;
+
+    font-family: "SEB Bold", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 80px;
+
+    text-align: right;
+    padding: 20px 0 20px 0;
+
+    z-index: 2;
+
+
+    color: white;
+    background-color: #333333a9;
+
+    width: 100%;
+}
+
 @keyframes modal-show {
     from {
         opacity: 0;

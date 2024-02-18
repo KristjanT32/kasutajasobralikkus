@@ -10,7 +10,6 @@ let timerLabel = document.querySelector(
   ".modal-popup .estimated-processing-time"
 );
 let loadingStatus = document.querySelector(".modal-popup .loading-status");
-
 let modalShown = false;
 
 let currentModalTimer = 0;
