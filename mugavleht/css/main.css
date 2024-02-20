@@ -56,6 +56,8 @@ body.ebank {
 body {
     margin: 0px;
     background-color: var(--bg-light);
+
+    overflow: hidden;
 }
 
 .top-bar {}
@@ -167,16 +169,34 @@ body {
 }
 
 .modal-popup-area {
-    position: absolute;
+    position: fixed;
 
     display: flex;
     justify-content: center;
 
-    z-index: 2;
+    z-index: 3;
     pointer-events: none;
 
     width: 100%;
     height: 100%;
+}
+
+.interaction-blocker {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    background-color: #33333344;
+    box-shadow: 0 0 20px 5px red inset;
+
+    cursor: not-allowed;
+
+    display: none;
 }
 
 .modal-popup {
@@ -197,6 +217,24 @@ body {
     display: none;
 }
 
+.modal-popup-defined {
+    position: relative;
+    pointer-events: auto;
+
+    top: 0;
+    left: 0;
+
+    width: 600px;
+    height: 500px;
+
+    margin-top: 25px;
+
+    background-color: white;
+    box-shadow: 0 0 10px 1px grey;
+
+    animation: modal-show 0.5s forwards;
+}
+
 .modal-popup-show {
     display: block;
     animation: modal-show 0.5s forwards;
@@ -207,7 +245,8 @@ body {
     animation: modal-hide 0.5s forwards;
 }
 
-.modal-popup .text-container {
+.modal-popup .text-container,
+.modal-popup-defined .text-container {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -216,14 +255,16 @@ body {
     margin: 20px;
 }
 
-.modal-popup .title {
+.modal-popup .title,
+.modal-popup-defined .title {
     font-size: 25px;
     font-family: "SEB Bold";
 
     margin-top: 40px;
 }
 
-.modal-popup .description {
+.modal-popup .description,
+.modal-popup-defined .description {
     font-size: 20px;
     font-family: "SEB Regular";
 
@@ -248,7 +289,8 @@ body {
     font-weight: bold;
 }
 
-.modal-popup .modal-dismiss-button {
+.modal-popup .modal-dismiss-button,
+.modal-popup-defined .modal-dismiss-button {
     position: absolute;
     right: 0;
 
@@ -332,25 +374,36 @@ body {
     cursor: pointer;
 }
 
+.harold-img {
+    width: 100%;
+    height: 100%;
+}
+
 .img-overlay-text {
+    display: flex;
+
     position: absolute;
-    bottom: -450px;
+    top: 350px;
     left: 0;
 
+    width: 100%;
+    height: 200px;
+
+    z-index: 1;
+
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    background-color: #333333a9;
+}
+
+.img-overlay-text .text {
     font-family: "SEB Bold", Arial, sans-serif;
     font-weight: bold;
     font-size: 80px;
 
-    text-align: right;
-    padding: 20px 0 20px 0;
-
-    z-index: 2;
-
-
-    color: white;
-    background-color: #333333a9;
-
-    width: 100%;
+    text-align: center;
 }
 
 @keyframes modal-show {

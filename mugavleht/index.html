@@ -8,6 +8,8 @@
     <title>Koduleht | SBE</title>
   </head>
   <body>
+    <div class="interaction-blocker"></div>
+
     <div class="modal-popup-area">
       <div class="modal-popup">
         <div class="modal-dismiss-button">
@@ -18,11 +20,8 @@
         </div>
         <div class="text-container">
           <div class="modal-content">
-            <div class="title">Ligipääs keelatud!</div>
-            <div class="description">
-              See veebilehe funktsioon on saadaval vaid SBE panga
-              <span class="gold-tier">KULD</span> tasemel klientidele.
-            </div>
+            <div class="title"></div>
+            <div class="description"></div>
             <br style="margin-top: 20px" />
             <button class="close-button-fake">
               Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
@@ -49,7 +48,6 @@
             src="/mugavleht/assets/logo.png"
             alt="SBE logo"
             width="100px"
-            ;
             height="100px"
           />
         </div>
@@ -97,7 +95,7 @@
             >
             <a
               href="javascript:void(0)"
-              onclick="showModal('!default', '!default')"
+              onclick="showDefinedModal(0, {title: 'Olete <b>Tüüpiline Ohio Rizzler</b>!', desc: 'SBE pangale ligipääsemiseks palun tasuge teie <a href=\'https://youtu.be/dQw4w9WgXcQ\'>Fanum maks</a>.'})"
               >Foorum</a
             >
           </nav>
@@ -124,13 +122,13 @@
         <img
           src="/mugavleht/assets/img/harold.webp"
           alt="Harold Pangamees, SBE panga direktor"
-          width="100%"
-          height="100%"
+          class="harold-img"
         />
-        <span class="img-overlay-text"> SBE on teie jaoks alati olemas. </span>
+        <span class="img-overlay-text">
+          <span class="text"> SBE on teie jaoks alati olemas. </span>
+        </span>
       </div>
     </section>
-
     <script src="js/index.js"></script>
   </body>
 </html>
