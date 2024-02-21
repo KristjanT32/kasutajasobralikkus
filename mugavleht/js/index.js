@@ -10,6 +10,19 @@ const interactionBlocker = document.querySelector(".interaction-blocker");
 const modalContent = document.querySelector(".modal-popup .modal-content");
 const modalClosing = document.querySelector(".modal-popup .modal-closing");
 
+const ebankButton = document.querySelector(".ebanking-button");
+
+// The duration of the modal popup hide animation, in milliseconds.
+const HIDE_ANIM_DURATION = 200;
+
+// Currently generated names.
+let currentNames = [];
+
+let namesGenerated = false;
+
+// The maximum amount of random names to fetch.
+const MAX_RANDOM_NAMES = 20;
+
 let timerLabel = document.querySelector(
   ".modal-popup .estimated-processing-time"
 );
@@ -91,7 +104,7 @@ const modals = [
     <br>
     <div class="vertical-center">
       <label for="name2"> Valige nimi</label>
-      <select class='nameselect'>
+      <select class='nameselect' onclick='setSelectorNames()'>
         
       </select>
       <br>
@@ -100,12 +113,12 @@ const modals = [
       <br>
     </div>
     <div>
-      <button onclick="hideDefinedModal(2, {}); showDefinedModal(1, {})">Registreeri</button>
+      <button onclick="showDefinedModal(1, {})">Registreeri</button>
     </div>
     <br style="margin-top: 20px" />
   </div>
 </div>
-</div>`
+</div>`,
 ];
 
 modalDismiss.addEventListener("click", () => {
@@ -113,8 +126,6 @@ modalDismiss.addEventListener("click", () => {
   modalClosing.style.display = "block";
   startRandomTimer(180);
 });
-
-
 
 /**
  * Show the default modal dialog to the user.
@@ -149,27 +160,38 @@ function showModal(title, desc) {
  * @param {object} settings - the settings for the modal
  */
 function showDefinedModal(modalID, { title, desc, bt1, bt2, cb1, cb2 }) {
-  if (secondaryModalShown) {
-    return;
-  }
-
   if (modals[modalID] == undefined) {
     log(
       "ModalID " +
-      modalID +
-      " is invalid. The largest available index is " +
-      (modals.length - 1)
+        modalID +
+        " is invalid. The largest available index is " +
+        (modals.length - 1)
     );
     return;
   }
 
-  modalArea.insertAdjacentHTML(
-    "beforeend",
-    modals[modalID]
-      .replaceAll("{title}", title ? title : "")
-      .replaceAll("{description}", desc ? desc : "")
-  );
-  secondaryModalShown = true;
+  if (secondaryModalShown) {
+    hideDefinedModal();
+    setTimeout(() => {
+      modalArea.insertAdjacentHTML(
+        "beforeend",
+        modals[modalID]
+          .replaceAll("{title}", title ? title : "")
+          .replaceAll("{description}", desc ? desc : "")
+      );
+      secondaryModalShown = true;
+      interactionBlocker.style.display = "block";
+    }, HIDE_ANIM_DURATION);
+  } else {
+    modalArea.insertAdjacentHTML(
+      "beforeend",
+      modals[modalID]
+        .replaceAll("{title}", title ? title : "")
+        .replaceAll("{description}", desc ? desc : "")
+    );
+    secondaryModalShown = true;
+    interactionBlocker.style.display = "block";
+  }
 }
 
 /**
@@ -199,11 +221,15 @@ function hideDefinedModal() {
     .querySelector(".modal-popup-defined")
     .classList.add("modal-popup-hide");
 
-  document
-    .querySelector(".modal-popup-defined")
-    .classList.remove("modal-popup-hide");
-  document.querySelector(".modal-popup-defined").remove();
-  secondaryModalShown = false;
+  setTimeout(() => {
+    document
+      .querySelector(".modal-popup-defined")
+      .classList.remove("modal-popup-hide");
+    document.querySelector(".modal-popup-defined").remove();
+
+    secondaryModalShown = false;
+    interactionBlocker.style.display = "none";
+  }, HIDE_ANIM_DURATION);
 }
 
 /**
@@ -234,16 +260,45 @@ function startRandomTimer(max) {
 }
 
 function generateNames(count) {
-  for (i = count; count > 0; count--) {
+  namesGenerated = false;
+  currentNames = [];
+
+  log("Fetching random names...");
+  for (i = count; i > 0; i--) {
     const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
-        document.querySelector(".nameselect").innerHTML += "<option>" + xhttp.response.name + "</option>";
-      } 
+        currentNames.push(JSON.parse(xhttp.response).name);
+        refreshNameSelector();
+      }
     };
-    xhttp.open("GET", "https://api.namefake.com/random/random");
+    xhttp.open("GET", "https://api.namefake.com/spanish/male");
     xhttp.send();
   }
+  namesGenerated = true;
+}
+
+function setSelectorNames() {
+  if (
+    namesGenerated &&
+    document.querySelector(".nameselect").options.length == 0
+  ) {
+    refreshNameSelector();
+  } else {
+    generateNames(Math.ceil(Math.random() * MAX_RANDOM_NAMES));
+    refreshNameSelector();
+  }
+}
+
+function refreshNameSelector() {
+  const selector = document.querySelector(".nameselect");
+
+  for (i = 0; i < selector.options.length; i++) {
+    selector.options.remove(i);
+  }
+  currentNames.forEach((name) => {
+    selector.innerHTML += "<option>" + name + "</option>";
+  });
 }
 
 /**

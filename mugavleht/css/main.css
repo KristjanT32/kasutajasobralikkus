@@ -81,7 +81,7 @@ input {
     padding: 10px;
 
     min-height: 20px;
-    min-width: 300px;  
+    min-width: 300px;
 }
 
 .modal-popup-defined label {
@@ -224,7 +224,6 @@ input {
     z-index: 2;
 
     background-color: #33333344;
-    box-shadow: 0 0 20px 5px red inset;
 
     cursor: not-allowed;
 
@@ -247,7 +246,9 @@ input {
     left: 0;
 
     width: 600px;
+    height: fit-content;
     min-height: 500px;
+    max-height: 70%;
 
     margin: 10px 0 10px 0;
 
@@ -265,7 +266,9 @@ input {
     left: 0;
 
     width: 600px;
+    height: fit-content;
     min-height: 500px;
+    max-height: 70%;
 
     margin: 10px 0 10px 0;
 
@@ -277,12 +280,12 @@ input {
 
 .modal-popup-show {
     display: block;
-    animation: modal-show 0.5s forwards;
+    animation: modal-show 0.2s forwards;
 }
 
 .modal-popup-hide {
     display: block;
-    animation: modal-hide 0.5s forwards;
+    animation: modal-hide 0.2s forwards;
 }
 
 .modal-popup .text-container,
@@ -311,7 +314,9 @@ input {
     margin-top: 40px;
 }
 
-.secretbabyinshallah, .secretbabyinshallah:visited, .secretbabyinshallah:hover {
+.secretbabyinshallah,
+.secretbabyinshallah:visited,
+.secretbabyinshallah:hover {
     text-decoration: none;
     color: #121212;
 }
