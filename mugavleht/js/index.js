@@ -52,6 +52,60 @@ const modals = [
     </div>
   </div>
 </div>`,
+  `<div class="modal-popup-defined">
+<div class="modal-dismiss-button" onclick='hideDefinedModal()'>
+  <i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+</div>
+<div class="text-container">
+  <img src="/mugavleht/assets/logo.png" alt="SBE logo" width="100px" height="100px" />
+  <div class="modal-content">
+    <div class="title">Logi sisse!</div>
+    <div class="description">Kasutage oma SBE isikuandmeid sisselogimiseks</div>
+    <br>
+    <div class="vertical-center">
+      <label for="name">Kasutajanimi</label>
+      <input type="file" id="name">
+      <br>
+      <label for="psswrd">Sisetage parool</label>
+      <input type="password" id="psswrd">
+      <br>
+      <label for="inshal"> <a class="secretbabyinshallah"
+          href="https://www.youtube.com/shorts/p5wmXb9Pr9g">Inshallah?</a></label>
+      <input type="siu" id="inshal">
+      <a href="javascript:void(0)" onclick="hideDefinedModal(1, {}); showDefinedModal(2, {})">
+        Registreeri
+      </a>
+    </div>
+    <br style="margin-top: 20px" />
+  </div>
+</div>
+</div>`,
+  `<div class="modal-popup-defined">
+<div class="modal-dismiss-button" onclick='hideDefinedModal()'>
+  <i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+</div>
+<div class="text-container">
+  <img src="/mugavleht/assets/logo.png" alt="SBE logo" width="100px" height="100px" />
+  <div class="modal-content">
+    <div class="title">Registreeri ennast kasutajaks</div>
+    <br>
+    <div class="vertical-center">
+      <label for="name2"> Valige nimi</label>
+      <select class='nameselect'>
+        
+      </select>
+      <br>
+      <label for="pswrd"> Valige parool</label>
+      <input type="password" id="pswrd"> </input>
+      <br>
+    </div>
+    <div>
+      <button onclick="hideDefinedModal(2, {}); showDefinedModal(1, {})">Registreeri</button>
+    </div>
+    <br style="margin-top: 20px" />
+  </div>
+</div>
+</div>`
 ];
 
 modalDismiss.addEventListener("click", () => {
@@ -59,6 +113,8 @@ modalDismiss.addEventListener("click", () => {
   modalClosing.style.display = "block";
   startRandomTimer(180);
 });
+
+
 
 /**
  * Show the default modal dialog to the user.
@@ -88,7 +144,7 @@ function showModal(title, desc) {
 }
 
 /**
- *
+ * Shows a predefined modal by its ID.
  * @param {int} modalID - the ID of the modal type to use
  * @param {object} settings - the settings for the modal
  */
@@ -100,9 +156,9 @@ function showDefinedModal(modalID, { title, desc, bt1, bt2, cb1, cb2 }) {
   if (modals[modalID] == undefined) {
     log(
       "ModalID " +
-        modalID +
-        " is invalid. The largest available index is " +
-        (modals.length - 1)
+      modalID +
+      " is invalid. The largest available index is " +
+      (modals.length - 1)
     );
     return;
   }
@@ -142,12 +198,11 @@ function hideDefinedModal() {
   document
     .querySelector(".modal-popup-defined")
     .classList.add("modal-popup-hide");
-  setTimeout(() => {
-    document
-      .querySelector(".modal-popup-defined")
-      .classList.remove("modal-popup-hide");
-    document.querySelector(".modal-popup-defined").remove();
-  }, 1000);
+
+  document
+    .querySelector(".modal-popup-defined")
+    .classList.remove("modal-popup-hide");
+  document.querySelector(".modal-popup-defined").remove();
   secondaryModalShown = false;
 }
 
@@ -176,6 +231,19 @@ function startRandomTimer(max) {
       hideModal();
     }
   }, 1000);
+}
+
+function generateNames(count) {
+  for (i = count; count > 0; count--) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
+        document.querySelector(".nameselect").innerHTML += "<option>" + xhttp.response.name + "</option>";
+      } 
+    };
+    xhttp.open("GET", "https://api.namefake.com/random/random");
+    xhttp.send();
+  }
 }
 
 /**

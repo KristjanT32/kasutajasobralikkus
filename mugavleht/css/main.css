@@ -56,8 +56,40 @@ body.ebank {
 body {
     margin: 0px;
     background-color: var(--bg-light);
+}
 
-    overflow: hidden;
+input {
+    border: solid 1px gray;
+    border-radius: 20px;
+
+    background-color: white;
+    color: black;
+
+    padding: 10px;
+
+    min-height: 20px;
+    min-width: 300px;
+}
+
+.nameselect {
+    border: solid 1px gray;
+    border-radius: 20px;
+
+    background-color: white;
+    color: black;
+
+    padding: 10px;
+
+    min-height: 20px;
+    min-width: 300px;  
+}
+
+.modal-popup-defined label {
+    font-family: "SEB Medium", Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .top-bar {}
@@ -199,6 +231,14 @@ body {
     display: none;
 }
 
+.vertical-center {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
 .modal-popup {
     position: relative;
     pointer-events: auto;
@@ -207,9 +247,9 @@ body {
     left: 0;
 
     width: 600px;
-    height: 500px;
+    min-height: 500px;
 
-    margin-top: 25px;
+    margin: 10px 0 10px 0;
 
     background-color: white;
     box-shadow: 0 0 10px 1px grey;
@@ -225,9 +265,9 @@ body {
     left: 0;
 
     width: 600px;
-    height: 500px;
+    min-height: 500px;
 
-    margin-top: 25px;
+    margin: 10px 0 10px 0;
 
     background-color: white;
     box-shadow: 0 0 10px 1px grey;
@@ -269,6 +309,11 @@ body {
     font-family: "SEB Regular";
 
     margin-top: 40px;
+}
+
+.secretbabyinshallah, .secretbabyinshallah:visited, .secretbabyinshallah:hover {
+    text-decoration: none;
+    color: #121212;
 }
 
 .modal-popup .close-button-fake {
