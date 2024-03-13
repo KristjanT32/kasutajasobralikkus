@@ -1,0 +1,9 @@
+TODO:
+
+1. Lisada taimeri taaskäivitamine, kui kasutaja püüab
+   otsuse töötlemise ajal modaalakent sulgeda
+
+2. Lisada nimefaili lugemissüsteem
+
+3. Lisada teavitussüsteem, mille abil saab ekraani
+   alumises osas näidata teavitusi.
