@@ -24,9 +24,9 @@ let namesGenerated = false;
 const MAX_RANDOM_NAMES = 20;
 
 let timerLabel = document.querySelector(
-	".modal-popup .estimated-processing-time"
+	".estimated-processing-time"
 );
-let loadingStatus = document.querySelector(".modal-popup .loading-status");
+let loadingStatus = document.querySelector(".loading-status");
 
 let modalShown = false;
 let secondaryModalShown = false;
@@ -107,7 +107,7 @@ const modals = [
 
         <br style="display: block; margin-top: 20px" />
 
-        <span>
+        <span class='generic-label'>
           Pole veel SBE klient?
           <a
             href="javascript:void(0)"
@@ -141,11 +141,10 @@ const modals = [
       </div>
       <br style="display: block; margin-top: 20px;">
       
-      <button class="register">Registreeri</button>
+      <button class="register" onclick='showDefinedModal(3, {});'>Registreeri</button>
 
-      <br style="display: block; margin-top: 20px;">
-
-      <span>
+      <span class='generic-label'>
+	  <br style="display: block; margin-top: 20px" />
         Olete juba SBE klient?
         <a
           href="javascript:void(0)"
@@ -157,6 +156,29 @@ const modals = [
     </div>
   </div>
   </div>`,
+  `<div class="modal-popup-defined">
+  <div class="modal-dismiss-button">
+	  <i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+  </div>
+
+  <div class="text-container">
+	  <div class="modal-content">
+		  <div class="title">Üks hetk, palun...</div>
+		  <div class="description"></div>
+		  <br style="margin-top: 20px" />
+		  <div class="vertical-center">
+			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel teie nime õigsust ja vastavust <a href="https://www.example.org">SBE nimesobivuseeskirjadega</a>.</b>
+			  <div class="generic-label">
+				  Valideerimine võtab vaid mõne hetke. Palun oodake.
+			  </div>
+			  <br style="margin-top: 20px" />
+			  <div class="spinner modal-spinner"></div>
+			  <br />
+		  </div>
+	  </div>
+  </div>
+  <br />
+</div>`
 ];
 
 modalDismiss.addEventListener("click", () => {
@@ -164,6 +186,7 @@ modalDismiss.addEventListener("click", () => {
 	modalClosing.style.display = "block";
 	startRandomTimer(180);
 });
+
 
 /**
  * Show the default modal dialog to the user.
@@ -201,9 +224,9 @@ function showDefinedModal(modalID, { title, desc, bt1, bt2, cb1, cb2 }) {
 	if (modals[modalID] == undefined) {
 		log(
 			"ModalID " +
-				modalID +
-				" is invalid. The largest available index is " +
-				(modals.length - 1)
+			modalID +
+			" is invalid. The largest available index is " +
+			(modals.length - 1)
 		);
 		return;
 	}
@@ -238,6 +261,8 @@ function showDefinedModal(modalID, { title, desc, bt1, bt2, cb1, cb2 }) {
 			refreshNameSelector();
 		}
 	}
+
+	initModal(modalID);
 }
 
 /**
@@ -279,6 +304,26 @@ function hideDefinedModal() {
 }
 
 /**
+ * Runs init stuff for the specified modal.
+ * @param {int} modalID 
+ */
+function initModal(modalID) {
+	switch (modalID) {
+		case 1:
+			let selector = document.querySelector(".name-file-input > input");
+			selector.addEventListener('change', (event) => {
+				let label = document.querySelector(".name-file-input > b");
+				label.innerText = "Nimefail: " + selector.files[0].name;
+			});
+			break
+
+		case 3:
+			
+			break
+	}
+}
+
+/**
  * Starts a timer for the modal dialog for <b>0 to `max`</b> seconds.
  * @param {int} max The duration of the timer (in seconds)
  */
@@ -295,6 +340,38 @@ function startRandomTimer(max) {
 
 			if (currentModalTimer % 2 === 0) {
 				loadingStatus.innerText =
+					loadingPhrases[Math.ceil(Math.random() * loadingPhrases.length) - 1];
+			}
+		} else {
+			timerRunning = false;
+			clearInterval(timer);
+			hideModal();
+		}
+	}, 1000);
+}
+
+/**
+ * Starts a timer for `max` seconds to be displayed on `timerLabelID` and status message label `statusLabelID`.
+ * @param {int} max The duration of the timer (in seconds)
+ * @param {string} timerLabelID The ID of label on which to show the timer.
+ * @param {string} statusLabelID The ID of the label on which to show the status messages.
+ */
+function startRandomTimerOnLabel(max, timerLabelID, statusLabelID) {
+	if (timerRunning) return;
+
+	let _timerLabel = document.querySelector("." + timerLabelID);
+	let _statusLabel = document.querySelector("." + statusLabelID);
+
+	currentModalTimer = Math.ceil(Math.random() * max);
+	timerRunning = true;
+
+	let timer = setInterval(() => {
+		if (currentModalTimer > 0) {
+			currentModalTimer--;
+			_timerLabel.innerText = formatTime(currentModalTimer);
+
+			if (currentModalTimer % 2 === 0) {
+				_statusLabel.innerText =
 					loadingPhrases[Math.ceil(Math.random() * loadingPhrases.length) - 1];
 			}
 		} else {

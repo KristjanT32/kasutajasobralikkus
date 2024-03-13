@@ -147,6 +147,9 @@ select {
     min-width: 300px;
 
     cursor: pointer;
+
+    font-family: "SEB Medium";
+    box-shadow: none;
 }
 
 .name-file-input input[type=file] {
@@ -399,11 +402,8 @@ select {
     margin-top: 40px;
 }
 
-.secretbabyinshallah,
-.secretbabyinshallah:visited,
-.secretbabyinshallah:hover {
-    text-decoration: none;
-    color: #121212;
+.generic-label {
+    font-family: "SEB Regular", Arial, sans-serif;
 }
 
 .modal-popup .close-button-fake {
@@ -442,7 +442,7 @@ select {
     margin: 100px auto;
 }
 
-.modal-popup .estimated-processing-time {
+.estimated-processing-time {
     font-family: "SEB Bold";
     font-size: 40px;
 
@@ -454,7 +454,7 @@ select {
     padding: 2.5px;
 }
 
-.modal-popup .loading-status {
+.loading-status {
     font-family: "SEB Regular", Arial, sans-serif;
     font-size: 20px;
     font-weight: bold;
