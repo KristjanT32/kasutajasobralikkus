@@ -143,8 +143,9 @@ const modals = [
       
       <button class="register" onclick='showDefinedModal(3, {});'>Registreeri</button>
 
+	  <div><br style="display: block; margin-top: 20px; margin-left: 10px"></div>
+
       <span class='generic-label'>
-	  <br style="display: block; margin-top: 20px" />
         Olete juba SBE klient?
         <a
           href="javascript:void(0)"
@@ -164,20 +165,19 @@ const modals = [
   <div class="text-container">
 	  <div class="modal-content">
 		  <div class="title">Üks hetk, palun...</div>
+		  <br>
+		  <div class='vertical-center'><div class="spinner modal-spinner"></div></div>
 		  <div class="description"></div>
-		  <br style="margin-top: 20px" />
+		  <br style="margin-top: 20px">
 		  <div class="vertical-center">
 			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel teie nime õigsust ja vastavust <a href="https://www.example.org">SBE nimesobivuseeskirjadega</a>.</b>
 			  <div class="generic-label">
 				  Valideerimine võtab vaid mõne hetke. Palun oodake.
 			  </div>
-			  <br style="margin-top: 20px" />
-			  <div class="spinner modal-spinner"></div>
-			  <br />
 		  </div>
 	  </div>
   </div>
-  <br />
+  <br>
 </div>`
 ];
 
@@ -315,11 +315,13 @@ function initModal(modalID) {
 				let label = document.querySelector(".name-file-input > b");
 				label.innerText = "Nimefail: " + selector.files[0].name;
 			});
-			break
+			break;
 
 		case 3:
-			
-			break
+			setTimeout(() => {
+				hideDefinedModal();
+			}, getRandomInteger(10) * 1000);
+			break;
 	}
 }
 
@@ -348,6 +350,15 @@ function startRandomTimer(max) {
 			hideModal();
 		}
 	}, 1000);
+}
+
+/**
+ * Returns an integer from 0 - `max`.
+ * @param {int} max 
+ * @returns {int} A random integer from 0 to `max`
+ */
+function getRandomInteger(max) {
+	return Math.ceil(Math.random() * max);
 }
 
 /**
