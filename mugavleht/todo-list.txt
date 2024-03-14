@@ -5,5 +5,6 @@ TODO:
 
 2. Lisada nimefaili lugemissüsteem
 
+[VALMIS, LISATUD 14.03.2024]
 3. Lisada teavitussüsteem, mille abil saab ekraani
    alumises osas näidata teavitusi.

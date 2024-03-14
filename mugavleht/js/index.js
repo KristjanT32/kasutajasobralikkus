@@ -23,9 +23,7 @@ let namesGenerated = false;
 // The maximum amount of random names to fetch.
 const MAX_RANDOM_NAMES = 20;
 
-let timerLabel = document.querySelector(
-	".estimated-processing-time"
-);
+let timerLabel = document.querySelector(".estimated-processing-time");
 let loadingStatus = document.querySelector(".loading-status");
 
 let modalShown = false;
@@ -41,11 +39,19 @@ const loadingPhrases = [
 	"Arvutame animatsioonide kiiruseid...",
 	"Suhtleme serveriga...",
 	"Analüüsime vastust...",
+	"Värskendame SBE andmeõigsuseeskirju...",
+	"Valideerime valikuid...",
+	"Loome kunstilist pingetunnet...",
+	"Kustutame alla keskmise teenivate klientide kontosid...",
+	"Arvutame intresse...",
+	"Suhtleme keskpangaga...",
+	"Ootame vastust serverilt...",
+	"Analüüsime teie valikuid...",
 ];
 
 const modals = [
 	`<div class="modal-popup-defined">
-  <div class="modal-dismiss-button" onclick='hideDefinedModal()'>
+  <div class="modal-dismiss-button" >
     <i
       class="fas fa-times"
       style="font-family: 'Font Awesome 5 Solid'"
@@ -68,7 +74,7 @@ const modals = [
 	`<div class="modal-popup-defined">
   <div
     class="modal-dismiss-button"
-    onclick="hideDefinedModal()">
+    >
     <i
       class="fas fa-times"
       style="font-family: 'Font Awesome 5 Solid'"></i>
@@ -122,7 +128,7 @@ const modals = [
   </div>
 </div>`,
 	`<div class="modal-popup-defined">
-  <div class="modal-dismiss-button" onclick='hideDefinedModal()'>
+  <div class="modal-dismiss-button" >
     <i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   </div>
   <div class="text-container">
@@ -141,7 +147,7 @@ const modals = [
       </div>
       <br style="display: block; margin-top: 20px;">
       
-      <button class="register" onclick='showDefinedModal(3, {});'>Registreeri</button>
+      <button class="register" onclick='showDefinedModal(3, {}, () => {showNotification("Teie otsust töödeldakse veel!", 1, 5000)} );'>Registreeri</button>
 
 	  <div><br style="display: block; margin-top: 20px; margin-left: 10px"></div>
 
@@ -157,10 +163,10 @@ const modals = [
     </div>
   </div>
   </div>`,
-  `<div class="modal-popup-defined">
-  <div class="modal-dismiss-button">
-	  <i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
-  </div>
+	`<div class="modal-popup-defined">
+		<div class="modal-dismiss-button" >
+    		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+  		</div>
 
   <div class="text-container">
 	  <div class="modal-content">
@@ -178,7 +184,7 @@ const modals = [
 	  </div>
   </div>
   <br>
-</div>`
+</div>`,
 ];
 
 modalDismiss.addEventListener("click", () => {
@@ -186,7 +192,6 @@ modalDismiss.addEventListener("click", () => {
 	modalClosing.style.display = "block";
 	startRandomTimer(180);
 });
-
 
 /**
  * Show the default modal dialog to the user.
@@ -219,8 +224,9 @@ function showModal(title, desc) {
  * Shows a predefined modal by its ID.
  * @param {int} modalID - the ID of the modal type to use
  * @param {object} settings - the settings for the modal
+ * @param {}
  */
-function showDefinedModal(modalID, { title, desc, bt1, bt2, cb1, cb2 }) {
+function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal) {
 	if (modals[modalID] == undefined) {
 		log(
 			"ModalID " +
@@ -237,9 +243,14 @@ function showDefinedModal(modalID, { title, desc, bt1, bt2, cb1, cb2 }) {
 			modalArea.insertAdjacentHTML(
 				"beforeend",
 				modals[modalID]
-					.replaceAll("{title}", title ? title : "")
-					.replaceAll("{description}", desc ? desc : "")
 			);
+
+			let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
+			dismissButton.addEventListener('click', () => {
+				onCloseCallback();
+			});
+
+
 			secondaryModalShown = true;
 			interactionBlocker.style.display = "block";
 		}, HIDE_ANIM_DURATION);
@@ -247,9 +258,13 @@ function showDefinedModal(modalID, { title, desc, bt1, bt2, cb1, cb2 }) {
 		modalArea.insertAdjacentHTML(
 			"beforeend",
 			modals[modalID]
-				.replaceAll("{title}", title ? title : "")
-				.replaceAll("{description}", desc ? desc : "")
 		);
+
+		let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
+		dismissButton.addEventListener('click', () => {
+			onCloseCallback();
+		});
+
 		secondaryModalShown = true;
 		interactionBlocker.style.display = "block";
 	}
@@ -262,7 +277,7 @@ function showDefinedModal(modalID, { title, desc, bt1, bt2, cb1, cb2 }) {
 		}
 	}
 
-	initModal(modalID);
+	initModal(modalID,);
 }
 
 /**
@@ -305,13 +320,14 @@ function hideDefinedModal() {
 
 /**
  * Runs init stuff for the specified modal.
- * @param {int} modalID 
+ * @param {int} modalID The ID of the modal to run init stuff for.
+ * @param {object} settings The settings for the modal.
  */
-function initModal(modalID) {
+function initModal(modalID, settings) {
 	switch (modalID) {
 		case 1:
 			let selector = document.querySelector(".name-file-input > input");
-			selector.addEventListener('change', (event) => {
+			selector.addEventListener("change", (event) => {
 				let label = document.querySelector(".name-file-input > b");
 				label.innerText = "Nimefail: " + selector.files[0].name;
 			});
@@ -354,7 +370,7 @@ function startRandomTimer(max) {
 
 /**
  * Returns an integer from 0 - `max`.
- * @param {int} max 
+ * @param {int} max
  * @returns {int} A random integer from 0 to `max`
  */
 function getRandomInteger(max) {
@@ -364,14 +380,29 @@ function getRandomInteger(max) {
 /**
  * Starts a timer for `max` seconds to be displayed on `timerLabelID` and status message label `statusLabelID`.
  * @param {int} max The duration of the timer (in seconds)
- * @param {string} timerLabelID The ID of label on which to show the timer.
- * @param {string} statusLabelID The ID of the label on which to show the status messages.
+ * @param {string} timerLabelClass The class of label on which to show the timer (without the dot)
+ * @param {string} statusLabelClass The class of the label on which to show the status messages (without the dot)
  */
-function startRandomTimerOnLabel(max, timerLabelID, statusLabelID) {
+function startRandomTimerOnLabel(max, timerLabelClass, statusLabelClass) {
 	if (timerRunning) return;
 
-	let _timerLabel = document.querySelector("." + timerLabelID);
-	let _statusLabel = document.querySelector("." + statusLabelID);
+	let _timerLabel = document.querySelector("." + timerLabelClass);
+	let _statusLabel = document.querySelector("." + statusLabelClass);
+
+	if (_timerLabel == undefined) {
+		log(
+			"Could not find the label element with class '." + timerLabelClass + "'"
+		);
+		return;
+	}
+
+	if (_statusLabel == undefined) {
+		log(
+			"Could not find the label element with class '." +
+			timerLabelClass +
+			"' - status messages will not be shown."
+		);
+	}
 
 	currentModalTimer = Math.ceil(Math.random() * max);
 	timerRunning = true;
