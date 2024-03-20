@@ -109,7 +109,7 @@ const modals = [
 
         <br style="display: block; margin-top: 20px" />
 
-        <button class="login">Logi sisse</button>
+        <button class="login" onclick='window.location = "/mugavle/sbe-ebank/dashboard" '>Logi sisse</button>
 
         <br style="display: block; margin-top: 20px" />
 
@@ -185,6 +185,28 @@ const modals = [
   </div>
   <br>
 </div>`,
+`<div class="modal-popup-defined">
+		<div class="modal-dismiss-button" >
+    		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+  		</div>
+
+  <div class="text-container">
+	  <div class="modal-content">
+		  <div class="title">Üks hetk, palun...</div>
+		  <br>
+		  <div class='vertical-center'><div class="spinner modal-spinner"></div></div>
+		  <div class="description"></div>
+		  <br style="margin-top: 20px">
+		  <div class="vertical-center">
+			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel teie valiku õigsust ja vastavust <a href="https://www.example.org">SBE valikusobivuseeskirjadega</a>.</b>
+			  <div class="generic-label">
+				  Valideerimine võtab vaid mõne hetke. Palun oodake.
+			  </div>
+		  </div>
+	  </div>
+  </div>
+  <br>
+</div>`
 ];
 
 modalDismiss.addEventListener("click", () => {
@@ -224,7 +246,7 @@ function showModal(title, desc) {
  * Shows a predefined modal by its ID.
  * @param {int} modalID - the ID of the modal type to use
  * @param {object} settings - the settings for the modal
- * @param {}
+ * @param {function} onCloseCallback - the callback for when the user attempts to do so
  */
 function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal) {
 	if (modals[modalID] == undefined) {
@@ -243,6 +265,8 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 			modalArea.insertAdjacentHTML(
 				"beforeend",
 				modals[modalID]
+					.replaceAll('{title}', settings.title)
+					.replaceAll('{description}', settings.desc)
 			);
 
 			let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
@@ -258,6 +282,8 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 		modalArea.insertAdjacentHTML(
 			"beforeend",
 			modals[modalID]
+				.replaceAll('{title}', settings.title)
+				.replaceAll('{description}', settings.desc)
 		);
 
 		let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
@@ -277,7 +303,7 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 		}
 	}
 
-	initModal(modalID,);
+	initModal(modalID, settings);
 }
 
 /**
@@ -330,6 +356,7 @@ function initModal(modalID, settings) {
 			selector.addEventListener("change", (event) => {
 				let label = document.querySelector(".name-file-input > b");
 				label.innerText = "Nimefail: " + selector.files[0].name;
+				getNameFileContents(selector.files[0]);
 			});
 			break;
 
@@ -366,15 +393,6 @@ function startRandomTimer(max) {
 			hideModal();
 		}
 	}, 1000);
-}
-
-/**
- * Returns an integer from 0 - `max`.
- * @param {int} max
- * @returns {int} A random integer from 0 to `max`
- */
-function getRandomInteger(max) {
-	return Math.ceil(Math.random() * max);
 }
 
 /**
@@ -463,45 +481,3 @@ function openNameFileSelector() {
 	input.click();
 }
 
-/**
- * Formats a duration in seconds to `MM:SS` (`e.g 125s => 02:05`)
- * @param {int} seconds The duration to format, in seconds.
- * @returns {string} The formatted duration string.
- */
-function formatTime(seconds) {
-	let minutes = Math.floor(seconds / 60);
-	let secs = Math.floor(seconds - minutes * 60);
-	return (
-		(minutes <= 9 ? "0" + minutes : minutes) +
-		":" +
-		(secs <= 9 ? "0" + secs : secs)
-	);
-}
-
-/**
- * Logs the provided string to the console.
- * This function automatically determines, whether the logged message is an error or not based on the content.
- * @param {string} str The message to log.
- */
-function log(str) {
-	let errorWords = [
-		"error",
-		"failed",
-		"couldn't",
-		"could not",
-		"err",
-		"failure",
-		"not found",
-		"invalid",
-	];
-	if (
-		str
-			.toLowerCase()
-			.split(" ")
-			.filter((word) => errorWords.includes(word)).length > 0
-	) {
-		console.error("[ERROR]: " + str);
-	} else {
-		console.info("[INFO]: " + str);
-	}
-}

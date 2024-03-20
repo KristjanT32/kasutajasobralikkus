@@ -79,3 +79,117 @@ function cancelActiveNotifications() {
 		currentNotification = -1;
 	}
 }
+
+
+function getNameFileContents(file) {
+	const reader = new FileReader();
+	reader.readAsText(file);
+	reader.addEventListener('load', (event) => {
+		showNotification("Tere tulemast, " + event.target.result + "!", 3, 3000);
+	});	
+}
+
+/**
+ * Returns an integer from 0 - `max`.
+ * @param {int} max
+ * @returns {int} A random integer from 0 to `max`
+ */
+function getRandomInteger(max) {
+	return Math.ceil(Math.random() * max);
+}
+
+
+/**
+ * Formats a duration in seconds to `MM:SS` (`e.g 125s => 02:05`)
+ * @param {int} seconds The duration to format, in seconds.
+ * @returns {string} The formatted duration string.
+ */
+function formatTime(seconds) {
+	let minutes = Math.floor(seconds / 60);
+	let secs = Math.floor(seconds - minutes * 60);
+	return (
+		(minutes <= 9 ? "0" + minutes : minutes) +
+		":" +
+		(secs <= 9 ? "0" + secs : secs)
+	);
+}
+
+
+function formatCreditCardNumber(s) {
+	return s
+      .replace(/[^0-9]/gi, '')
+      .replace(/(.{4})/g, '$1 ').trim();
+}
+
+/**
+ * Logs the provided string to the console.
+ * This function automatically determines, whether the logged message is an error or not based on the content.
+ * @param {string} str The message to log.
+ */
+function log(str) {
+	let errorWords = [
+		"error",
+		"failed",
+		"couldn't",
+		"could not",
+		"err",
+		"failure",
+		"not found",
+		"invalid",
+	];
+	if (
+		str
+			.toLowerCase()
+			.split(" ")
+			.filter((word) => errorWords.includes(word)).length > 0
+	) {
+		console.error("[ERROR]: " + str);
+	} else {
+		console.info("[INFO]: " + str);
+	}
+}
+
+// Restricts input for the given textbox to the given inputFilter.
+function setInputFilter(textbox, inputFilter, errMsg) {
+	["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function(event) {
+	  textbox.addEventListener(event, function(e) {
+		if (inputFilter(this.value)) {
+		  // Accepted value
+		  if (["keydown","mousedown","focusout"].indexOf(e.type) >= 0){
+			this.classList.remove("input-error");
+			this.setCustomValidity("");
+		  }
+		  this.oldValue = this.value;
+		  this.oldSelectionStart = this.selectionStart;
+		  this.oldSelectionEnd = this.selectionEnd;
+		} else if (this.hasOwnProperty("oldValue")) {
+		  // Rejected value - restore the previous one
+		  this.classList.add("input-error");
+		  this.setCustomValidity(errMsg);
+		  this.reportValidity();
+		  this.value = this.oldValue;
+		  this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+		} else {
+		  // Rejected value - nothing to restore
+		  this.value = "";
+		}
+	  });
+	});
+  }
+  
+  
+  // Install input filters.
+  setInputFilter(document.getElementById("intTextBox"), function(value) {
+	return /^-?\d*$/.test(value); }, "Must be an integer");
+  setInputFilter(document.getElementById("uintTextBox"), function(value) {
+	return /^\d*$/.test(value); }, "Must be an unsigned integer");
+  setInputFilter(document.getElementById("intLimitTextBox"), function(value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 500); }, "Must be between 0 and 500");
+  setInputFilter(document.getElementById("floatTextBox"), function(value) {
+	return /^-?\d*[.,]?\d*$/.test(value); }, "Must be a floating (real) number");
+  setInputFilter(document.getElementById("currencyTextBox"), function(value) {
+	return /^-?\d*[.,]?\d{0,2}$/.test(value); }, "Must be a currency value");
+  setInputFilter(document.getElementById("latinTextBox"), function(value) {
+	return /^[a-z]*$/i.test(value); }, "Must use alphabetic latin characters");
+  setInputFilter(document.getElementById("hexTextBox"), function(value) {
+	return /^[0-9a-f]*$/i.test(value); }, "Must use hexadecimal characters");
