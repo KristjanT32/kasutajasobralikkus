@@ -169,7 +169,7 @@ const modals = [
   		</div>
 
   <div class="text-container">
-	  <div class="modal-content">
+	  <div class="modal-content">showDefinedModal(5, {})
 		  <div class="title">Üks hetk, palun...</div>
 		  <br>
 		  <div class='vertical-center'><div class="spinner modal-spinner"></div></div>
@@ -206,6 +206,50 @@ const modals = [
 	  </div>
   </div>
   <br>
+</div>`,
+`<div class="modal-popup-defined">
+<div class="modal-dismiss-button" >
+  <i
+	class="fas fa-times"
+	style="font-family: 'Font Awesome 5 Solid'"
+  ></i>
+</div>
+<div class="text-container">
+<img
+	src="/mugavleht/assets/logo.png"
+	alt="SBE logo"
+	width="100px"
+	height="100px"
+/>
+  <div class="modal-content">
+	<div class="title" style='color:red'><span class="gold-tier">KULD</span></div>
+	<div class="vertical-center">
+		<br>
+		<span class="generic-label"  style="font-weight: bold; margin-bottom: 5px;">Teie krediitkaardi number</span>
+		<input 
+				type="text"
+				  autocomplete="cc-number"
+				  maxlength="19"
+				  placeholder="XXXX XXXX XXXX XXXX"
+				class="centered credit-card-input"
+				oninput="checkGoldLoginFields()"
+				/>
+		</br>
+		<br>
+		<span class="generic-label"  style="font-weight: bold; margin-bottom: 5px;">Teie krediitkaardi aegumiskuupäev</span>
+		<input oninput="checkGoldLoginFields()" type="date" placeholder="pp/aa/kk" class="centered date"></input>
+		</br>
+		<br>
+		<span class="generic-label" style="font-weight: bold; margin-bottom: 5px;">Ning need kolm wacky numbrit seal taga</span>
+		<input oninput="checkGoldLoginFields()" type="text" placeholder="123" maxlength="3" class="centered kolm-numbrit" id="intTextBox"></input>
+		</br>
+		<br>
+		<button disabled onclick="showDefinedModal(4, {})" class="centered KULD-nupp"> Jätka <span class="gold-tier">KULD</span> tasemel kliendina!</button>
+	
+		<br style="margin-top: 20px" />
+	</div>
+  </div>
+</div>
 </div>`
 ];
 
@@ -316,6 +360,9 @@ function hideModal() {
 
 	if (!modal.classList.contains("modal-popup-hide")) {
 		modal.classList.add("modal-popup-hide");
+		setTimeout(() => {
+			modal.classList.remove("modal-popup-hide");
+		}, HIDE_ANIM_DURATION)
 	} else {
 		modal.classList.remove("modal-popup-hide");
 	}
@@ -481,3 +528,18 @@ function openNameFileSelector() {
 	input.click();
 }
 
+
+function checkGoldLoginFields() {
+	const input = document.querySelector('.credit-card-input');
+	input.addEventListener('input', () => {
+		const input = document.querySelector('.credit-card-input');
+		input.value = formatCreditCardNumber(input.value);
+	});
+	
+	const field_1 = document.querySelector('.credit-card-input');
+	const field_2 = document.querySelector('.date');
+	const field_3 = document.querySelector('.kolm-numbrit');
+	const button = document.querySelector('.KULD-nupp');
+
+	button.disabled = !((field_1.value.length == 19) && field_2.value != '' && (field_3.value.length == 3));
+}

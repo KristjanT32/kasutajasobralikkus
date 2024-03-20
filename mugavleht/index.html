@@ -26,84 +26,6 @@
 		<div class="interaction-blocker"></div>
 
 		<div class="modal-popup-area">
-			<!--KULD modaal-->
-			<div class="modal-popup-defined">
-				<div class="modal-dismiss-button" >
-				  <i
-					class="fas fa-times"
-					style="font-family: 'Font Awesome 5 Solid'"
-				  ></i>
-				</div>
-				<div class="text-container">
-				<img
-					src="/mugavleht/assets/logo.png"
-					alt="SBE logo"
-					width="100px"
-					height="100px"
-				/>
-				  <div class="modal-content">
-					<div class="title" style='color:red'><span class="gold-tier">KULD</span></div>
-					<div class="vertical-center">
-						<br>
-						<span class="generic-label" >Teie krediitkaardi number</span>
-						<input 
-								type="text"
-  								autocomplete="cc-number"
-  								maxlength="19"
-  								placeholder="XXXX XXXX XXXX XXXX"
-								class="centered credit-card-input"
-								oninput="CheckFields()"
-								/>
-								<script>
-									const input = document.querySelector('.credit-card-input');
-									input.addEventListener('input', () => {
-										const input = document.querySelector('.credit-card-input');
-										input.value = formatCreditCardNumber(input.value);
-									});
-								</script>
-								<script>
-									const field_1 = document.querySelector('.credit-card-input');
-									const field_2 = document.querySelector('.date');
-									const field_3 = document.querySelector('.kolm-numbrit');
-									let button = document.querySelector('.KULD-nupp');
-
-									
-									
-
-									function CheckFields(){
-										let f1 = false;
-										let f2 = false;
-										let f3 = false;
-										
-										f1 = field_1.value !='';
-										f2 = field_2.value !='';
-										f3 = field_3.value !=''; 
-
-										button.disabled = f1 && f2 && f3
-									}
-									
-									
-
-								</script>
-						</br>
-						<br>
-						<span class="generic-label" >Teie krediitkaardi aegumiskuupäev</span>
-						<input oninput="CheckFields()" type="date" placeholder="pp/aa/kk" class="centered date"></input>
-						</br>
-						<br>
-						<span class="generic-label">Ning need kolm wacky numbrit seal taga</span>
-						<input oninput="CheckFields()" type="text" placeholder="123" maxlength="3" class="centered kolm-numbrit" id="intTextBox"></input>
-						</br>
-						<br>
-						<button onclick="CheckFields()" onclick="showDefinedModal(4, {})" class="centered KULD-nupp"> Jätka <span class="gold-tier">KULD</span> tasemel kliendina!</button>
-						</br>
-					
-						<br style="margin-top: 20px" />
-					</div>
-				  </div>
-				</div>
-			  </div>
-			  
 			<div class="modal-popup">
 				<div class="modal-dismiss-button">
 					<i
@@ -115,7 +37,7 @@
 						<div class="title"></div>
 						<div class="description"></div>
 						<br style="margin-top: 20px" />
-						<button class="close-button-fake">
+						<button class="close-button-fake" onclick="hideModal(); setTimeout(() => {showDefinedModal(5, {});}, 200)">
 							Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
 						</button>
 					</div>

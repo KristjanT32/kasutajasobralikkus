@@ -539,6 +539,14 @@ select {
     height: 100%;
 }
 
+.KULD-nupp {
+    background-color: var(--sbe-green);
+    border-color: var(--sbe-green);
+    color: white;
+
+    font-size: 15px;
+}
+
 .img-overlay-text {
     display: flex;
 

@@ -23,3 +23,6 @@ SALAJANE 4% OPACITY WAZOWSKI GOOFY AHH PILT
 [VALMIS, LISATUD 14.03.2024]
 3. Lisada teavitussüsteem, mille abil saab ekraani
    alumises osas näidata teavitusi.
+
+[VALMIS, LISATUD 20.03.2024]
+3. Võimalus KULD tasemel kliendiks saada
