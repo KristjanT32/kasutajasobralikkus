@@ -5,7 +5,7 @@ TODO:
 
 2. Lisada nimefaili lugemissüsteem
 
-3. Võimalus KULD tasemel kliendiks saada
+3. Ligipääsetavus :)
 
 
 VÕIBOLLA TO DO KRÄPPI MÄPPI:

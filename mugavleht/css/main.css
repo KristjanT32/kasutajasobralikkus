@@ -737,3 +737,9 @@ select {
         opacity: 0%;
     }
 }
+
+.ligipaasetavus-nupp {
+    background-color:#1a1a1a;
+    border-color:#1a1a1a;
+    color:#1a1a1a;
+}
