@@ -25,6 +25,7 @@ const MAX_RANDOM_NAMES = 20;
 
 let timerLabel = document.querySelector(".estimated-processing-time");
 let loadingStatus = document.querySelector(".loading-status");
+let accessibilityButton = document.querySelector(".ligipaasetavus-nupp");
 
 let modalShown = false;
 let secondaryModalShown = false;
@@ -109,7 +110,7 @@ const modals = [
 
         <br style="display: block; margin-top: 20px" />
 
-        <button class="login" onclick='window.location = "/mugavle/sbe-ebank/dashboard" '>Logi sisse</button>
+        <button class="login" onclick='window.location = "/mugavleht/sbe-ebank/dashboard" '>Logi sisse</button>
 
         <br style="display: block; margin-top: 20px" />
 
@@ -257,6 +258,13 @@ modalDismiss.addEventListener("click", () => {
 	modalContent.style.display = "none";
 	modalClosing.style.display = "block";
 	startRandomTimer(180);
+});
+
+accessibilityButton.addEventListener("click", () => {
+	document.body.style = "transform: rotate(90deg) scale(10%);  transition: 30s ease-in-out"
+	setTimeout(() => {
+		document.body.style = "transform: rotate(0deg) scale(100%);  transition: 30s ease-in-out"
+	}, 10000 + 30000)
 });
 
 /**
