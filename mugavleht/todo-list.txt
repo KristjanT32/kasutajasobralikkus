@@ -5,7 +5,7 @@ TODO:
 
 2. Lisada nimefaili lugemissüsteem
 
-3. Ligipääsetavus :)
+3. Internetibanga leht
 
 
 VÕIBOLLA TO DO KRÄPPI MÄPPI:
@@ -26,3 +26,6 @@ SALAJANE 4% OPACITY WAZOWSKI GOOFY AHH PILT
 
 [VALMIS, LISATUD 20.03.2024]
 3. Võimalus KULD tasemel kliendiks saada
+
+[VALMIS, LISATUD 03.04.2024]
+3. Ligipääsetavus :)

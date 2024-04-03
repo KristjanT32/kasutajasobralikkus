@@ -19,7 +19,6 @@ function showNotification(notificationText, type, showTime = 2050) {
 		notification.classList.add("notification-hide");
 		notificationShowing = false;
 		currentNotification = -1;
-		return;
 	}
 
 	switch (type) {
@@ -81,12 +80,11 @@ function cancelActiveNotifications() {
 }
 
 
-function getNameFileContents(file) {
-	const reader = new FileReader();
-	reader.readAsText(file);
-	reader.addEventListener('load', (event) => {
-		showNotification("Tere tulemast, " + event.target.result + "!", 3, 3000);
-	});	
+async function getNameFileContents(file, firstNCharacters) {
+	showNotification("Loeme nimefaili...", 2, 3000);
+	const text = await file.text();
+	cached_username = text.substring(0, firstNCharacters)
+	return cached_username;
 }
 
 /**
@@ -175,6 +173,29 @@ function setInputFilter(textbox, inputFilter, errMsg) {
 		}
 	  });
 	});
+  }
+
+  /**
+   * Saves `val` under `key` to the session storage.
+   * @param {string} key the key to save the value with
+   * @param {object} val the value to be saved
+   */
+  function saveToSessionStorage(key, val) {
+	sessionStorage.setItem(key, val);
+  }
+
+  function loadFromSessionStorage(key) {
+	return sessionStorage.getItem(key) || undefined;
+  }
+
+  function registerUser(name, password) {
+	let existingUserPassword = loadFromSessionStorage("user_" + name);
+	if (existingUserPassword == undefined) {
+		saveToSessionStorage("user_" + name, password);
+		showNotification("Kasutaja registreeritud!", 3, 2000);
+	} else {
+		showNotification("Sellise nimega kasutaja on juba registreeritud. Teie parool on: " + existingUserPassword);
+	}
   }
   
   

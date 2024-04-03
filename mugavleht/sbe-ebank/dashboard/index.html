@@ -1,43 +1,64 @@
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<link
-			rel="stylesheet"
-			href="/mugavleht/css/main.css" />
-		<title>SBE erakliendi avaleht</title>
-	</head>
-	<body class="ebank">
-		<div class="ebank top-bar">
-			<div class="ebank header">
-				<div
-					class="header-logo"
-					onclick="window.location = '/mugavleht'">
-					<img
-						src="/mugavleht/assets/logo.png"
-						alt="SBE logo"
-						width="95px"
-						;
-						height="95px" />
-				</div>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/mugavleht/css/main.css" />
+	<link rel="stylesheet" href="/mugavleht/css/dashboard.css" />
+
+	<title>SBE erakliendi avaleht</title>
+</head>
+
+<body class="ebank">
+	<div class="ebank top-bar">
+		<div class="ebank header">
+			<div class="header-logo" onclick="window.location = '/mugavleht'">
+				<img src="/mugavleht/assets/logo.png" alt="SBE logo" width="95px" ; height="95px" />
 			</div>
 		</div>
+	</div>
 
-		<div class="session-panel-area">
-			<div class="session-panel">
-				<span class="session-timer-label">
-					<span class="generic-label">Sessiooni lõpuni on jäänud</span>
-						<span class="time-box" style="font-size: 20px; margin-left: 5px;">{time}</span>
-				</span>
+
+	<h2 class="greetingLabel">
+		
+	</h2>
+
+	<div class="centered-menu">
+		<div class="panel primaryPanel">
+			<div>TEIE PANGAKONTO SEIS:</div>  
+			<div class="panga_sisu" id="raha_seis" onclick="raha_seis()">
+					Vajutage, et näha oma pangakonto seisu
 			</div>
 		</div>
+		<div class="panel secondaryPanel">
+			<div><b>TEIE PANGAKAARDI ANDMED</b></span>
+			<div class="panga_sisu" id="kaardi_info">
+				<div onclick="hide()">Kaardi number: 1154 5895 5845 9975</div>
+				<div>Aegumiskuupäev: 12.08.2007</div>
+				<div>Kolm numbrit: 167</div>
+			</div>
+		</div>
+	</div>
 
-		<script src="/mugavleht/js/dashboard.js"></script>
-		<script src="/mugavleht/js/util.js"></script>
-		<script src="/mugavleht/js/sessionsystem.js">
-			initSession();
-		</script>
-	</body>
+
+
+
+	<div class="session-panel-area">
+		<div class="session-panel">
+			<span class="session-timer-label">
+				<span class="generic-label">Sessiooni lõpuni on jäänud</span>
+				<span class="time-box" style="font-size: 20px; margin-left: 5px;">{time}</span>
+			</span>
+		</div>
+	</div>
+
+	<script src="/mugavleht/js/util.js" defer></script>
+	<script src="/mugavleht/js/dashboard.js" defer></script>
+	<script src="/mugavleht/js/sessionsystem.js" defer>
+		initSession();
+	</script>
+
+
+</body>
+
 </html>

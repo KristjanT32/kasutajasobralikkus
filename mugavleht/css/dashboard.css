@@ -1,0 +1,53 @@
+.panga_sisu {
+  margin-top: 50px;
+  line-height: 50px;
+}
+
+.centered-menu {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: flex-start;
+
+}
+
+.primaryPanel {
+  margin: 10px;
+}
+
+.secondaryPanel {
+    height: 200px;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.panel {
+    width: 400px;
+
+  font-family: "SBE Medium", Arial, sans-serif;
+  color: white;
+
+  min-height: 100px;
+
+  padding: 10px;
+
+  background-color: #222222;
+  border: solid 2px var(--bg-dark);
+  border-radius: 20px;
+  box-shadow: 0 0 1.5px 1px black;
+}
+
+.greetingLabel {
+  font-family: "SEB Medium", Arial, sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.greetingLabel:hover {
+  letter-spacing: 5px;
+  transition: .2s ease-in-out;
+}

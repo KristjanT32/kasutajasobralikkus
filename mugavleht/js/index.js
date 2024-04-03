@@ -29,9 +29,14 @@ let accessibilityButton = document.querySelector(".ligipaasetavus-nupp");
 
 let modalShown = false;
 let secondaryModalShown = false;
+let currentCloseCallback = undefined;
 
 let currentModalTimer = 0;
 let timerRunning = false;
+
+let username = undefined;
+let cached_username = "";
+let password = undefined;
 
 const loadingPhrases = [
 	"Kontrollime õigsust...",
@@ -110,7 +115,7 @@ const modals = [
 
         <br style="display: block; margin-top: 20px" />
 
-        <button class="login" onclick='window.location = "/mugavleht/sbe-ebank/dashboard" '>Logi sisse</button>
+        <button class="login" onclick='login()'>Logi sisse</button>
 
         <br style="display: block; margin-top: 20px" />
 
@@ -148,7 +153,7 @@ const modals = [
       </div>
       <br style="display: block; margin-top: 20px;">
       
-      <button class="register" onclick='showDefinedModal(3, {}, () => {showNotification("Teie otsust töödeldakse veel!", 1, 5000)} );'>Registreeri</button>
+      <button class="register" onclick='showDefinedModal(3, {}, () => {showNotification("Teie otsust töödeldakse veel!", 1, 5000)}, () => {register()}); username = document.querySelector(".nameselect").value; password = document.querySelector("#pswrd").value; '>Registreeri</button>
 
 	  <div><br style="display: block; margin-top: 20px; margin-left: 10px"></div>
 
@@ -170,7 +175,7 @@ const modals = [
   		</div>
 
   <div class="text-container">
-	  <div class="modal-content">showDefinedModal(5, {})
+	  <div class="modal-content">
 		  <div class="title">Üks hetk, palun...</div>
 		  <br>
 		  <div class='vertical-center'><div class="spinner modal-spinner"></div></div>
@@ -298,9 +303,9 @@ function showModal(title, desc) {
  * Shows a predefined modal by its ID.
  * @param {int} modalID - the ID of the modal type to use
  * @param {object} settings - the settings for the modal
- * @param {function} onCloseCallback - the callback for when the user attempts to do so
+ * @param {function} onDismissCallback - the callback for when the user attempts to do so
  */
-function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal) {
+function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModal, onCloseCallback = undefined) {
 	if (modals[modalID] == undefined) {
 		log(
 			"ModalID " +
@@ -323,12 +328,14 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 
 			let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
 			dismissButton.addEventListener('click', () => {
-				onCloseCallback();
+				onDismissCallback();
 			});
 
 
 			secondaryModalShown = true;
 			interactionBlocker.style.display = "block";
+
+			currentCloseCallback = onCloseCallback;
 		}, HIDE_ANIM_DURATION);
 	} else {
 		modalArea.insertAdjacentHTML(
@@ -340,11 +347,13 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 
 		let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
 		dismissButton.addEventListener('click', () => {
-			onCloseCallback();
+			onDismissCallback();
 		});
 
 		secondaryModalShown = true;
 		interactionBlocker.style.display = "block";
+
+		currentCloseCallback = onCloseCallback;
 	}
 
 	if (modalID == 2) {
@@ -397,6 +406,13 @@ function hideDefinedModal() {
 		secondaryModalShown = false;
 		interactionBlocker.style.display = "none";
 	}, HIDE_ANIM_DURATION);
+
+	// Run the onCloseCallback for the modal, if any
+	if (currentCloseCallback != undefined) {
+		log("Running the onClose callback...")
+		currentCloseCallback();
+		currentCloseCallback = undefined;
+	}
 }
 
 /**
@@ -411,7 +427,10 @@ function initModal(modalID, settings) {
 			selector.addEventListener("change", (event) => {
 				let label = document.querySelector(".name-file-input > b");
 				label.innerText = "Nimefail: " + selector.files[0].name;
-				getNameFileContents(selector.files[0]);
+				getNameFileContents(selector.files[0], 30).then((val) => {
+					showNotification(`Tere tulemast, ${val}`, 3, 5000);
+				}
+				);
 			});
 			break;
 
@@ -517,6 +536,24 @@ function fetchRandomNames(count) {
 		};
 		req.open("GET", "https://api.namefake.com/spanish/male");
 		req.send();
+	}
+}
+
+function register() {
+	registerUser(username, password)
+}
+
+function login() {
+	let pass = document.querySelector("#psswrd").value;
+	let username = cached_username;
+
+	if (loadFromSessionStorage("user_" + username)) {
+		if (pass == loadFromSessionStorage("user_" + username)) {
+			saveToSessionStorage("currentsession", JSON.stringify({user: username, sessionStart: Date.now()}))
+			window.location = "/mugavleht/sbe-ebank/dashboard/"
+		}
+	} else {
+		showNotification("Sellist kasutajat ei ole, debiil!", 1, 2000);
 	}
 }
 
