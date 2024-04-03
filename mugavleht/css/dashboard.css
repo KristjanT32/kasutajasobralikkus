@@ -13,6 +13,23 @@
 
 .primaryPanel {
   margin: 10px;
+  width: 700px;
+  height: 500px;
+}
+
+.primaryPanelInner {
+  width: 1vl;
+  height: 90px;
+
+  margin: 20px;
+
+  border-radius: .25rem;
+
+  text-align: left;
+
+  padding: 10px;
+
+  background-color: #3b3b3b;
 }
 
 .secondaryPanel {
@@ -22,7 +39,7 @@
 }
 
 .panel {
-    width: 400px;
+  min-width: 400px;
 
   font-family: "SBE Medium", Arial, sans-serif;
   color: white;
@@ -33,8 +50,65 @@
 
   background-color: #222222;
   border: solid 2px var(--bg-dark);
-  border-radius: 20px;
+  border-radius: .25rem;
   box-shadow: 0 0 1.5px 1px black;
+}
+
+.account_no_toggle {
+  user-select: none;
+  letter-spacing: 1.25px;
+}
+
+.account_no_toggle.shown {
+  background-color: #616161;
+  
+  padding: 2.5px;
+
+  border-radius: .25rem;
+
+  cursor: pointer;
+}
+
+.account_no_toggle.hidden {
+  background-color: #616161;
+  
+  padding: 2.5px;
+
+  border-radius: .25rem;
+
+  cursor: pointer;
+}
+
+.account_no_toggle.hidden > .text {
+  opacity: 0;
+}
+
+.shown {
+  
+}
+
+.hidden {
+
+}
+
+.balanceNumbers {
+  font-family: "SEB Bold", Arial, sans-serif;
+  font-size: 40px;
+}
+
+.balanceSymbol {
+  font-family: "SEB Regular", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.panelTitle {
+  font-family: "SEB Bold", Arial, sans-serif;
+  font-size: 25px;
+  text-align: left;
+
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .greetingLabel {
@@ -44,7 +118,9 @@
 
   margin-left: 30px;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+
+  transition: .2s ease-in-out;
 }
 
 .greetingLabel:hover {

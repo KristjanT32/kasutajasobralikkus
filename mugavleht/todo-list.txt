@@ -7,6 +7,8 @@ TODO:
 
 3. Internetibanga leht
 
+4. KULD klient saab näha exchange rate'i
+
 
 VÕIBOLLA TO DO KRÄPPI MÄPPI:
 GOOFY AHH PILDID AEGLASELT ÄÄRTEST TULEVAD SISSE, neil on nupp, mida pead vajutama "MEELDIB? JAH", et saaks lehte edasi vajutada kasutada
