@@ -1,30 +1,73 @@
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<link
-			rel="stylesheet"
-			href="/mugavleht/css/main.css" />
-		<title>SBE erakliendi avaleht</title>
-	</head>
-	<body class="ebank">
-		<div class="ebank top-bar">
-			<div class="ebank header">
-				<div
-					class="header-logo"
-					onclick="window.location = '/mugavleht'">
-					<img
-						src="/mugavleht/assets/logo.png"
-						alt="SBE logo"
-						width="95px"
-						;
-						height="95px" />
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/mugavleht/css/main.css" />
+	<link rel="stylesheet" href="/mugavleht/css/dashboard.css" />
+
+	<title>SBE erakliendi avaleht</title>
+</head>
+
+<body class="ebank">
+	<div class="ebank top-bar">
+		<div class="ebank header">
+			<div class="header-logo" onclick="window.location = '/mugavleht'">
+				<img src="/mugavleht/assets/logo.png" alt="SBE logo" width="95px" ; height="95px" />
+			</div>
+		</div>
+	</div>
+
+
+	<h2 class="greetingLabel">
+
+	</h2>
+
+	<div class="centered-menu">
+		<div class="panel primaryPanel">
+			<div class="panelTitle"><b>Konto hetkeseis</b></div>
+			<div class="primaryPanelInner">
+				<div>Arvelduskonto <span style="color: darkgray;" class="account_no_toggle hidden" onclick="toggleAccountNumber()"><span class="text">EE00000000000000000000</span></span></div>
+				<div style="margin-top: 10px; font-size: 13px; font-family: 'SEB Medium';">Kokku vabad vahendid</div>
+				<div style="text-align: left; margin-top: 2.5px;">
+					<span class="balanceNumbers">0.00</span><span class="balanceSymbol"></span>
+				</div>
+			</div>
+
+
+			<div class="panga_sisu" id="raha_seis" onclick="raha_seis()">
+				Vajutage, et näha oma pangakonto seisu
+			</div>
+		</div>
+		<div class="panel secondaryPanel">
+			<div><b>TEIE PANGAKAARDI ANDMED</b></span>
+				<div class="panga_sisu">
+					<div class="kaardi_number" onclick="hide_kaardi_number()">Kaardi number: 1154 5895 5845 9975</div>
+					<div class="aegumiskp" onclick="hide_aegumiskp()">Aegumiskuupäev: 12.08.2007</div>
+					<div class="kolm_numbrit" onclick="hide_kolm_numbrit()">Kolm numbrit: 167</div>
 				</div>
 			</div>
 		</div>
 
+
+
+
+		<div class="session-panel-area">
+			<div class="session-panel">
+				<span class="session-timer-label">
+					<span class="generic-label">Sessiooni lõpuni on jäänud</span>
+					<span class="time-box" style="font-size: 20px; margin-left: 5px;">{time}</span>
+				</span>
+			</div>
+		</div>
+
+		<script src="/mugavleht/js/util.js"></script>
 		<script src="/mugavleht/js/dashboard.js"></script>
-	</body>
+		<script src="/mugavleht/js/sessionsystem.js">
+			initSession();
+		</script>
+
+
+</body>
+
 </html>

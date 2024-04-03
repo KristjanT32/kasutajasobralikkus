@@ -39,7 +39,7 @@
 						<div class="title"></div>
 						<div class="description"></div>
 						<br style="margin-top: 20px" />
-						<button class="close-button-fake">
+						<button class="close-button-fake" onclick="hideModal(); setTimeout(() => {showDefinedModal(5, {});}, 200)">
 							Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
 						</button>
 					</div>
@@ -61,6 +61,7 @@
 				</div>
 			</div>
 		</div>
+
 
 		<div class="top-bar">
 			<div class="header">
@@ -124,6 +125,7 @@
 			</div>
 			<div class="subheader">
 				<nav class="subheader-menu">
+					<button class="ligipaasetavus-nupp">Ligipääsetavus</button>
 					<a
 						href="javascript:void(0)"
 						onclick="showDefinedModal(1, {})"
@@ -136,7 +138,7 @@
 				</nav>
 			</div>
 		</div>
-
+					
 		<section>
 			<div class="landing-img">
 				<img

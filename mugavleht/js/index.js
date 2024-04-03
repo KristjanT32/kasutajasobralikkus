@@ -25,12 +25,18 @@ const MAX_RANDOM_NAMES = 20;
 
 let timerLabel = document.querySelector(".estimated-processing-time");
 let loadingStatus = document.querySelector(".loading-status");
+let accessibilityButton = document.querySelector(".ligipaasetavus-nupp");
 
 let modalShown = false;
 let secondaryModalShown = false;
+let currentCloseCallback = undefined;
 
 let currentModalTimer = 0;
 let timerRunning = false;
+
+let username = undefined;
+let cached_username = "";
+let password = undefined;
 
 const loadingPhrases = [
 	"Kontrollime õigsust...",
@@ -109,7 +115,7 @@ const modals = [
 
         <br style="display: block; margin-top: 20px" />
 
-        <button class="login">Logi sisse</button>
+        <button class="login" onclick='login()'>Logi sisse</button>
 
         <br style="display: block; margin-top: 20px" />
 
@@ -147,7 +153,7 @@ const modals = [
       </div>
       <br style="display: block; margin-top: 20px;">
       
-      <button class="register" onclick='showDefinedModal(3, {}, () => {showNotification("Teie otsust töödeldakse veel!", 1, 5000)} );'>Registreeri</button>
+      <button class="register" onclick='showDefinedModal(3, {}, () => {showNotification("Teie otsust töödeldakse veel!", 1, 5000)}, () => {register()}); username = document.querySelector(".nameselect").value; password = document.querySelector("#pswrd").value; '>Registreeri</button>
 
 	  <div><br style="display: block; margin-top: 20px; margin-left: 10px"></div>
 
@@ -185,12 +191,85 @@ const modals = [
   </div>
   <br>
 </div>`,
+	`<div class="modal-popup-defined">
+		<div class="modal-dismiss-button" >
+    		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+  		</div>
+
+  <div class="text-container">
+	  <div class="modal-content">
+		  <div class="title">Üks hetk, palun...</div>
+		  <br>
+		  <div class='vertical-center'><div class="spinner modal-spinner"></div></div>
+		  <div class="description"></div>
+		  <br style="margin-top: 20px">
+		  <div class="vertical-center">
+			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel teie valiku õigsust ja vastavust <a href="https://www.example.org">SBE valikusobivuseeskirjadega</a>.</b>
+			  <div class="generic-label">
+				  Valideerimine võtab vaid mõne hetke. Palun oodake.
+			  </div>
+		  </div>
+	  </div>
+  </div>
+  <br>
+</div>`,
+	`<div class="modal-popup-defined">
+<div class="modal-dismiss-button" >
+  <i
+	class="fas fa-times"
+	style="font-family: 'Font Awesome 5 Solid'"
+  ></i>
+</div>
+<div class="text-container">
+<img
+	src="/mugavleht/assets/logo.png"
+	alt="SBE logo"
+	width="100px"
+	height="100px"
+/>
+  <div class="modal-content">
+	<div class="title" style='color:red'><span class="gold-tier">KULD</span></div>
+	<div class="vertical-center">
+		<br>
+		<span class="generic-label"  style="font-weight: bold; margin-bottom: 5px;">Teie krediitkaardi number</span>
+		<input 
+				type="text"
+				  autocomplete="cc-number"
+				  maxlength="19"
+				  placeholder="XXXX XXXX XXXX XXXX"
+				class="centered credit-card-input"
+				oninput="checkGoldLoginFields()"
+				/>
+		</br>
+		<br>
+		<span class="generic-label"  style="font-weight: bold; margin-bottom: 5px;">Teie krediitkaardi aegumiskuupäev</span>
+		<input oninput="checkGoldLoginFields()" type="date" placeholder="pp/aa/kk" class="centered date"></input>
+		</br>
+		<br>
+		<span class="generic-label" style="font-weight: bold; margin-bottom: 5px;">Ning need kolm wacky numbrit seal taga</span>
+		<input oninput="checkGoldLoginFields()" type="text" placeholder="123" maxlength="3" class="centered kolm-numbrit" id="intTextBox"></input>
+		</br>
+		<br>
+		<button disabled onclick="showDefinedModal(4, {})" class="centered KULD-nupp"> Jätka <span class="gold-tier">KULD</span> tasemel kliendina!</button>
+	
+		<br style="margin-top: 20px" />
+	</div>
+  </div>
+</div>
+</div>`
 ];
 
 modalDismiss.addEventListener("click", () => {
 	modalContent.style.display = "none";
 	modalClosing.style.display = "block";
 	startRandomTimer(180);
+});
+
+accessibilityButton.addEventListener("click", () => {
+	document.body.style = "transform: rotate(90deg) scale(10%);  transition: 30s ease-in-out"
+	setTimeout(() => {
+		document.body.style = "transform: rotate(0deg) scale(100%);  transition: 30s ease-in-out"
+	}, 10000 + 30000)
 });
 
 /**
@@ -224,9 +303,9 @@ function showModal(title, desc) {
  * Shows a predefined modal by its ID.
  * @param {int} modalID - the ID of the modal type to use
  * @param {object} settings - the settings for the modal
- * @param {function} onCloseCallback - The modal dismiss callback function.
+ * @param {function} onDismissCallback - the callback for when the user attempts to do so
  */
-function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal) {
+function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModal, onCloseCallback = undefined) {
 	if (modals[modalID] == undefined) {
 		log(
 			"ModalID " +
@@ -243,34 +322,38 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 			modalArea.insertAdjacentHTML(
 				"beforeend",
 				modals[modalID]
-					.replaceAll("{title}", settings.title)
-					.replaceAll("{description}", settings.desc)
+					.replaceAll('{title}', settings.title)
+					.replaceAll('{description}', settings.desc)
 			);
 
 			let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
 			dismissButton.addEventListener('click', () => {
-				onCloseCallback();
+				onDismissCallback();
 			});
 
 
 			secondaryModalShown = true;
 			interactionBlocker.style.display = "block";
+
+			currentCloseCallback = onCloseCallback;
 		}, HIDE_ANIM_DURATION);
 	} else {
 		modalArea.insertAdjacentHTML(
 			"beforeend",
 			modals[modalID]
-				.replaceAll("{title}", settings.title)
-				.replaceAll("{description}", settings.desc)
+				.replaceAll('{title}', settings.title)
+				.replaceAll('{description}', settings.desc)
 		);
 
 		let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
 		dismissButton.addEventListener('click', () => {
-			onCloseCallback();
+			onDismissCallback();
 		});
 
 		secondaryModalShown = true;
 		interactionBlocker.style.display = "block";
+
+		currentCloseCallback = onCloseCallback;
 	}
 
 	if (modalID == 2) {
@@ -281,7 +364,7 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 		}
 	}
 
-	initModal(modalID,);
+	initModal(modalID, settings);
 }
 
 /**
@@ -294,6 +377,9 @@ function hideModal() {
 
 	if (!modal.classList.contains("modal-popup-hide")) {
 		modal.classList.add("modal-popup-hide");
+		setTimeout(() => {
+			modal.classList.remove("modal-popup-hide");
+		}, HIDE_ANIM_DURATION)
 	} else {
 		modal.classList.remove("modal-popup-hide");
 	}
@@ -320,6 +406,13 @@ function hideDefinedModal() {
 		secondaryModalShown = false;
 		interactionBlocker.style.display = "none";
 	}, HIDE_ANIM_DURATION);
+
+	// Run the onCloseCallback for the modal, if any
+	if (currentCloseCallback != undefined) {
+		log("Running the onClose callback...")
+		currentCloseCallback();
+		currentCloseCallback = undefined;
+	}
 }
 
 /**
@@ -334,6 +427,10 @@ function initModal(modalID, settings) {
 			selector.addEventListener("change", (event) => {
 				let label = document.querySelector(".name-file-input > b");
 				label.innerText = "Nimefail: " + selector.files[0].name;
+				getNameFileContents(selector.files[0], 30).then((val) => {
+					showNotification(`Tere tulemast, ${val}`, 3, 5000);
+				}
+				);
 			});
 			break;
 
@@ -370,15 +467,6 @@ function startRandomTimer(max) {
 			hideModal();
 		}
 	}, 1000);
-}
-
-/**
- * Returns an integer from 0 - `max`.
- * @param {int} max
- * @returns {int} A random integer from 0 to `max`
- */
-function getRandomInteger(max) {
-	return Math.ceil(Math.random() * max);
 }
 
 /**
@@ -451,6 +539,24 @@ function fetchRandomNames(count) {
 	}
 }
 
+function register() {
+	registerUser(username, password)
+}
+
+function login() {
+	let pass = document.querySelector("#psswrd").value;
+	let username = cached_username;
+
+	if (loadFromSessionStorage("user_" + username)) {
+		if (pass == loadFromSessionStorage("user_" + username)) {
+			saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now() }))
+			window.location = "/mugavleht/sbe-ebank/dashboard/"
+		}
+	} else {
+		showNotification("Sellist kasutajat ei ole, debiil!", 1, 2000);
+	}
+}
+
 function refreshNameSelector() {
 	const selector = document.querySelector(".nameselect");
 
@@ -467,45 +573,18 @@ function openNameFileSelector() {
 	input.click();
 }
 
-/**
- * Formats a duration in seconds to `MM:SS` (`e.g 125s => 02:05`)
- * @param {int} seconds The duration to format, in seconds.
- * @returns {string} The formatted duration string.
- */
-function formatTime(seconds) {
-	let minutes = Math.floor(seconds / 60);
-	let secs = Math.floor(seconds - minutes * 60);
-	return (
-		(minutes <= 9 ? "0" + minutes : minutes) +
-		":" +
-		(secs <= 9 ? "0" + secs : secs)
-	);
-}
 
-/**
- * Logs the provided string to the console.
- * This function automatically determines, whether the logged message is an error or not based on the content.
- * @param {string} str The message to log.
- */
-function log(str) {
-	let errorWords = [
-		"error",
-		"failed",
-		"couldn't",
-		"could not",
-		"err",
-		"failure",
-		"not found",
-		"invalid",
-	];
-	if (
-		str
-			.toLowerCase()
-			.split(" ")
-			.filter((word) => errorWords.includes(word)).length > 0
-	) {
-		console.error("[ERROR]: " + str);
-	} else {
-		console.info("[INFO]: " + str);
-	}
+function checkGoldLoginFields() {
+	const input = document.querySelector('.credit-card-input');
+	input.addEventListener('input', () => {
+		const input = document.querySelector('.credit-card-input');
+		input.value = formatCreditCardNumber(input.value);
+	});
+
+	const field_1 = document.querySelector('.credit-card-input');
+	const field_2 = document.querySelector('.date');
+	const field_3 = document.querySelector('.kolm-numbrit');
+	const button = document.querySelector('.KULD-nupp');
+
+	button.disabled = !((field_1.value.length == 19) && field_2.value != '' && (field_3.value.length == 3));
 }
