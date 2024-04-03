@@ -79,3 +79,5 @@ function cancelActiveNotifications() {
 		currentNotification = -1;
 	}
 }
+
+

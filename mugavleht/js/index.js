@@ -224,7 +224,7 @@ function showModal(title, desc) {
  * Shows a predefined modal by its ID.
  * @param {int} modalID - the ID of the modal type to use
  * @param {object} settings - the settings for the modal
- * @param {}
+ * @param {function} onCloseCallback - The modal dismiss callback function.
  */
 function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal) {
 	if (modals[modalID] == undefined) {
@@ -243,6 +243,8 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 			modalArea.insertAdjacentHTML(
 				"beforeend",
 				modals[modalID]
+					.replaceAll("{title}", settings.title)
+					.replaceAll("{description}", settings.desc)
 			);
 
 			let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
@@ -258,6 +260,8 @@ function showDefinedModal(modalID, settings, onCloseCallback = hideDefinedModal)
 		modalArea.insertAdjacentHTML(
 			"beforeend",
 			modals[modalID]
+				.replaceAll("{title}", settings.title)
+				.replaceAll("{description}", settings.desc)
 		);
 
 		let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
