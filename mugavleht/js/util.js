@@ -80,6 +80,8 @@ function cancelActiveNotifications() {
 }
 
 
+
+
 async function getNameFileContents(file, firstNCharacters) {
 	showNotification("Loeme nimefaili...", 2, 3000);
 	const text = await file.text();

@@ -191,7 +191,7 @@ const modals = [
   </div>
   <br>
 </div>`,
-`<div class="modal-popup-defined">
+	`<div class="modal-popup-defined">
 		<div class="modal-dismiss-button" >
     		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   		</div>
@@ -213,7 +213,7 @@ const modals = [
   </div>
   <br>
 </div>`,
-`<div class="modal-popup-defined">
+	`<div class="modal-popup-defined">
 <div class="modal-dismiss-button" >
   <i
 	class="fas fa-times"
@@ -586,7 +586,7 @@ function checkGoldLoginFields() {
 		const input = document.querySelector('.credit-card-input');
 		input.value = formatCreditCardNumber(input.value);
 	});
-	
+
 	const field_1 = document.querySelector('.credit-card-input');
 	const field_2 = document.querySelector('.date');
 	const field_3 = document.querySelector('.kolm-numbrit');
