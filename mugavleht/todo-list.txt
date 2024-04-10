@@ -9,6 +9,11 @@ TODO:
 
 4. KULD klient saab näha exchange rate'i
 
+5. raha saatmine
+
+6. fake sõnumid, et keegi sai/saatis raha
+
+7. pangaarvete ajalugu
 
 VÕIBOLLA TO DO KRÄPPI MÄPPI:
 GOOFY AHH PILDID AEGLASELT ÄÄRTEST TULEVAD SISSE, neil on nupp, mida pead vajutama "MEELDIB? JAH", et saaks lehte edasi vajutada kasutada

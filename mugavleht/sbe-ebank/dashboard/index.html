@@ -1,10 +1,13 @@
 <html lang="en">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.umd.js"></script>
 
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="/mugavleht/css/main.css" />
 	<link rel="stylesheet" href="/mugavleht/css/dashboard.css" />
+	<link rel="icon" type="image/x-icon" href="/mugavleht/assets/sbe-logo.svg" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 	<title>SBE erakliendi avaleht</title>
 </head>
@@ -23,51 +26,71 @@
 
 	</h2>
 
-	<div class="centered-menu">
-		<div class="panel primaryPanel">
-			<div class="panelTitle"><b>Konto hetkeseis</b></div>
-			<div class="primaryPanelInner">
-				<div>Arvelduskonto <span style="color: darkgray;" class="account_no_toggle hidden" onclick="toggleAccountNumber()"><span class="text">EE00000000000000000000</span></span></div>
-				<div style="margin-top: 10px; font-size: 13px; font-family: 'SEB Medium';">Kokku vabad vahendid</div>
-				<div style="text-align: left; margin-top: 2.5px;">
-					<span class="balanceNumbers">0.00</span><span class="balanceSymbol"></span>
+	<section class="bank-content">
+		<img src="/mugavleht/assets/img/dozer.png" alt="Dozer" class="dozer-img">
+
+		<div class="centered-menu">
+			<div class="panel primaryPanel">
+				<div class="panelTitle"><b>Konto hetkeseis</b></div>
+				<div class="accountBackground">
+					<div>Arvelduskonto <span style="color: darkgray;" class="account_no_toggle hidden"
+							onclick="toggleAccountNumber()"><span class="text">EE00000000000000000000</span></span>
+					</div>
+					<div style="margin-top: 10px; font-size: 13px; font-family: 'SEB Medium';">Kokku vabad vahendid
+					</div>
+					<div style="text-align: left; margin-top: 2.5px;">
+						<span class="balanceNumbers">0.00</span><span class="balanceSymbol"></span>
+					</div>
+				</div>
+
+				<div class="panelTitle"><b class="exchangeRateTitle">Valuutakurss</b></div>
+				<div class="panelInner exchangeRateChart">
+					<canvas id="exchangeRate" style="width:100%;"></canvas>
+				</div>
+			</div>
+			<div class="panel secondaryPanel">
+				
+
+				<div><b>TEIE PANGAKAARDI ANDMED</b></span>
+					<div class="panga_sisu">
+						<div class="kaardi_number" onclick="hide_kaardi_number()">Kaardi number: 1154 5895 5845 9975
+						</div>
+						<div class="aegumiskp" onclick="hide_aegumiskp()">Aegumiskuupäev: 12.08.2007</div>
+						<div class="kolm_numbrit" onclick="hide_kolm_numbrit()">Kolm numbrit: 167</div>
+					</div>
 				</div>
 			</div>
 
 
-			<div class="panga_sisu" id="raha_seis" onclick="raha_seis()">
-				Vajutage, et näha oma pangakonto seisu
-			</div>
-		</div>
-		<div class="panel secondaryPanel">
-			<div><b>TEIE PANGAKAARDI ANDMED</b></span>
-				<div class="panga_sisu">
-					<div class="kaardi_number" onclick="hide_kaardi_number()">Kaardi number: 1154 5895 5845 9975</div>
-					<div class="aegumiskp" onclick="hide_aegumiskp()">Aegumiskuupäev: 12.08.2007</div>
-					<div class="kolm_numbrit" onclick="hide_kolm_numbrit()">Kolm numbrit: 167</div>
+
+			<div class="session-panel-area">
+				<div class="session-panel">
+					<span class="session-timer-label">
+						<span class="generic-label">Sessiooni lõpuni on jäänud</span>
+						<span class="time-box" style="font-size: 20px; margin-left: 5px;">{time}</span>
+					</span>
 				</div>
 			</div>
-		</div>
 
-
-
-
-		<div class="session-panel-area">
-			<div class="session-panel">
-				<span class="session-timer-label">
-					<span class="generic-label">Sessiooni lõpuni on jäänud</span>
-					<span class="time-box" style="font-size: 20px; margin-left: 5px;">{time}</span>
-				</span>
+			<div class="notification-area-wrapper">
+				<div class="hover-notification">
+					<span class="material-symbols-outlined notificationIcon"
+						style="margin-right: auto; margin-left: 20px">warning
+					</span>
+					<br />
+					<span class="notificationText"></span>
+					<br />
+					<span class="material-symbols-outlined notificationIcon"
+						style="margin-left: auto; margin-right: 20px">warning
+					</span>
+				</div>
 			</div>
-		</div>
 
-		<script src="/mugavleht/js/util.js"></script>
-		<script src="/mugavleht/js/dashboard.js"></script>
-		<script src="/mugavleht/js/sessionsystem.js">
-			initSession();
-		</script>
-
-
+			<script src="/mugavleht/js/util.js"></script>
+			<script src="/mugavleht/js/dashboard.js"></script>
+			<script src="/mugavleht/js/sessionsystem.js">
+			</script>
+	</section>
 </body>
 
 </html>

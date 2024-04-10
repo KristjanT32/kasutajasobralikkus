@@ -88,12 +88,19 @@ async function getNameFileContents(file, firstNCharacters) {
 }
 
 /**
- * Returns an integer from 0 - `max`.
- * @param {int} max
- * @returns {int} A random integer from 0 to `max`
+ * Returns an integer from `min` - `max`.
+ * @param {float} min - the minimum value; defaults to **0**
+ * @param {float} max - the maximum value; defaults to **100**
+ * @returns {int} A random integer from `min` to `max`
  */
-function getRandomInteger(max) {
-	return Math.ceil(Math.random() * max);
+function getRandomInteger(min = 0, max = 100, whole = true) {
+	if (whole) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	} else {
+		return (Math.random() * (max - min + 1)) + min;
+	}
 }
 
 
@@ -115,8 +122,8 @@ function formatTime(seconds) {
 
 function formatCreditCardNumber(s) {
 	return s
-      .replace(/[^0-9]/gi, '')
-      .replace(/(.{4})/g, '$1 ').trim();
+		.replace(/[^0-9]/gi, '')
+		.replace(/(.{4})/g, '$1 ').trim();
 }
 
 /**
@@ -149,46 +156,46 @@ function log(str) {
 
 // Restricts input for the given textbox to the given inputFilter.
 function setInputFilter(textbox, inputFilter, errMsg) {
-	["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function(event) {
-	  textbox.addEventListener(event, function(e) {
-		if (inputFilter(this.value)) {
-		  // Accepted value
-		  if (["keydown","mousedown","focusout"].indexOf(e.type) >= 0){
-			this.classList.remove("input-error");
-			this.setCustomValidity("");
-		  }
-		  this.oldValue = this.value;
-		  this.oldSelectionStart = this.selectionStart;
-		  this.oldSelectionEnd = this.selectionEnd;
-		} else if (this.hasOwnProperty("oldValue")) {
-		  // Rejected value - restore the previous one
-		  this.classList.add("input-error");
-		  this.setCustomValidity(errMsg);
-		  this.reportValidity();
-		  this.value = this.oldValue;
-		  this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-		} else {
-		  // Rejected value - nothing to restore
-		  this.value = "";
-		}
-	  });
+	["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function (event) {
+		textbox.addEventListener(event, function (e) {
+			if (inputFilter(this.value)) {
+				// Accepted value
+				if (["keydown", "mousedown", "focusout"].indexOf(e.type) >= 0) {
+					this.classList.remove("input-error");
+					this.setCustomValidity("");
+				}
+				this.oldValue = this.value;
+				this.oldSelectionStart = this.selectionStart;
+				this.oldSelectionEnd = this.selectionEnd;
+			} else if (this.hasOwnProperty("oldValue")) {
+				// Rejected value - restore the previous one
+				this.classList.add("input-error");
+				this.setCustomValidity(errMsg);
+				this.reportValidity();
+				this.value = this.oldValue;
+				this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+			} else {
+				// Rejected value - nothing to restore
+				this.value = "";
+			}
+		});
 	});
-  }
+}
 
-  /**
-   * Saves `val` under `key` to the session storage.
-   * @param {string} key the key to save the value with
-   * @param {object} val the value to be saved
-   */
-  function saveToSessionStorage(key, val) {
+/**
+ * Saves `val` under `key` to the session storage.
+ * @param {string} key the key to save the value with
+ * @param {object} val the value to be saved
+ */
+function saveToSessionStorage(key, val) {
 	sessionStorage.setItem(key, val);
-  }
+}
 
-  function loadFromSessionStorage(key) {
+function loadFromSessionStorage(key) {
 	return sessionStorage.getItem(key) || undefined;
-  }
+}
 
-  function registerUser(name, password) {
+function registerUser(name, password) {
 	let existingUserPassword = loadFromSessionStorage("user_" + name);
 	if (existingUserPassword == undefined) {
 		saveToSessionStorage("user_" + name, password);
@@ -196,21 +203,28 @@ function setInputFilter(textbox, inputFilter, errMsg) {
 	} else {
 		showNotification("Sellise nimega kasutaja on juba registreeritud. Teie parool on: " + existingUserPassword);
 	}
-  }
-  
-  
-  // Install input filters.
-  setInputFilter(document.getElementById("intTextBox"), function(value) {
-	return /^-?\d*$/.test(value); }, "Must be an integer");
-  setInputFilter(document.getElementById("uintTextBox"), function(value) {
-	return /^\d*$/.test(value); }, "Must be an unsigned integer");
-  setInputFilter(document.getElementById("intLimitTextBox"), function(value) {
-	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 500); }, "Must be between 0 and 500");
-  setInputFilter(document.getElementById("floatTextBox"), function(value) {
-	return /^-?\d*[.,]?\d*$/.test(value); }, "Must be a floating (real) number");
-  setInputFilter(document.getElementById("currencyTextBox"), function(value) {
-	return /^-?\d*[.,]?\d{0,2}$/.test(value); }, "Must be a currency value");
-  setInputFilter(document.getElementById("latinTextBox"), function(value) {
-	return /^[a-z]*$/i.test(value); }, "Must use alphabetic latin characters");
-  setInputFilter(document.getElementById("hexTextBox"), function(value) {
-	return /^[0-9a-f]*$/i.test(value); }, "Must use hexadecimal characters");
+}
+
+
+// Install input filters.
+setInputFilter(document.getElementById("intTextBox"), function (value) {
+	return /^-?\d*$/.test(value);
+}, "Must be an integer");
+setInputFilter(document.getElementById("uintTextBox"), function (value) {
+	return /^\d*$/.test(value);
+}, "Must be an unsigned integer");
+setInputFilter(document.getElementById("intLimitTextBox"), function (value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 500);
+}, "Must be between 0 and 500");
+setInputFilter(document.getElementById("floatTextBox"), function (value) {
+	return /^-?\d*[.,]?\d*$/.test(value);
+}, "Must be a floating (real) number");
+setInputFilter(document.getElementById("currencyTextBox"), function (value) {
+	return /^-?\d*[.,]?\d{0,2}$/.test(value);
+}, "Must be a currency value");
+setInputFilter(document.getElementById("latinTextBox"), function (value) {
+	return /^[a-z]*$/i.test(value);
+}, "Must use alphabetic latin characters");
+setInputFilter(document.getElementById("hexTextBox"), function (value) {
+	return /^[0-9a-f]*$/i.test(value);
+}, "Must use hexadecimal characters");
