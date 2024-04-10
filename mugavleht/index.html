@@ -1,173 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<link
-			rel="stylesheet"
-			href="css/main.css" />
-		<link
-			rel="stylesheet"
-			href="css/fontawesome/all.css" />
-		<title>Koduleht | SBE</title>
-		<link rel="icon" href=>
-		<link
-			rel="icon"
-			type="image/x-icon"
-			href="/mugavleht/assets/sbe-logo.svg" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-			rel="stylesheet" />
-	</head>
 
-	<body>
-		<div class="interaction-blocker"></div>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/fontawesome/all.css" />
+	<title>Koduleht | SBE</title>
+	<link rel="icon" href=>
+	<link rel="icon" type="image/x-icon" href="/mugavleht/assets/sbe-logo.svg" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
 
-		<div class="modal-popup-area">
-			<div class="modal-popup">
-				<div
-					class="modal-dismiss-button"
-					onclick="showNotification('Kuhu kiirustad?', 1, 10000)">
-					<i
-						class="fas fa-times"
-						style="font-family: 'Font Awesome 5 Solid'"></i>
+<body>
+	<div class="interaction-blocker"></div>
+
+	<div class="modal-popup-area">
+		<div class="modal-popup">
+			<div class="modal-dismiss-button" onclick="showNotification('Kuhu kiirustad?', 1, 10000)">
+				<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+			</div>
+			<div class="text-container">
+				<div class="modal-content">
+					<div class="title"></div>
+					<div class="description"></div>
+					<br style="margin-top: 20px" />
+					<button class="close-button-fake"
+						onclick="hideModal(); setTimeout(() => {showDefinedModal(5, {});}, 200)">
+						Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
+					</button>
 				</div>
-				<div class="text-container">
-					<div class="modal-content">
-						<div class="title"></div>
-						<div class="description"></div>
-						<br style="margin-top: 20px" />
-						<button class="close-button-fake" onclick="hideModal(); setTimeout(() => {showDefinedModal(5, {});}, 200)">
-							Selge, hakkan <span class="gold-tier">KULD</span> kliendiks
-						</button>
+				<br />
+				<div class="modal-closing" style="display: none">
+					<div class="title">Töötleme teie otsust...</div>
+					<div class="timer-description">
+						Otsuse töötlemine võib võtta kuni 3 minutit. Palun oodake.
 					</div>
 					<br />
-					<div
-						class="modal-closing"
-						style="display: none">
-						<div class="title">Töötleme teie otsust...</div>
-						<div class="timer-description">
-							Otsuse töötlemine võib võtta kuni 3 minutit. Palun oodake.
-						</div>
-						<br />
-						<div class="vertical-center">
-							<div class="estimated-processing-time">--:--</div>
-						</div>
-						<div class="loading-status"></div>
-						<div class="spinner modal-spinner"></div>
+					<div class="vertical-center">
+						<div class="estimated-processing-time">--:--</div>
 					</div>
+					<div class="loading-status"></div>
+					<div class="spinner modal-spinner"></div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-		<div class="top-bar">
-			<div class="header">
-				<div
-					class="header-logo"
-					onclick="window.location = '/mugavleht'">
-					<img
-						src="/mugavleht/assets/logo.png"
-						alt="SBE logo"
-						width="100px"
-						height="100px" />
-				</div>
-				<span class="header-menu">
-					<nav>
-						<a
-							href="javascript:void(0)"
-							onclick="showModal('!default', '!default')"
-							>Eraklient</a
-						>
-						<a
-							href="javascript:void(0)"
-							onclick="showModal('!default', '!default')"
-							>Äriklient</a
-						>
-						<a
-							href="javascript:void(0)"
-							onclick="showModal('!default', '!default')">
-							Korporatiivpangandus
-						</a>
-						<a
-							href="javascript:void(0)"
-							onclick="showModal('!default', '!default')"
-							>Privaatpangandus</a
-						>
-					</nav>
-				</span>
-				<span class="header-menu-secondary">
-					<nav>
-						<a
-							href="javascript:void(0)"
-							onclick="showModal('!default', '!default')"
-							>Karjäär</a
-						>
-						<a
-							href="javascript:void(0)"
-							onclick="showModal('!default', '!default')"
-							>Kontaktid</a
-						>
-						<a
-							href="javascript:void(0)"
-							onclick="showModal('!default', '!default')"
-							>SBE-st</a
-						>
-						<a
-							href="javascript:void(0)"
-							onclick="showDefinedModal(0, {title: 'Olete <b>Tüüpiline Ohio Rizzler</b>!', desc: 'SBE pangale ligipääsemiseks palun tasuge teie <a href=\'https://youtu.be/dQw4w9WgXcQ\'>Fanum maks</a>.'})"
-							>Foorum</a
-						>
-					</nav>
-				</span>
+	<div class="top-bar">
+		<div class="header">
+			<div class="header-logo" onclick="window.location = '/mugavleht'">
+				<img src="/mugavleht/assets/logo.png" alt="SBE logo" width="100px" height="100px" />
 			</div>
-			<div class="subheader">
-				<nav class="subheader-menu">
-					<button class="ligipaasetavus-nupp">Ligipääsetavus</button>
-					<a
-						href="javascript:void(0)"
-						onclick="showDefinedModal(1, {})"
-						class="ebanking-button">
-						Internetipank
-						<i
-							class="fas fa-lock"
-							style="font-family: 'Font Awesome 5 Solid'"></i>
+			<span class="header-menu">
+				<nav>
+					<a href="javascript:void(0)" onclick="showModal('!default', '!default')">Eraklient</a>
+					<a href="javascript:void(0)" onclick="showModal('!default', '!default')">Äriklient</a>
+					<a href="javascript:void(0)" onclick="showModal('!default', '!default')">
+						Korporatiivpangandus
 					</a>
+					<a href="javascript:void(0)" onclick="showModal('!default', '!default')">Privaatpangandus</a>
 				</nav>
-			</div>
+			</span>
+			<span class="header-menu-secondary">
+				<nav>
+					<a href="javascript:void(0)" onclick="showModal('!default', '!default')">Karjäär</a>
+					<a href="javascript:void(0)" onclick="showModal('!default', '!default')">Kontaktid</a>
+					<a href="javascript:void(0)" onclick="showModal('!default', '!default')">SBE-st</a>
+					<a href="javascript:void(0)"
+						onclick="showDefinedModal(0, {title: 'Olete <b>Tüüpiline Ohio Rizzler</b>!', desc: 'SBE pangale ligipääsemiseks palun tasuge teie <a href=\'https://youtu.be/dQw4w9WgXcQ\'>Fanum maks</a>.'})">Foorum</a>
+				</nav>
+			</span>
 		</div>
-					
-		<section>
-			<div class="landing-img">
-				<img
-					src="/mugavleht/assets/img/harold.webp"
-					alt="Harold Pangamees, SBE panga direktor"
-					class="harold-img" />
-				<span class="img-overlay-text">
-					<span class="text"> SBE on teie jaoks alati olemas. </span>
-				</span>
-			</div>
-		</section>
-		<div class="notification-area-wrapper">
-			<div class="hover-notification">
-				<span
-					class="material-symbols-outlined notificationIcon"
-					style="margin-right: auto; margin-left: 20px"
-					>warning
-				</span>
-				<br />
-				<span class="notificationText"></span>
-				<br />
-				<span
-					class="material-symbols-outlined notificationIcon"
-					style="margin-left: auto; margin-right: 20px"
-					>warning
-				</span>
-			</div>
+		<div class="subheader">
+			<nav class="subheader-menu">
+				<button class="ligipaasetavus-nupp">Ligipääsetavus</button>
+				<a href="javascript:void(0)" onclick="showDefinedModal(1, {})" class="ebanking-button">
+					Internetipank
+					<i class="fas fa-lock" style="font-family: 'Font Awesome 5 Solid'"></i>
+				</a>
+			</nav>
 		</div>
-		<script src="js/index.js"></script>
-		<script src="js/util.js"></script>
-	</body>
+	</div>
+
+	<section>
+		<div class="landing-img">
+			<img src="/mugavleht/assets/img/harold.webp" alt="Harold Pangamees, SBE panga direktor"
+				class="harold-img" />
+			<span class="img-overlay-text">
+				<span class="text"> SBE on teie jaoks alati olemas. </span>
+			</span>
+		</div>
+	</section>
+	<div class="notification-area-wrapper">
+		<div class="hover-notification">
+			<span class="material-symbols-outlined notificationIcon"
+				style="margin-right: auto; margin-left: 20px">warning
+			</span>
+			<br />
+			<span class="notificationText"></span>
+			<br />
+			<span class="material-symbols-outlined notificationIcon"
+				style="margin-left: auto; margin-right: 20px">warning
+			</span>
+		</div>
+	</div>
+	<script src="js/index.js"></script>
+	<script src="js/util.js"></script>
+</body>
+
 </html>

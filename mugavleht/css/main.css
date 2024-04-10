@@ -1,745 +1,714 @@
 /* Font definitions */
 @font-face {
-    font-family: "SEB Regular";
-    src: url("/mugavleht/assets/fonts/SEBSansSerif-Regular.woff") format("woff");
+	font-family: "SEB Regular";
+	src: url("/mugavleht/assets/fonts/SEBSansSerif-Regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: "SEB Bold";
-    src: url("/mugavleht/assets/fonts/SEBSansSerif-Bold.woff") format("woff");
+	font-family: "SEB Bold";
+	src: url("/mugavleht/assets/fonts/SEBSansSerif-Bold.woff") format("woff");
 }
 
 @font-face {
-    font-family: "SEB Medium";
-    src: url("/mugavleht/assets/fonts/SEBSansSerif-Medium.woff") format("woff");
+	font-family: "SEB Medium";
+	src: url("/mugavleht/assets/fonts/SEBSansSerif-Medium.woff") format("woff");
 }
 
 @font-face {
-    font-family: "SEB Light";
-    src: url("/mugavleht/assets/fonts/SEBSansSerif-Light.woff") format("woff");
+	font-family: "SEB Light";
+	src: url("/mugavleht/assets/fonts/SEBSansSerif-Light.woff") format("woff");
 }
 
 @font-face {
-    font-family: "Comic Sans";
-    src: url("/mugavleht/assets/fonts/Comic Sans MS.ttf") format("ttf");
+	font-family: "Comic Sans";
+	src: url("/mugavleht/assets/fonts/Comic Sans MS.ttf") format("ttf");
 }
 
 @font-face {
-    font-family: "Font Awesome 5 Solid";
-    src: url("/mugavleht/assets/fonts/fa-solid-900.woff2") format("woff2");
+	font-family: "Font Awesome 5 Solid";
+	src: url("/mugavleht/assets/fonts/fa-solid-900.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Font Awesome 5 Regular";
-    src: url("/mugavleht/assets/fonts/fa-regular-400.woff2") format("woff2");
+	font-family: "Font Awesome 5 Regular";
+	src: url("/mugavleht/assets/fonts/fa-regular-400.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Font Awesome 5 Brands";
-    src: url("/mugavleht/assets/fonts/fa-brands-400.woff2") format("woff2");
+	font-family: "Font Awesome 5 Brands";
+	src: url("/mugavleht/assets/fonts/fa-brands-400.woff2") format("woff2");
 }
 
 :root {
-    --header-bg-dark: #222222;
-    --header-bg-light: #ffffff;
-    --bg-dark: #121212;
-    --bg-light: #ffffff;
-    --sbe-green: #45b400;
-    --sbe-dark-green: #2e7900;
+	--header-bg-dark: #222222;
+	--header-bg-light: #ffffff;
+	--bg-dark: #121212;
+	--bg-light: #ffffff;
+	--sbe-green: #45b400;
+	--sbe-dark-green: #2e7900;
 }
 
 /* Styles */
 
 body.ebank {
-    margin: 0px;
-    background-color: var(--bg-dark);
+	margin: 0px;
+	background-color: var(--bg-dark);
 }
 
 body {
-    margin: 0px;
-    background-color: var(--bg-light);
+	margin: 0px;
+	background-color: var(--bg-light);
 }
 
 input {
-    border: 1px solid #cecece;
-    border-radius: 4px;
+	border: 1px solid #cecece;
+	border-radius: 4px;
 
-    background-color: white;
-    color: black;
+	background-color: white;
+	color: black;
 
-    padding: 10px;
+	padding: 10px;
 
-    min-height: 20px;
-    min-width: 300px;
+	min-height: 20px;
+	min-width: 300px;
 
-    font-family: "SBE Medium", Arial, sans-serif;
+	font-family: "SBE Medium", Arial, sans-serif;
 }
 
 input.centered {
-    text-align: center;
+	text-align: center;
 }
 
 button {
-    border: 1px solid #cecece;
-    border-radius: 4px;
+	border: 1px solid #cecece;
+	border-radius: 4px;
 
-    color: black;
+	color: black;
 
-    min-height: 20px;
-    min-width: 100px;
+	min-height: 20px;
+	min-width: 100px;
 
-    font-family: "SEB Medium", Arial, sans-serif;
+	font-family: "SEB Medium", Arial, sans-serif;
 
-    padding: 10px;
+	padding: 10px;
 
-    cursor: pointer;
+	cursor: pointer;
 }
 
 label {
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 .login {
-    background-color: var(--sbe-green);
-    border-color: var(--sbe-green);
-    color: white;
+	background-color: var(--sbe-green);
+	border-color: var(--sbe-green);
+	color: white;
 
-    font-size: 15px;
+	font-size: 15px;
 }
 
 .login:hover,
 .register:hover {
-    background-color: var(--sbe-dark-green);
-    border-color: var(--sbe-dark-green);
+	background-color: var(--sbe-dark-green);
+	border-color: var(--sbe-dark-green);
 }
 
 .register {
-    background-color: var(--sbe-green);
-    border-color: var(--sbe-green);
-    color: white;
+	background-color: var(--sbe-green);
+	border-color: var(--sbe-green);
+	color: white;
 
-    font-size: 15px;
+	font-size: 15px;
 }
 
 select {
-    border: 1px solid #cecece;
-    border-radius: 4px;
+	border: 1px solid #cecece;
+	border-radius: 4px;
 
-    background-color: white;
-    color: black;
+	background-color: white;
+	color: black;
 
-    padding: 10px;
+	padding: 10px;
 
-    min-height: 20px;
-    min-width: 300px;
+	min-height: 20px;
+	min-width: 300px;
 
-    padding: 10px;
+	padding: 10px;
 }
 
 .nameselect {
-    width: 325px;
+	width: 325px;
 }
 
 .name-file-input {
-    border: 1px solid #cecece;
-    border-radius: 4px;
+	border: 1px solid #cecece;
+	border-radius: 4px;
 
-    background-color: white;
-    color: black;
+	background-color: white;
+	color: black;
 
-    padding: 10px;
+	padding: 10px;
 
-    min-height: 20px;
-    min-width: 300px;
+	min-height: 20px;
+	min-width: 300px;
 
-    cursor: pointer;
+	cursor: pointer;
 
-    font-family: "SEB Medium";
-    box-shadow: none;
+	font-family: "SEB Medium";
+	box-shadow: none;
 }
 
-.name-file-input input[type=file] {
-    display: none;
+.name-file-input input[type="file"] {
+	display: none;
 }
 
 .register-link,
 .register-link:visited,
 .login-link,
 .login-link:visited {
-    text-decoration: none;
-    color: black;
+	text-decoration: none;
+	color: black;
 
-    font-family: "SEB Medium", Arial, sans-serif;
-    font-size: 18px;
+	font-family: "SEB Medium", Arial, sans-serif;
+	font-size: 18px;
 }
 
 .register-link:hover,
 .login-link:hover {
-    color: var(--sbe-green);
+	color: var(--sbe-green);
 }
 
 .modal-popup-defined label {
-    font-family: "SEB Medium", Arial, sans-serif;
+	font-family: "SEB Medium", Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
-.top-bar {}
+.top-bar {
+}
 
 .header {
-    display: flex;
+	display: flex;
 
-    width: 100vw;
-    height: 100px;
+	width: 100vw;
+	height: 100px;
 
-    margin: 0;
+	margin: 0;
 
-    background-color: var(--header-bg-light);
+	background-color: var(--header-bg-light);
 }
 
 .ebank .header {
-    display: flex;
+	display: flex;
 
-    width: 100vw;
-    height: 95px;
+	width: 100vw;
+	height: 95px;
 
-    margin: 0;
+	margin: 0;
 
-    background-color: var(--header-bg-dark);
+	background-color: var(--header-bg-dark);
 }
 
 .ebank .header::before {
-    background-color: #333;
-    content: "";
-    width: 100vw;
-    height: 2px;
-    top: 93px;
-    left: 0;
-    position: absolute;
-    z-index: 4;
+	background-color: #333;
+	content: "";
+	width: 100vw;
+	height: 2px;
+	top: 93px;
+	left: 0;
+	position: absolute;
+	z-index: 4;
 }
 
 .subheader {
-    width: 100vw;
-    height: 65px;
+	width: 100vw;
+	height: 65px;
 
-    background-color: #1a1a1a;
+	background-color: #1a1a1a;
 }
 
 .subheader-menu {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 
-    height: 100%;
+	height: 100%;
 }
 
 .header-menu {
-    font-family: "SEB Medium";
+	font-family: "SEB Medium";
 
-    width: 100vw;
-    height: auto;
+	width: 100vw;
+	height: auto;
 
-    padding: 20px;
+	padding: 20px;
 
-    align-self: center;
+	align-self: center;
 }
 
-.header-menu>nav {
-    display: flex;
+.header-menu > nav {
+	display: flex;
 
-    justify-content: left;
-    align-items: center;
+	justify-content: left;
+	align-items: center;
 
-    gap: 16px;
+	gap: 16px;
 }
 
-.header-menu nav>a:first-child {
-    text-decoration: none;
-    color: #45b400;
+.header-menu nav > a:first-child {
+	text-decoration: none;
+	color: #45b400;
 }
 
-.header-menu nav>a {
-    text-decoration: none;
-    color: #333333;
+.header-menu nav > a {
+	text-decoration: none;
+	color: #333333;
 }
 
-.header-menu nav>a:hover:not(:first-child),
-.header-menu-secondary nav>a:hover {
-    color: #0092e1;
+.header-menu nav > a:hover:not(:first-child),
+.header-menu-secondary nav > a:hover {
+	color: #0092e1;
 }
 
 .header-menu-secondary {
-    font-family: "SEB Medium";
+	font-family: "SEB Medium";
 
-    width: 100vw;
-    height: auto;
+	width: 100vw;
+	height: auto;
 
-    padding: 20px;
-    align-self: center;
+	padding: 20px;
+	align-self: center;
 }
 
-.header-menu-secondary>nav {
-    display: flex;
-    justify-content: right;
-    align-items: center;
+.header-menu-secondary > nav {
+	display: flex;
+	justify-content: right;
+	align-items: center;
 
-    gap: 16px;
+	gap: 16px;
 }
 
-.header-menu-secondary nav>a {
-    text-decoration: none;
-    color: #333333;
+.header-menu-secondary nav > a {
+	text-decoration: none;
+	color: #333333;
 }
 
 .modal-popup-area {
-    position: fixed;
+	position: fixed;
 
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 
-    z-index: 3;
-    pointer-events: none;
+	z-index: 3;
+	pointer-events: none;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .interaction-blocker {
-    position: absolute;
-    top: 0;
-    left: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 
-    z-index: 2;
+	z-index: 2;
 
-    background-color: #33333344;
+	background-color: #33333344;
 
-    cursor: not-allowed;
-    user-select: none;
+	cursor: not-allowed;
+	user-select: none;
 
-    display: none;
+	display: none;
 }
 
 .vertical-center {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.absolute-vertical-center {
+	display: flex;
+	flex-direction: column;
+
+	height: 100%;
+
+	justify-content: center;
+	align-items: center;
 }
 
 .modal-popup {
-    position: relative;
-    pointer-events: auto;
+	position: relative;
+	pointer-events: auto;
 
-    top: 0;
-    left: 0;
+	top: 0;
+	left: 0;
 
-    width: 600px;
-    height: fit-content;
-    min-height: 500px;
-    max-height: 70%;
+	width: 600px;
+	height: fit-content;
+	min-height: 500px;
+	max-height: 70%;
 
-    margin: 10px 0 10px 0;
+	margin: 10px 0 10px 0;
 
-    background-color: white;
-    box-shadow: 0 0 10px 1px grey;
+	background-color: white;
+	box-shadow: 0 0 10px 1px grey;
 
-    display: none;
+	display: none;
 }
 
 .modal-popup-defined {
-    position: relative;
-    pointer-events: auto;
+	position: relative;
+	pointer-events: auto;
 
-    top: 0;
-    left: 0;
+	top: 0;
+	left: 0;
 
-    width: 600px;
-    height: fit-content;
-    min-height: 500px;
-    max-height: 70%;
+	width: 600px;
+	height: fit-content;
+	min-height: 500px;
+	max-height: 70%;
 
-    margin: 10px 0 10px 0;
+	margin: 10px 0 10px 0;
 
-    background-color: white;
-    box-shadow: 0 0 10px 1px grey;
+	background-color: white;
+	box-shadow: 0 0 10px 1px grey;
 
-    animation: modal-show 0.5s forwards;
+	animation: modal-show 0.5s forwards;
 }
 
 .modal-popup-show {
-    display: block;
-    animation: modal-show 0.2s forwards;
+	display: block;
+	animation: modal-show 0.2s forwards;
 }
 
 .modal-popup-hide {
-    display: block;
-    animation: modal-hide 0.2s forwards;
+	display: block;
+	animation: modal-hide 0.2s forwards;
 }
 
 .modal-popup .text-container,
 .modal-popup-defined .text-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
 
-    margin: 20px;
+	margin: 20px;
 }
 
 .modal-popup .title,
 .modal-popup-defined .title {
-    font-size: 25px;
-    font-family: "SEB Bold";
+	font-size: 25px;
+	font-family: "SEB Bold";
 
-    margin-top: 40px;
+	margin-top: 40px;
 }
 
 .modal-popup .description,
 .modal-popup-defined .description {
-    font-size: 20px;
-    font-family: "SEB Regular";
+	font-size: 20px;
+	font-family: "SEB Regular";
 
-    margin-top: 40px;
+	margin-top: 40px;
 }
 
 .generic-label {
-    font-family: "SEB Regular", Arial, sans-serif;
+	font-family: "SEB Regular", Arial, sans-serif;
 }
 
 .modal-popup .close-button-fake {
-    padding: 20px;
+	padding: 20px;
 
-    font-family: "SEB Regular";
-    font-size: 30px;
+	font-family: "SEB Regular";
+	font-size: 30px;
 
-    width: 500px;
-    height: 200px;
+	width: 500px;
+	height: 200px;
 
-    border-radius: 0.25rem;
-    border: solid 1px rgb(96, 205, 24);
+	border-radius: 0.25rem;
+	border: solid 1px rgb(96, 205, 24);
 
-    background-color: rgb(96, 205, 24);
-    color: white;
+	background-color: rgb(96, 205, 24);
+	color: white;
 
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .modal-popup .modal-dismiss-button,
 .modal-popup-defined .modal-dismiss-button {
-    position: absolute;
-    right: 0;
+	position: absolute;
+	right: 0;
 
-    margin: 5px 10px 10px 5px;
-    cursor: pointer;
+	margin: 5px 10px 10px 5px;
+	cursor: pointer;
 }
 
 .modal-popup .timer-description {
-    font-family: "SEB Regular", Arial, sans-serif;
-    font-size: 15px;
+	font-family: "SEB Regular", Arial, sans-serif;
+	font-size: 15px;
 }
 
 .modal-popup .modal-spinner {
-    margin: 100px auto;
+	margin: 100px auto;
 }
 
 .estimated-processing-time {
-    font-family: "SEB Bold";
-    font-size: 40px;
+	font-family: "SEB Bold";
+	font-size: 40px;
 
-    background-color: rgb(184, 184, 184);
+	background-color: rgb(184, 184, 184);
 
-    border: solid 1px rgb(184, 184, 184);
-    border-radius: 0.25rem;
+	border: solid 1px rgb(184, 184, 184);
+	border-radius: 0.25rem;
 
-    width: 300px;
+	width: 300px;
 
-    padding: 2.5px;
+	padding: 2.5px;
 }
 
 .time-box {
+	font-family: "SEB Bold";
 
-    font-family: "SEB Bold";
+	background-color: rgb(184, 184, 184);
 
-    background-color: rgb(184, 184, 184);
+	border: solid 1px rgb(184, 184, 184);
+	border-radius: 0.25rem;
 
-    border: solid 1px rgb(184, 184, 184);
-    border-radius: 0.25rem;
+	padding: 2.5px;
 
-    padding: 2.5px;
-
-    display: flexbox;
-    align-content: center;
-    justify-content: center;
+	display: flexbox;
+	align-content: center;
+	justify-content: center;
 }
 
 .loading-status {
-    font-family: "SEB Regular", Arial, sans-serif;
-    font-size: 20px;
-    font-weight: bold;
+	font-family: "SEB Regular", Arial, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
 
-    margin-top: 15px;
+	margin-top: 15px;
 }
 
 .modal-popup .close-button-fake:hover {
-    background-color: rgb(70, 149, 17);
+	background-color: rgb(70, 149, 17);
 }
 
 .modal-popup .close-button-real:hover {
-    background-color: rgb(123, 15, 15);
+	background-color: rgb(123, 15, 15);
 }
 
 .gold-tier {
-    font-family: "Comic Sans MS";
-    color: gold;
-    text-shadow: yellow;
+	font-family: "Comic Sans MS";
+	color: gold;
+	text-shadow: yellow;
 }
 
 .ebanking-button {
-    background-color: #0092e1;
+	background-color: #0092e1;
 
-    border: solid 1px #0092e1;
-    border-radius: 0.25rem;
+	border: solid 1px #0092e1;
+	border-radius: 0.25rem;
 
-    padding: 0.5625rem 1rem;
+	padding: 0.5625rem 1rem;
 
-    font-family: "SEB Medium";
-    font-weight: 500;
-    color: white;
-    text-decoration: none;
-    line-height: 1.5;
+	font-family: "SEB Medium";
+	font-weight: 500;
+	color: white;
+	text-decoration: none;
+	line-height: 1.5;
 
-    margin-left: auto;
-    margin-right: 10px;
+	margin-left: auto;
+	margin-right: 10px;
 }
 
 .lock-icon::after {
-    font-family: "Font Awesome 5 Regular";
-    content: \f023;
+	font-family: "Font Awesome 5 Regular";
+	content: \f023;
 
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
 }
 
 .header-logo {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .harold-img {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .KULD-nupp {
-    background-color: var(--sbe-green);
-    border-color: var(--sbe-green);
-    color: white;
+	background-color: var(--sbe-green);
+	border-color: var(--sbe-green);
+	color: white;
 
-    font-size: 15px;
+	font-size: 15px;
 }
 
 .img-overlay-text {
-    display: flex;
+	display: flex;
 
-    position: absolute;
-    top: 350px;
-    left: 0;
+	position: absolute;
+	top: 350px;
+	left: 0;
 
-    width: 100%;
-    height: 200px;
+	width: 100%;
+	height: 200px;
 
-    z-index: 1;
+	z-index: 1;
 
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 
-    color: white;
-    background-color: #333333a9;
+	color: white;
+	background-color: #333333a9;
 }
 
 .img-overlay-text .text {
-    font-family: "SEB Bold", Arial, sans-serif;
-    font-weight: bold;
-    font-size: 80px;
+	font-family: "SEB Bold", Arial, sans-serif;
+	font-weight: bold;
+	font-size: 80px;
 
-    text-align: center;
+	text-align: center;
 }
 
 @keyframes modal-show {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
 
-    to {
-        opacity: 1;
-        transform: translateY(20px);
-    }
+	to {
+		opacity: 1;
+		transform: translateY(20px);
+	}
 }
 
 @keyframes modal-hide {
-    from {
-        opacity: 1;
-        transform: translateY(20px);
-    }
+	from {
+		opacity: 1;
+		transform: translateY(20px);
+	}
 
-    to {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
+	to {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
 }
 
 .spinner {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 9px solid;
-    border-color: rgb(96, 205, 24) white;
-    animation: spinner-spin 1s infinite;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	border: 9px solid;
+	border-color: rgb(96, 205, 24) white;
+	animation: spinner-spin 1s infinite;
 }
 
 @keyframes spinner-spin {
-    to {
-        transform: rotate(0.5turn);
-    }
+	to {
+		transform: rotate(0.5turn);
+	}
 }
 
 .notification-area-wrapper {
-    position: absolute;
+	position: absolute;
 
-    bottom: 50px;
-    right: 30%;
-    left: 30%;
+	bottom: 50px;
+	right: 30%;
+	left: 30%;
 
-    display: flex;
-    justify-content: center;
-    text-align: center;
+	display: flex;
+	justify-content: center;
+	text-align: center;
 
-    user-select: none;
-    pointer-events: none;
+	user-select: none;
+	pointer-events: none;
 }
 
 .hover-notification {
-    position: relative;
+	position: relative;
 
-    visibility: hidden;
+	visibility: hidden;
 
-    width: 60vh;
-    height: 6vh;
+	width: 60vh;
+	height: 6vh;
 
-    border: solid 1px rgb(255, 192, 192);
-    border-radius: 0.25rem;
+	border: solid 1px rgb(255, 192, 192);
+	border-radius: 0.25rem;
 
-    box-shadow: 0 0 3px 1px rgb(255, 86, 86);
+	box-shadow: 0 0 3px 1px rgb(255, 86, 86);
 
-    background-color: rgb(255, 192, 192);
+	background-color: rgb(255, 192, 192);
 
-    font-family: "SBE Medium", Arial, sans-serif;
+	font-family: "SBE Medium", Arial, sans-serif;
 
-    z-index: 4;
+	z-index: 4;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .notification-show {
-    visibility: visible;
-    animation: move-up .6s ease-in-out forwards;
+	visibility: visible;
+	animation: move-up 0.6s ease-in-out forwards;
 }
 
 .notification-hide {
-    visibility: visible;
-    animation: move-down .6s ease-in-out forwards;
+	visibility: visible;
+	animation: move-down 0.6s ease-in-out forwards;
 }
 
 .notificationText {
-    font-weight: bolder;
-    font-size: 1rem;
+	font-weight: bolder;
+	font-size: 1rem;
 
-    text-align: center;
-}
-
-
-.session-panel-area {
-    position: absolute;
-
-    bottom: 50px;
-    right: 30%;
-    left: 30%;
-
-    display: flex;
-    justify-content: center;
-    text-align: center;
-
-    user-select: none;
-    pointer-events: none;
-}
-
-.session-panel {
-    border: solid 2px red;
-    border-radius: 20px;
-
-    background-color: white;
-
-    font-family: "SBE Medium", Arial, sans-serif;
-
-    padding: 10px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.session-timer-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	text-align: center;
 }
 
 .material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
+	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 @keyframes move-up {
-    from {
-        transform: translateY(40px);
-        opacity: 0%;
-    }
+	from {
+		transform: translateY(40px);
+		opacity: 0%;
+	}
 
-    to {
-        transform: translateY(-10px);
-        opacity: 100%;
-    }
+	to {
+		transform: translateY(-10px);
+		opacity: 100%;
+	}
 }
 
 @keyframes move-down {
-    from {
-        transform: translateY(-10px);
-        opacity: 100%;
-    }
+	from {
+		transform: translateY(-10px);
+		opacity: 100%;
+	}
 
-    to {
-        transform: translateY(40px);
-        opacity: 0%;
-    }
+	to {
+		transform: translateY(40px);
+		opacity: 0%;
+	}
 }
 
 .ligipaasetavus-nupp {
-    background-color:#1a1a1a;
-    border-color:#1a1a1a;
-    color:#1a1a1a;
+	background-color: #1a1a1a;
+	border-color: #1a1a1a;
+	color: #1a1a1a;
 }

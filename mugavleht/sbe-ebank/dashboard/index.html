@@ -1,11 +1,12 @@
 <html lang="en">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.umd.js"></script>
 
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="/mugavleht/css/main.css" />
 	<link rel="stylesheet" href="/mugavleht/css/dashboard.css" />
+	<link rel="stylesheet" href="/mugavleht/css/fontawesome/all.css" />
 	<link rel="icon" type="image/x-icon" href="/mugavleht/assets/sbe-logo.svg" />
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
@@ -18,22 +19,55 @@
 			<div class="header-logo" onclick="window.location = '/mugavleht'">
 				<img src="/mugavleht/assets/logo.png" alt="SBE logo" width="95px" ; height="95px" />
 			</div>
+			<div class="session-panel-container">
+				<div class="session-panel">
+					<div class="vertical-center">
+						<span class="session-timer-label">
+							<span class="session-timer-prefix">Sessioon aegumiseni</span>
+							<span class="time-box">
+
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
+	<div class="sessionExpiredBlur">
+		<div class="absolute-vertical-center">
+			<div class="message">
+				<span class="title">
+					<i style="font-family: 'Font Awesome 5 Solid'; color: white;"
+						class="fa-solid fa-lock lock-icon"></i>
+					<span style="margin-left: 20px;">Teie sessioon aegus!</span>
+				</span>
+				<span class="desc">
+					Teie sessioon aegus, ning me pole enam teie identiteedis kindlad.
+					<br>
+					<br>
+					Kui te olete identne isikuga, kes juhtis seda arvutiseadet sessiooni kestel
+					<br>
+					ning pole DNA, RNA või muu bioloogilise tunnuse poolest sellest inimesest erinev,
+					<br>
+					vajutage <a href="#">siia</a>, et jätkata selle sessiooni kasutamist.
+				</span>
+			</div>
+			<div class="sessionRestore">
 
-	<h2 class="greetingLabel">
+			</div>
+		</div>
+	</div>
 
-	</h2>
-
-	<section class="bank-content">
+	<h2 class="greetingLabel"></h2>
+	<section class="dozer-area">
 		<img src="/mugavleht/assets/img/dozer.png" alt="Dozer" class="dozer-img">
 
-		<div class="centered-menu">
+		<div class="menu">
 			<div class="panel primaryPanel">
 				<div class="panelTitle"><b>Konto hetkeseis</b></div>
 				<div class="accountBackground">
-					<div>Arvelduskonto <span style="color: darkgray;" class="account_no_toggle hidden"
+					<div><b>Arvelduskonto</b> <span style="color: darkgray;" class="account_no_toggle hidden"
 							onclick="toggleAccountNumber()"><span class="text">EE00000000000000000000</span></span>
 					</div>
 					<div style="margin-top: 10px; font-size: 13px; font-family: 'SEB Medium';">Kokku vabad vahendid
@@ -45,30 +79,19 @@
 
 				<div class="panelTitle"><b class="exchangeRateTitle">Valuutakurss</b></div>
 				<div class="panelInner exchangeRateChart">
-					<canvas id="exchangeRate" style="width:100%;"></canvas>
+					<canvas id="exchangeRate"></canvas>
 				</div>
 			</div>
-			<div class="panel secondaryPanel">
-				
-
-				<div><b>TEIE PANGAKAARDI ANDMED</b></span>
-					<div class="panga_sisu">
-						<div class="kaardi_number" onclick="hide_kaardi_number()">Kaardi number: 1154 5895 5845 9975
-						</div>
-						<div class="aegumiskp" onclick="hide_aegumiskp()">Aegumiskuupäev: 12.08.2007</div>
-						<div class="kolm_numbrit" onclick="hide_kolm_numbrit()">Kolm numbrit: 167</div>
+			<div class="rightPanel">
+				<div class="panel transactionsPanel">
+					<div class="panelTitle"><b class="exchangeRateTitle">Tehingud</b></div>
+					<div class="transactionList panelInner">
+						<b class="generic-label">Tehinguid pole</b>
 					</div>
 				</div>
-			</div>
 
-
-
-			<div class="session-panel-area">
-				<div class="session-panel">
-					<span class="session-timer-label">
-						<span class="generic-label">Sessiooni lõpuni on jäänud</span>
-						<span class="time-box" style="font-size: 20px; margin-left: 5px;">{time}</span>
-					</span>
+				<div class="panel extrasPanel">
+					<div class="panelTitle"><b class="exchangeRateTitle">Teenused</b></div>
 				</div>
 			</div>
 
@@ -87,9 +110,8 @@
 			</div>
 
 			<script src="/mugavleht/js/util.js"></script>
+			<script src="/mugavleht/js/sessionsystem.js"></script>
 			<script src="/mugavleht/js/dashboard.js"></script>
-			<script src="/mugavleht/js/sessionsystem.js">
-			</script>
 	</section>
 </body>
 

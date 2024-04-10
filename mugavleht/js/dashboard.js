@@ -19,7 +19,7 @@ const currencies = {
     symbol: "₹",
     exchangeRate: 0.00991,
     exchangeValue: [0.00965, 0.01010, 0.01021, 0.01015, 0.01027, 0.01011, 0.01002, 0.00991],
-    name: "RUB"
+    name: "INR"
   },
   dong: {
     symbol: "đ",
@@ -57,7 +57,6 @@ init()
 
 
 function init() {
-  log("Initializing session...")
 
   // Get current session
   sessionData = JSON.parse(loadFromSessionStorage("currentsession") || {});
@@ -73,9 +72,8 @@ function init() {
   }
 
   greetingText.innerHTML = "Tere tulemast tagasi, <b>" + sessionData.user + "</b>";
-  refreshView()
-
-
+  refreshView();
+  initSession();
 }
 
 function refreshView() {
@@ -85,7 +83,7 @@ function refreshView() {
   let curs = Object.keys(currencies);
   let index = getRandomInteger(0, curs.length - 1);
   let selectedCurrency = currencies[curs[index]];
-  
+
   balanceSymbol.innerText = selectedCurrency.symbol;
 
   document.querySelector(".exchangeRateTitle").innerText = "Valuutakurss (" + selectedCurrency.name + ")";
@@ -98,8 +96,7 @@ function drawExchangeRateGraph(values) {
 
   Chart.defaults.set('font', {
     family: 'SEB Regular',
-    size: 12, // Example: setting a default size
-    // Include other global font properties as needed
+    size: 12,
   });
 
   let chart = new Chart("exchangeRate", {
@@ -115,12 +112,14 @@ function drawExchangeRateGraph(values) {
       }]
     },
     options: {
+      responsive: true,
+      maintainAspectRation: false,
       plugins: {
         legend: {
           display: false,
         },
       },
-      
+
       animation: {
         onComplete: () => {
           delayed = true;
@@ -196,7 +195,7 @@ function toggleAccountNumber() {
 }
 
 function closeUpShop() {
-  const shop = document.querySelector(".bank-content");
+  const shop = document.querySelector(".dozer-area");
   const dozer = document.querySelector(".dozer-img");
   dozer.style.display = "block";
   if (!shop.classList.contains("bank-closed")) {

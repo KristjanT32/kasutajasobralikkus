@@ -547,16 +547,18 @@ function login() {
 	let pass = document.querySelector("#psswrd").value;
 	let username = cached_username;
 
-	if (loadFromSessionStorage("user_" + username) != "{}") {
+	if (loadFromSessionStorage("user_" + username) != undefined) {
 		if (pass == loadFromSessionStorage("user_" + username)) {
 			if (loadFromSessionStorage("currentsession") == undefined) {
-				saveToSessionStorage("currentsession", JSON.stringify({user: username, sessionStart: Date.now()}))
+				saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now() }))
 			} else {
 				let data = JSON.parse(loadFromSessionStorage("currentsession"));
 				data.sessionStart = Date.now();
 				saveToSessionStorage("currentsession", JSON.stringify(data));
 			}
 			window.location = "/mugavleht/sbe-ebank/dashboard/"
+		} else {
+			showNotification("Vale parool!", 1, 1000);
 		}
 	} else {
 		showNotification("Sellist kasutajat ei ole, debiil!", 1, 2000);

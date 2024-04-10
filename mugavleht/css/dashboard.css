@@ -1,163 +1,301 @@
 .panga_sisu {
-  margin-top: 50px;
-  line-height: 50px;
+	margin-top: 50px;
+	line-height: 50px;
 }
 
-.centered-menu {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: flex-start;
+.menu {
+	display: grid;
+	grid-template-columns: 40fr 60fr;
+	grid-template-rows: repeat(1, 1fr);
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
 
+	padding: 20px;
+	margin: 10px;
 }
 
 .primaryPanel {
-  margin: 10px;
-  min-width: 800px;
-  min-height: 500px;
+	height: 1fr;
+}
+
+.transactionsPanel {
+	height: 50%;
+}
+
+.transactionList {
+	display: flex;
+
+	background-color: #3b3b3b;
+
+	min-height: 50px;
+
+	padding: 10px;
+	margin: 10px;
+
+	justify-content: center;
+	align-items: center;
+}
+
+.extrasPanel {
+	height: 50%;
+}
+
+.rightPanel {
+	display: flex;
+	flex-direction: column;
 }
 
 .accountBackground {
-  width: .8vl;
-  height: 90px;
+	width: 0.8vl;
+	height: 90px;
 
-  margin: 20px;
+	margin: 20px;
 
-  border-radius: .25rem;
+	border-radius: 0.25rem;
 
-  text-align: left;
+	text-align: left;
 
-  padding: 10px;
+	padding: 20px;
 
-  background-color: #3b3b3b;
+	background-color: #3b3b3b;
 }
 
 .panelInner {
-  width: .8vl;
+	margin: 20px;
+	padding: 10px;
 
-  margin: 20px;
+	border-radius: 0.25rem;
 
-  border-radius: .25rem;
-
-  text-align: left;
-
-  padding: 10px;
-
-  background-color: #3b3b3b;
+	background-color: #3b3b3b;
 }
 
-.exchangeRateChart {}
+.panelInner.exchangeRateChart {
+	position: relative;
 
-.secondaryPanel {
-  width: auto;
-  height: 300px;
-  margin-left: auto;
-  margin-right: 0;
+	width: 1fr;
+	height: 35vh;
 }
 
 .panel {
+	font-family: "SBE Medium", Arial, sans-serif;
+	color: white;
 
-  font-family: "SBE Medium", Arial, sans-serif;
-  color: white;
+	padding: 10px;
 
-  padding: 10px;
+	background-color: #222222;
+	border: solid 2px #222222;
+	border-radius: 0.25rem;
+	box-shadow: 0 0 2px 1px #353535;
 
-  background-color: #222222;
-  border: solid 2px var(--bg-dark);
-  border-radius: .25rem;
-  box-shadow: 0 0 1.5px 1px black;
+	margin: 10px;
 }
 
 .account_no_toggle {
-  user-select: none;
-  letter-spacing: 1.25px;
+	user-select: none;
+	letter-spacing: 1.25px;
 }
 
 .account_no_toggle.shown {
-  background-color: #616161;
+	background-color: #616161;
 
-  padding: 2.5px;
+	padding: 2.5px;
 
-  border-radius: .25rem;
+	border-radius: 0.25rem;
 
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .account_no_toggle.hidden {
-  background-color: #616161;
+	background-color: #616161;
 
-  padding: 2.5px;
+	padding: 2.5px;
 
-  border-radius: .25rem;
+	border-radius: 0.25rem;
 
-  cursor: pointer;
+	cursor: pointer;
 }
 
-.account_no_toggle.hidden>.text {
-  opacity: 0;
+.account_no_toggle.hidden > .text {
+	opacity: 0;
 }
 
-.shown {}
+.shown {
+}
 
-.hidden {}
+.hidden {
+}
 
 .dozer-img {
-  transform: rotateY(180deg);
-  display: none;
+	transform: rotateY(180deg);
+	display: none;
 }
 
 .bank-content {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .bank-closed {
-  animation: close-up-shop ease-out 10s forwards;
+	animation: close-up-shop ease-out 10s forwards;
 }
 
 .balanceNumbers {
-  font-family: "SEB Bold", Arial, sans-serif;
-  font-size: 40px;
+	font-family: "SEB Bold", Arial, sans-serif;
+	font-size: 40px;
 }
 
 .balanceSymbol {
-  font-family: "SEB Regular", Arial, sans-serif;
-  text-transform: uppercase;
-  font-size: 20px;
+	font-family: "SEB Regular", Arial, sans-serif;
+	text-transform: uppercase;
+	font-size: 20px;
 }
 
 .panelTitle {
-  font-family: "SEB Bold", Arial, sans-serif;
-  font-size: 25px;
-  text-align: left;
+	font-family: "SEB Bold", Arial, sans-serif;
+	font-size: 25px;
+	text-align: left;
 
-  margin-left: 20px;
-  margin-top: 20px;
+	margin-left: 20px;
+	margin-top: 20px;
 }
 
 .greetingLabel {
-  font-family: "SEB Medium", Arial, sans-serif;
-  font-weight: bold;
-  color: #ffffff;
+	font-family: "SEB Medium", Arial, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
 
-  margin-left: 30px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+	margin-left: 30px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 
-  transition: .2s ease-in-out;
+	transition: 0.2s ease-in-out;
 }
 
 .greetingLabel:hover {
-  transform: translateY(-5px);
-  transition: .2s ease-in-out;
+	transform: translateY(-5px);
+	transition: 0.2s ease-in-out;
+}
+
+.sessionExpiredBlur {
+	position: absolute;
+	z-index: 3;
+
+	background-color: rgba(96, 50, 50, 0.957);
+
+	width: 100%;
+	height: 100%;
+
+	display: none;
+}
+
+.sessionExpiredBlur .lock-icon {
+	font-size: 50px;
+}
+
+.sessionExpiredBlur .message {
+	background-color: rgba(187, 98, 98, 0.957);
+
+	border: solid 3px lightcoral;
+	border-radius: 10px;
+
+	padding: 20px;
+}
+
+.sessionExpiredBlur .title {
+	display: flex;
+
+	align-items: center;
+	text-align: left;
+
+	font-family: "SEB Bold";
+	font-size: 35px;
+
+	margin-bottom: 30px;
+
+	color: white;
+}
+
+.sessionExpiredBlur .desc {
+	color: white;
+
+	font-size: 20px;
+
+	text-align: center;
+}
+
+.session-timer-prefix {
+	font-size: 20px;
+	font-family: "SEB Bold", Arial, sans-serif;
+
+	margin-right: 10px;
+
+	text-transform: uppercase;
+}
+
+.session-timer-label .time-box {
+	font-family: "SEB Bold";
+
+	background-color: rgb(238, 81, 81);
+
+	border: solid 2.5px rgb(133, 0, 0);
+	border-radius: 0.25rem;
+
+	padding: 7.5px;
+
+	display: flexbox;
+	align-content: center;
+	justify-content: center;
+}
+
+.session-panel-container {
+	padding: 10px;
+
+	margin-right: 0;
+	margin-left: auto;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.session-panel {
+	font-family: "SEB Medium", Arial, sans-serif;
+
+	width: 400px;
+	height: 100%;
+
+	display: flex;
+	justify-content: right;
+}
+
+.session-panel-title {
+	margin-top: 10px;
+
+	font-size: 10px;
+	font-family: "SEB Regular", Arial, sans-serif;
+
+	color: white;
+}
+
+.session-timer-label {
+	display: flex;
+
+	align-items: center;
+	justify-content: center;
+
+	font-size: 30px;
+
+	padding: 5px;
+
+	color: white;
 }
 
 @keyframes close-up-shop {
-  from {
-    padding-right: initial;
-  }
+	from {
+		padding-right: initial;
+	}
 
-  to {
-    padding-left: 200%;
-  }
+	to {
+		padding-left: 200%;
+	}
 }

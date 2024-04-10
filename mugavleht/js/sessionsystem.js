@@ -3,6 +3,7 @@ let sessionTimer = 0;
 let sessionTimerInterval = -1;
 
 const sessionTimerLabel = document.querySelector('.session-timer-label > .time-box');
+const expirationNotice = document.querySelector(".sessionExpiredBlur");
 
 function initSession() {
     if (currentSession == undefined) {
@@ -20,8 +21,7 @@ function initSession() {
                 soundSource.volume = .5;
                 soundSource.play()
 
-
-                showDefinedModal(4, {}, () => { showNotification("Kuhu sa oma arust lähed?", 2, 4000)})
+                expirationNotice.style.display = "block";
             }
         }, 1000);
     }
