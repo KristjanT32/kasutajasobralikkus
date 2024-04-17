@@ -6,6 +6,9 @@ const sessionTimerLabel = document.querySelector('.session-timer-label > .time-b
 const expirationNotice = document.querySelector(".sessionExpiredBlur");
 
 function initSession() {
+
+    if (JSON.parse(loadFromSessionStorage("currentsession")).user == "admin") { return; }
+
     if (currentSession == undefined) {
         sessionTimer = getRandomInteger(450)
         sessionTimerInterval = setInterval(() => {
@@ -22,8 +25,18 @@ function initSession() {
                 soundSource.play()
 
                 expirationNotice.style.display = "block";
+                closeUpShop()
             }
         }, 1000);
     }
 }
 
+function createOrInitSession(username) {
+    if (loadFromSessionStorage("currentsession") == undefined) {
+        saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now() }))
+    } else {
+        let data = JSON.parse(loadFromSessionStorage("currentsession"));
+        data.sessionStart = Date.now();
+        saveToSessionStorage("currentsession", JSON.stringify(data));
+    }
+}
