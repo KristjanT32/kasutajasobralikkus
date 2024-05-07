@@ -4,6 +4,8 @@ const kaardi_number = document.querySelector(".kaardi_number");
 const aegumiskp = document.querySelector(".aegumiskp");
 const kolm_numbrit = document.querySelector(".kolm_numbrit");
 
+const accNumberLabel = document.querySelector(".account_no_toggle .text")
+
 let balanceNumbers = document.querySelector(".balanceNumbers");
 let balanceSymbol = document.querySelector(".balanceSymbol");
 
@@ -155,6 +157,7 @@ function init() {
   }
 
   greetingText.innerHTML = "Tere tulemast tagasi, <b>" + sessionData.user + "</b>";
+  accNumberLabel.innerText = sessionData.accno == undefined ? sessionData.accno || ("EE" + toString(getRandomInteger(100000000000000000, 999999999999999999, true))) : sessionData.accno;
   refreshView();
   initSession();
 

@@ -7,7 +7,7 @@ const expirationNotice = document.querySelector(".sessionExpiredBlur");
 
 function initSession() {
 
-    if (JSON.parse(loadFromSessionStorage("currentsession")).user == "admin") { return; }
+    if (JSON.parse(loadFromSessionStorage("currentsession")).nosess) { return; }
 
     if (currentSession == undefined) {
         sessionTimer = getRandomInteger(450)
@@ -31,12 +31,12 @@ function initSession() {
     }
 }
 
-function createOrInitSession(username) {
-    if (loadFromSessionStorage("currentsession") == undefined) {
-        saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now() }))
+function createOrInitSession(username, isAdmin = false) {
+    let session = loadFromSessionStorage("currentsession") == undefined ? {user: username, sessionStart: Date.now(), nosess: false} : loadFromSessionStorage("currentsession");
+
+    if (!isAdmin) {
+        saveToSessionStorage("currentsession", JSON.stringify(session))
     } else {
-        let data = JSON.parse(loadFromSessionStorage("currentsession"));
-        data.sessionStart = Date.now();
-        saveToSessionStorage("currentsession", JSON.stringify(data));
+        saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now(), balance: 69420, accno: "EE133769420666777360", nosess: true }))
     }
 }

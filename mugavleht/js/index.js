@@ -543,27 +543,6 @@ function register() {
 	registerUser(username, password)
 }
 
-function login() {
-	let pass = document.querySelector("#psswrd").value;
-	let username = cached_username;
-	if (username == "admin" && pass == "admin"){
-		window.location = "/mugavleht/sbe-ebank/dashboard/";
-		
-	} 
-		
-
-	if (loadFromSessionStorage("user_" + username) != undefined) {
-		if (pass == loadFromSessionStorage("user_" + username)) {
-			createOrInitSession(username)
-			window.location = "/mugavleht/sbe-ebank/dashboard/"
-		} else {
-			showNotification("Vale parool!", 1, 1000);
-		}
-	} else {
-		showNotification("Sellist kasutajat ei ole, debiil!", 1, 2000);
-	}
-}
-
 function refreshNameSelector() {
 	const selector = document.querySelector(".nameselect");
 
