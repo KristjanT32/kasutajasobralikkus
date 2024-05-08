@@ -105,6 +105,20 @@ function getRandomInteger(min = 0, max = 100, whole = true) {
 	}
 }
 
+/**
+ * Returns the length of the list/object `obj`
+ * @param {any} obj - the object whose length to return
+ * @returns {number} - size of `obj`
+ */
+function len(obj) {
+	if (obj instanceof Object) {
+		return Object.keys(obj).length;
+	} else if (obj instanceof Array) {
+		return obj.length;
+	}
+
+}
+
 
 /**
  * Formats a duration in seconds to `MM:SS` (`e.g 125s => 02:05`)

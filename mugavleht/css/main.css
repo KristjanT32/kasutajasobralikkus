@@ -712,3 +712,17 @@ select {
 	border-color: #1a1a1a;
 	color: #1a1a1a;
 }
+
+.messageboard {
+	width: 500px;
+	height: 150px;
+	bottom: 100px;
+	right: 0;
+	background: #f5b942;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	z-index: 4;
+}

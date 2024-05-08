@@ -12,6 +12,7 @@
 	left: 50px;
 
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	text-align: center;
 
@@ -28,15 +29,22 @@
 	min-height: 70px;
 
 	padding: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 
-	background-color: #353535;
-	
-	animation: forwards 3s float-up;
+	background-color: #700000;
+}
+.ad-appear {
+	animation: forwards 1s float-in ease-in;
+}
+
+.ad-disappear {
+	animation: forwards 1s float-down ease-out;
 }
 
 .ad-block .profile-pic {
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 200px;
 }
 
 .ad-block .ad-align-left {
@@ -47,7 +55,8 @@
 .ad-block .ad-info {
 	display: flex;
 	flex-direction: column;
-	text-align: left;
+	justify-content: top;
+	align-items: start;
 
 	color: white;
 
@@ -64,7 +73,41 @@
 }
 
 
+.generic-transaction {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+}
 
+.generic-transaction .transactionAmount {
+	 margin-right: 20px;
+	 padding: 5px;
+	 
+	 border: solid 2px gainsboro;
+	 border-radius: .25rem;
+
+	 background-color: gray;
+}
+
+.transactionAmount.sent {
+	background-color: rgb(187, 54, 54);
+	border-color: rgb(119, 0, 0);
+}
+
+.transactionAmount.received {
+	background-color: rgb(52, 172, 72);
+	border-color: rgb(0, 112, 15);
+}
+
+.generic-transaction .transactionSender {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.generic-transaction .transactionReceiver {
+	margin-left: 20px;
+}
 
 
 
@@ -87,20 +130,23 @@
 
 .transactionsPanel {
 	height: 50%;
+	
 }
 
 .transactionList {
+	flex-direction: column;
 	display: flex;
 
 	background-color: #3b3b3b;
 
 	min-height: 50px;
+	max-height: 70%;
 
 	padding: 10px;
 	margin: 10px;
 
-	justify-content: center;
-	align-items: center;
+	justify-content: start;
+	align-items: start;
 }
 
 .extrasPanel {
@@ -134,6 +180,8 @@
 	border-radius: 0.25rem;
 
 	background-color: #3b3b3b;
+
+	overflow-y: scroll;
 }
 
 .panelInner.exchangeRateChart {
@@ -368,14 +416,26 @@
 	}
 }
 
-@keyframes float-up {
+@keyframes float-down {
 	from {
-		transform: inherit;
+		transform: translateY(0);
 		opacity: 1;
 	}
 
 	to {
-		transform: translate(-200px);
+		transform: translateY(200px);
 		opacity: 0;
+	}
+}
+
+@keyframes float-in {
+	from {
+		transform: translateX(-50px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0px);
+		opacity: 1;
 	}
 }

@@ -26,6 +26,8 @@ const MAX_RANDOM_NAMES = 20;
 let timerLabel = document.querySelector(".estimated-processing-time");
 let loadingStatus = document.querySelector(".loading-status");
 let accessibilityButton = document.querySelector(".ligipaasetavus-nupp");
+let messageboard = document.querySelector(".messageboard");
+let btn = document.querySelector(".btn");
 
 let modalShown = false;
 let secondaryModalShown = false;
@@ -258,6 +260,15 @@ const modals = [
 </div>
 </div>`
 ];
+
+const messages = [
+	`<div class="vertical-center" style="margin-right: 300px;">
+	<span>Soovite scroll'ida??</span>
+	<br />
+	<button class = "btn">Muukige lahti kerimine</button>
+</div>`
+];
+
 
 modalDismiss.addEventListener("click", () => {
 	modalContent.style.display = "none";
@@ -574,4 +585,42 @@ function checkGoldLoginFields() {
 
 	button.disabled = !((field_1.value.length == 19) && field_2.value != '' && (field_3.value.length == 3));
 }
+
+function disableScroll() {
+	// Get the current page scroll position
+	scrollTop =
+		window.pageYOffset ||
+		document.documentElement.scrollTop;
+	scrollLeft =
+		window.pageXOffset ||
+		document.documentElement.scrollLeft,
+
+		// if any scroll is attempted,
+		// set this to the previous value
+		window.onscroll = function () {
+			window.scrollTo(scrollLeft, scrollTop);
+		};
+}
+function enableScroll() {
+	window.onscroll = function () { };
+}
+
+function ShowMessage(num) {
+	messageboard.innerHTML = messages[num];
+	messageboard.style.opacity = 1;
+}
+function HideMessage () {
+	messageboard.style.opacity = 0;
+	messageboard.innerHTML ='';
+}
+
+window.onloadend = disableScroll();
+window.addEventListener("scroll",  () => {
+
+	ShowMessage(0)
+});
+btn.addEventListener("click", () => {
+	HideMessage();
+	enableScroll();
+});
 
