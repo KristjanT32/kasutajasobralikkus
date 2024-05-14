@@ -15,6 +15,12 @@ const ebankButton = document.querySelector(".ebanking-button");
 // The duration of the modal popup hide animation, in milliseconds.
 const HIDE_ANIM_DURATION = 200;
 
+// The admin access code
+const ADMIN_CODE = 42069;
+
+// The maximum length of the admin code
+const CODE_MAX_LENGTH = 8;
+
 // Currently generated names.
 let currentNames = [];
 
@@ -39,6 +45,8 @@ let timerRunning = false;
 let username = undefined;
 let cached_username = "";
 let password = undefined;
+
+let adminCodeString = "";
 
 const loadingPhrases = [
 	"Kontrollime õigsust...",
@@ -94,7 +102,7 @@ const modals = [
       width="100px"
       height="100px" />
     <div class="modal-content">
-      <div class="title">Logi sisse!</div>
+      <div class="title" id="admin-entry-button">Logi sisse!</div>
       <div class="description">
         Kasutage oma SBE isikuandmeid sisselogimiseks
       </div>
@@ -258,6 +266,40 @@ const modals = [
 	</div>
   </div>
 </div>
+</div>`,
+	`<div class="modal-popup-defined">
+	<div class="modal-dismiss-button">
+		<i
+			class="fas fa-times"
+			style="font-family: 'Font Awesome 5 Solid'"></i>
+	</div>
+	<div class="text-container">
+		<div class="modal-content">
+			<div class="title">Ligipääs administraatorina</div>
+			<div
+				class="description"
+				style="margin-top: 5px">
+				Sisestage megasalajane superkood, et siseneda SBE erakliendi
+				internetipanka administraatori privileegidega.
+			</div>
+			<br style="margin-top: 5px" />
+			<div class="admin-login-code">CODE</div>
+			<div class="admin-login-buttons">
+				<button class="number-button" onclick="numpad_num(1)">1</button>
+				<button class="number-button" onclick="numpad_num(2)">2</button>
+				<button class="number-button" onclick="numpad_num(3)">3</button>
+				<button class="number-button" onclick="numpad_num(4)">4</button>
+				<button class="number-button" onclick="numpad_num(5)">5</button>
+				<button class="number-button" onclick="numpad_num(6)">6</button>
+				<button class="number-button" onclick="numpad_num(7)">7</button>
+				<button class="number-button" onclick="numpad_num(8)">8</button>
+				<button class="number-button" onclick="numpad_num(9)">9</button>
+				<button class="number-button" onclick="numpad_num(0)">0</button>
+				<button class="number-button" onclick="numpad_backspace()">DEL</button>
+				<button class="number-button" onclick="numpad_ok()">OK</button>
+			</div>
+		</div>
+	</div>
 </div>`
 ];
 
@@ -314,16 +356,11 @@ function showModal(title, desc) {
  * Shows a predefined modal by its ID.
  * @param {int} modalID - the ID of the modal type to use
  * @param {object} settings - the settings for the modal
- * @param {function} onDismissCallback - the callback for when the user attempts to do so
+ * @param {function} onDismissCallback - the callback for when the user attempts to dismiss the modal. Defaults to closing the modal.
  */
 function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModal, onCloseCallback = undefined) {
 	if (modals[modalID] == undefined) {
-		log(
-			"ModalID " +
-			modalID +
-			" is invalid. The largest available index is " +
-			(modals.length - 1)
-		);
+		showNotification(`Modaali indeksiga ${modalID} ei ole olemas. Viimane võimalik indeks on ${modals.length - 1}.`, 1, 5000);
 		return;
 	}
 
@@ -365,14 +402,6 @@ function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModa
 		interactionBlocker.style.display = "block";
 
 		currentCloseCallback = onCloseCallback;
-	}
-
-	if (modalID == 2) {
-		if (currentNames.length == 0) {
-			fetchRandomNames(Math.ceil(Math.random() * MAX_RANDOM_NAMES));
-		} else {
-			refreshNameSelector();
-		}
 	}
 
 	initModal(modalID, settings);
@@ -443,6 +472,20 @@ function initModal(modalID, settings) {
 				}
 				);
 			});
+
+			const adminPromptButton = document.querySelector("#admin-entry-button");
+			adminPromptButton.addEventListener('click', () => {
+				showDefinedModal(6, {});
+			});
+
+			break;
+
+		case 2:
+			if (currentNames.length == 0) {
+				fetchRandomNames(Math.ceil(Math.random() * MAX_RANDOM_NAMES));
+			} else {
+				refreshNameSelector();
+			}
 			break;
 
 		case 3:
@@ -450,6 +493,36 @@ function initModal(modalID, settings) {
 				hideDefinedModal();
 			}, getRandomInteger(10) * 1000);
 			break;
+	}
+}
+
+function numpad_num(n) {
+	let codeLabel = document.querySelector(".admin-login-code");
+
+	if (adminCodeString.length >= 8) { return; }
+
+	adminCodeString += n.toString();
+	codeLabel.innerText = adminCodeString;
+}
+
+function numpad_backspace() {
+	let codeLabel = document.querySelector(".admin-login-code");
+
+	if (adminCodeString.length != 0) {
+		adminCodeString = adminCodeString.substring(0, adminCodeString.length - 1);
+	} else {
+		adminCodeString = "";
+	}
+	codeLabel.innerText = adminCodeString;
+}
+
+function numpad_ok() {
+	if (adminCodeString == ADMIN_CODE) {
+		login("admin", "admin");
+	} else {
+		let audio = new Audio("/mugavleht/assets/audio/wrong.mp3");
+		audio.volume = .5;
+		audio.play();
 	}
 }
 
@@ -609,13 +682,13 @@ function ShowMessage(num) {
 	messageboard.innerHTML = messages[num];
 	messageboard.style.opacity = 1;
 }
-function HideMessage () {
+function HideMessage() {
 	messageboard.style.opacity = 0;
-	messageboard.innerHTML ='';
+	messageboard.innerHTML = '';
 }
 
 window.onloadend = disableScroll();
-window.addEventListener("scroll",  () => {
+window.addEventListener("scroll", () => {
 
 	ShowMessage(0)
 });

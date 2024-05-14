@@ -365,17 +365,22 @@ select {
 }
 
 .modal-popup-defined {
+	display: flex;
+
 	position: relative;
 	pointer-events: auto;
+
+	align-items: start;
+	justify-content: center;
 
 	top: 0;
 	left: 0;
 
 	width: 600px;
 	height: fit-content;
-	min-height: 500px;
-	max-height: 70%;
+	max-height: 80%;
 
+	padding-bottom: 50px;
 	margin: 10px 0 10px 0;
 
 	background-color: white;
@@ -643,8 +648,8 @@ select {
 
 	visibility: hidden;
 
-	width: 60vh;
-	height: 6vh;
+	min-width: 60vh;
+	min-height: 6vh;
 
 	border: solid 1px rgb(255, 192, 192);
 	border-radius: 0.25rem;
@@ -675,6 +680,9 @@ select {
 .notificationText {
 	font-weight: bolder;
 	font-size: 1rem;
+
+	margin-left: 20px;
+	margin-right: 20px;
 
 	text-align: center;
 }
@@ -725,4 +733,38 @@ select {
 	justify-content: center;
 	opacity: 0;
 	z-index: 4;
+}
+
+.admin-login-code {
+	margin-bottom: 25px;
+	padding: 10px;
+
+	background-color: whitesmoke;
+	color: var(--sbe-green);
+
+	height: 50px;
+
+	font-family: "Consolas", Arial, sans-serif;
+	font-size: 50px;
+}
+
+.admin-login-buttons {
+	display: grid;
+	grid-template-columns: repeat(3, 50px);
+	grid-template-rows: repeat(4, 50px);
+	gap: 15px;
+	justify-content: center;
+}
+
+.number-button {
+	display: flex;
+
+	min-width: 60px;
+	min-height: 60px;
+
+	justify-content: center;
+
+	font-family: "SEB Medium";
+	font-weight: bold;
+	font-size: 30px;
 }

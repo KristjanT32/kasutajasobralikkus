@@ -1,26 +1,23 @@
 const DASHBOARD_PATH = "/mugavleht/sbe-ebank/dashboard/";
 
 const admin_acc = {
-    name: "admin",
-    pass: "admin",
-    tier: "max"
+	name: "admin",
+	pass: "admin",
+	tier: "max"
 }
 
 
 
-function login() {
-	let pass = document.querySelector("#psswrd").value;
-	let username = cached_username;
+function login(usr = cached_username, pass = document.querySelector("#psswrd").value) {
+	if (usr == admin_acc.name) {
+		if (pass == admin_acc.pass) {
+			createOrInitSession(admin_acc.name, true);
+			window.location = DASHBOARD_PATH;
+		}
+	}
 
-    if (username == admin_acc.name) {
-        if (pass == admin_acc.pass) {
-            createOrInitSession(admin_acc.name, true);
-            window.location = DASHBOARD_PATH;
-        }
-    }	
-
-	if (loadFromSessionStorage("user_" + username) != undefined) {
-		if (pass == loadFromSessionStorage("user_" + username)) {
+	if (loadFromSessionStorage("user_" + usr) != undefined) {
+		if (pass == loadFromSessionStorage("user_" + usr)) {
 			createOrInitSession(username)
 			window.location = DASHBOARD_PATH;
 		} else {
