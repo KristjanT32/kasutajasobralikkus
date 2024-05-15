@@ -50,6 +50,11 @@
 
 /* Styles */
 
+body.loans {
+	margin: 0px;
+	background-color: var(--bg-dark);
+}
+
 body.ebank {
 	margin: 0px;
 	background-color: var(--bg-dark);
@@ -198,6 +203,21 @@ select {
 	margin: 0;
 
 	background-color: var(--header-bg-light);
+}
+
+.loans .header {
+	display: flex;
+
+	width: 100vw;
+	height: 100px;
+
+	margin: 0;
+
+	background-color: var(--header-bg-dark);
+}
+
+.loans .top-bar {
+	margin-bottom: 10px;
 }
 
 .ebank .header {
@@ -724,10 +744,10 @@ select {
 .messageboard {
 	width: 500px;
 	height: 150px;
-	bottom: 100px;
+	bottom: 0;
 	right: 0;
 	background: #f5b942;
-	position: absolute;
+	position: fixed;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -768,3 +788,62 @@ select {
 	font-weight: bold;
 	font-size: 30px;
 }
+
+@keyframes spawn {
+	from {
+ 		transform: initial;	
+	}
+
+	to {
+		transform: translateY(-100px);
+	}
+}
+
+.loanbox {
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+	justify-content: center;
+
+	border: solid 1px black;
+	
+}
+
+.martavandi {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	image-resolution: 330px;
+	border-image: fill;
+}
+
+.IFRAME {
+	display: flex;
+	background-color: #f5b942;
+}
+
+.GO3RIZZ {
+	display: flex;
+	flex-direction: row;
+	justify-content: right;
+	align-items: right;
+
+} 
+
+.seksikasmees {
+	display: flex;
+	flex-grow: var(--sbe-dark-green);
+	align-items: baseline;
+	justify-content: safe;
+	
+}
+
+
+
+
+
+
+
+

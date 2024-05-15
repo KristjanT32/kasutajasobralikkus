@@ -33,7 +33,7 @@ let timerLabel = document.querySelector(".estimated-processing-time");
 let loadingStatus = document.querySelector(".loading-status");
 let accessibilityButton = document.querySelector(".ligipaasetavus-nupp");
 let messageboard = document.querySelector(".messageboard");
-let btn = document.querySelector(".btn");
+
 
 let modalShown = false;
 let secondaryModalShown = false;
@@ -678,22 +678,36 @@ function enableScroll() {
 	window.onscroll = function () { };
 }
 
+let uni = false;
 function ShowMessage(num) {
-	messageboard.innerHTML = messages[num];
+	uni = true;
 	messageboard.style.opacity = 1;
+	messageboard.innerHTML = messages[num];
+
+
+	let btn = document.querySelector(".btn");
+		btn.addEventListener("click", () => {
+			HideMessage();
+			enableScroll();
+			setTimeout(()=> {
+				uni = false;
+			}, getRandomInteger(5000, 15000));
+	});	
 }
 function HideMessage() {
 	messageboard.style.opacity = 0;
 	messageboard.innerHTML = '';
 }
 
-window.onloadend = disableScroll();
-window.addEventListener("scroll", () => {
-
-	ShowMessage(0)
+window.addEventListener('load', () => {
+	disableScroll();
 });
-btn.addEventListener("click", () => {
-	HideMessage();
-	enableScroll();
+
+
+window.addEventListener("scroll", () => {
+	if (!uni){
+		ShowMessage(0);
+		messageboard.style.animation = "spawn 4.5s forwards cubic-bezier(0.155, 0.440, 0.350, 1.000)";
+	};
 });
 

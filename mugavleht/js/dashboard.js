@@ -68,58 +68,63 @@ const currencies = {
 const transactions = {
   0: {
     from: "Queefus Pquintillion Pringleton",
-    to: "D'marcus Big man Kidkledink",
+    to: "{user}",
     amount: 2.99
   },
   1: {
     from: "Apple",
-    to: "Quandale Bockzadale Bingleton III",
+    to: "{user}",
     amount: -1599.23
   },
   2: {
-    from: "Quadius Doo-Doo Zoppity Bop-Bop-Bop Dingle II",
+    from: "{user}",
     to: "Trump Hotels & Casino Resorts Inc.",
     amount: 0.99
   },
   3: {
-    from: "Prisma",
+    from: "{user}",
     to: "Wiggleton J. Winkledink II",
     amount: -133.66
   },
   4: {
-    from: "Doodoosniff Big man Jefferson",
+    from: "{user}",
     to: "Beter",
     amount: 9.85
   },
   5: {
-    from: "Garfield Scratchensniff",
+    from: "{user}",
     to: "Jon Arbuckle",
     amount: 2333000.21
   },
   6: {
     from: "Bonerbeater A. Dontavious Sr",
-    to: "Põltsamaa",
+    to: "{user}",
     amount: 6.66
   },
   7: {
-    from: "Postimees",
+    from: "{user}",
     to: "Doodoosniff Bugglesmith",
     amount: -199.99
   },
   8: {
-    from: "Kickletipson Woodleberry",
+    from: "{user}",
     to: "Viimsi Kino",
     amount: -7.99
   },
   9: {
-    from: "Obama Obama",
+    from: "{user}",
     to: "Biden Blast",
     amount: 99.99
   },
   10: {
     from: "Bodacious Bunger Burger",
-    to: "Jerma",
+    to: "{user}",
     amount: 399.99
+  },
+  11: {
+    from: "{user}",
+    to: "Jerma",
+    amount: 11.99
   },
 }
 
@@ -242,12 +247,10 @@ function refreshView() {
   for (let i = 0; i < len(transactions); i++) {
     let transaction = transactions[i];
     transactionList.insertAdjacentHTML('beforeend', `<div class="generic-transaction">
-      <span><b class="transactionAmount ${transaction.amount > 0 ? "received" : "sent"}">${transaction.amount > 0 ? "+" + transaction.amount : transaction.amount} ${selectedCurrency.symbol}</b></span>
-      <br>
-      <span class="transactionSender">${transaction.from}</span>
-      ⇨
-      <span class="transactionReceiver">${transaction.to}</span>
-      </div><br>`
+      <div class="transactionSender">${transaction.from}</div>
+      <div class="transactionReceiver">${transaction.to}</div>
+      <div class="transactionAmount"><b class="text ${transaction.amount > 0 ? "received" : "sent"}">${transaction.amount > 0 ? "+" + transaction.amount : transaction.amount} ${selectedCurrency.symbol}</b></div>
+      </div>`.replaceAll("{user}", sessionData.user)
     )
   }
 
