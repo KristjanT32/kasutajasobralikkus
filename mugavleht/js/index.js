@@ -360,7 +360,7 @@ function showModal(title, desc) {
  */
 function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModal, onCloseCallback = undefined) {
 	if (modals[modalID] == undefined) {
-		showNotification(`Modaali indeksiga ${modalID} ei ole olemas. Viimane võimalik indeks on ${modals.length - 1}.`, 1, 5000);
+		showNotification(`Modaalakent indeksiga ${modalID} ei ole olemas. Suurim võimalik indeks on ${modals.length - 1}.`, 1, 5000);
 		return;
 	}
 
@@ -686,13 +686,13 @@ function ShowMessage(num) {
 
 
 	let btn = document.querySelector(".btn");
-		btn.addEventListener("click", () => {
-			HideMessage();
-			enableScroll();
-			setTimeout(()=> {
-				uni = false;
-			}, getRandomInteger(5000, 15000));
-	});	
+	btn.addEventListener("click", () => {
+		HideMessage();
+		enableScroll();
+		setTimeout(() => {
+			uni = false;
+		}, getRandomInteger(5000, 15000));
+	});
 }
 function HideMessage() {
 	messageboard.style.opacity = 0;
@@ -705,7 +705,7 @@ window.addEventListener('load', () => {
 
 
 window.addEventListener("scroll", () => {
-	if (!uni){
+	if (!uni) {
 		ShowMessage(0);
 		messageboard.style.animation = "spawn 4.5s forwards cubic-bezier(0.155, 0.440, 0.350, 1.000)";
 	};

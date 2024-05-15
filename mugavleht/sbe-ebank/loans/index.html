@@ -1,79 +1,131 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/mugavleht/css/main.css" />
-	<link rel="stylesheet" href="/mugavleht/css/dashboard.css" />
-	<link rel="stylesheet" href="/mugavleht/css/fontawesome/all.css" />
-	<link rel="icon" type="image/x-icon" href="/mugavleht/assets/sbe-logo.svg" />
-    <title>SBE erakliendi laenuportaal</title>
-</head>
-<body class="loans">
-    <div class="loans top-bar">
-		<div class="loans header">
-			<div class="header-logo" onclick="window.location = '/mugavleht'">
-				<img src="/mugavleht/assets/logo.png" alt="SBE logo" width="95px" ; height="95px" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="/mugavleht/css/main.css" />
+		<link
+			rel="stylesheet"
+			href="/mugavleht/css/dashboard.css" />
+		<link
+			rel="stylesheet"
+			href="/mugavleht/css/fontawesome/all.css" />
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="/mugavleht/assets/sbe-logo.svg" />
+		<title>SBE erakliendi laenuportaal</title>
+	</head>
+	<body class="loans">
+		<div class="loans top-bar">
+			<div class="loans header">
+				<div
+					class="header-logo"
+					onclick="window.location = '/mugavleht'">
+					<img
+						src="/mugavleht/assets/logo.png"
+						alt="SBE logo"
+						width="95px"
+						;
+						height="95px" />
+				</div>
 			</div>
 		</div>
-	</div>
 
+		<div class="panel primaryPanel">
+			<div class="panelTitle">SBE laenuportaal</div>
+			<div class="panelInner">
+				<div class="loanselection_phase1">
+					<div class="bold-label">Valige sobiv laenupakett</div>
+					<select
+						name="loanSelector"
+						id="loanSelector">
+						<option value="loan_1">SBE Hüperlaen 56%</option>
+						<option value="loan_2">SBE Kiirlaen 71%</option>
+						<option value="loan_3">SBE Megalaen 66%</option>
+						<option value="loan_4">SBE Ekstramegasuperduperlaen 40%</option>
+						<option value="loan_5">SBE Tavalaen 10%</option>
+					</select>
+				</div>
+				<hr class="generic-divider" />
+				<div class="loanselection_phase2">
+					<div class="bold-label">Valige laenusumma</div>
+					<input
+						type="number"
+						id="loanSumInput" />
+				</div>
+				<hr class="generic-divider" />
+				<div class="loanselection_phase3">
+					<div class="bold-label">Valige laenukonsultant</div>
+					<div class="generic-description">
+						Laenukonsultant aitab teil toime tulla laenujärgsete sümptomitega
+						(sh. kõhulahtisus, köha, kopsuvähk, pangakontoontühiooma viirus,
+						surm jms.)
+					</div>
+					<div class="reviewPanel">
+						<div class="consultantSelectorMenu">
+							<div class="consultantProfile">
+								<img
+									src="/mugavleht/assets/img/harold.webp"
+									alt=""
+									style="width: 100px; height: 100px" />
+								<div class="consultantProfileText">
+									<div class="bold-label name">Konsultant</div>
+									<div class="generic-description desc">
+										Väga tubli. Natuke lõhnav.
+									</div>
+								</div>
+							</div>
+							<div class="consultantSelectorButtons">
+								<button
+									class="dark prevConsultantButton"
+									onclick="prevConsultant()">
+									Eelmine
+								</button>
+								<div class="generic-label consultantPagination"></div>
+								<button
+									class="dark nextConsultantButton"
+									onclick="nextConsultant()">
+									Järgmine
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="generic-divider" />
+				<div class="loanselection_review">
+					<div class="bold-label">Kinnitage tingimused</div>
+					<div class="reviewPanel">
+						<div class="bold-label">
+							Laenupakett: <span class="highlightedValue">SBE Hüperlaen</span>
+						</div>
+						<br />
+						<div class="bold-label">
+							Intressimäär: <span class="highlightedValue">199%</span>
+						</div>
+						<br />
+						<div class="bold-label">
+							Laenusumma: <span class="highlightedValue">29 990 EUR</span>
+						</div>
+						<br />
+						<div class="bold-label">
+							Laenukonsultant:
+							<span class="highlightedValue">Peeter Sitasoo</span>
+						</div>
+					</div>
+					<br />
+					<button
+						class="primaryButton"
+						style="margin-bottom: 10px; font-size: 20px">
+						Kinnitan, et valitud laenutingimused on korrektsed
+					</button>
+				</div>
+			</div>
+		</div>
 
-
-
-
-
-
-
-    <div class="loanbox">
-        <div>
-            <button>LAENU VÕTT 23% INTRESS</button>
-            <input name="yessir" id="">
-        </div>
-        <div>LAEN -> VÕTA VÕI JÄTA</div>
-    </div>
-    <br>
-    <div>   <span><textarea name="" id="" cols="30" rows="10">LAENU ANDJAD</textarea></span> 
-    </div>
-        <br>
-    <div class="seksikasmees">        
-        <caption>MÄRT AVANDI (FINANTSKOORDINATOR) - OSTA NÜÜD, LAEN TOOB HEAD!</caption>
-        <textarea>SEksIKAS MEES mustas kleidis, tümpstümps</textarea>
-    </div>
-    <br>
-    <div class="martavandi">    
-        <span>
-            <img src="https://static3.go3.tv/scale/go3/webuploads/rest/upload/vod/4981772/images/19091709?dsth=412&dstw=412&srcmode=3&quality=65&type=1&srcx=1&srcy=1&srcw=1%2F1&srch=1%2F1" alt="mida">
-        </span>
-    
-    </div>
-    <br>
-    <span><table>HETKE VÕLG HAHA: </table><input type="text"></span>
-    <br>
-    <br>
-    <div>   
-        <span> 
-            <textarea>VÕTA LAEN, ET MAKSTA OMA LAEN!!! AINULT 35% INTRESS</textarea>
-            <button style="background-color: burlywood;">ÜHE KLIKKI KAUGUSEL ELUAEGSEST RAHUST</button>
-        </span>
-    </div>
-    <br>
-    <div>
-        <span>
-            <textarea name="sfs" id="">LAEN KRÜPTO HAARAMISEKS</textarea>
-            <bdo dir="sfs">OLE NII HEA JA VAJUTA</bdo>
-        </span>
-    </div>
-    <br>
-    <span class="IFRAME"><h3>VAJUTA NUPPU, ET KÄIVITADA I-FRAMEID ULTIMATE KASUTUSEL</h3></span>
-    <br>
-    <br>
-    <br>
-    <div class="GO3RIZZ">
-        <textarea name="" id="">Kas SA teadsid, et GO3 SUBSCRIPTIONI KAUDU SAAD TASUTA LAENU INTRESS % BOOSTEREID! VASTUS KIRJUTA SIIA:</textarea>
-    </div>
-
-
-
-
-</body>
+		<script src="/mugavleht/js/loans.js"></script>
+	</body>
 </html>

@@ -46,6 +46,7 @@
 	--bg-light: #ffffff;
 	--sbe-green: #45b400;
 	--sbe-dark-green: #2e7900;
+	--sbe-gray: rgb(184, 184, 184);
 }
 
 /* Styles */
@@ -98,6 +99,37 @@ button {
 	padding: 10px;
 
 	cursor: pointer;
+}
+
+button.dark {
+	border: 1px solid var(--bg-dark);
+	border-radius: 4px;
+
+	color: white;
+	background-color: var(--header-bg-dark);
+
+	min-height: 20px;
+	min-width: 100px;
+
+	font-family: "SEB Medium", Arial, sans-serif;
+
+	padding: 10px;
+
+	cursor: pointer;
+}
+
+button.dark:hover {
+	background-color: #151515;
+}
+
+.primaryButton {
+	color: white;
+	background-color: var(--sbe-green);
+	border-color: var(--sbe-green);
+
+	font-family: "SEB Regular";
+
+	padding: 10px;
 }
 
 label {
@@ -791,7 +823,7 @@ select {
 
 @keyframes spawn {
 	from {
- 		transform: initial;	
+		transform: initial;
 	}
 
 	to {
@@ -799,51 +831,171 @@ select {
 	}
 }
 
-.loanbox {
+#loanSelector {
+	color: white;
+	background-color: var(--header-bg-dark);
+	border-color: var(--bg-dark);
+
+	border-radius: 0.25rem;
+
+	margin-top: 10px;
+
+	font-family: "SEB Regular";
+}
+
+#loanSumInput {
+	color: white;
+	background-color: var(--header-bg-dark);
+	border-color: var(--bg-dark);
+
+	border-radius: 0.25rem;
+
+	margin-top: 10px;
+
+	font-family: "SEB Regular";
+}
+
+.generic-divider {
+	border-top: solid 2.5px;
+	border-radius: 0.25rem;
+
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+.bold-label {
+	font-family: "SEB Medium";
+	font-size: 20px;
+}
+
+.generic-description {
+	font-family: "SEB Regular";
+	color: #cecece;
+}
+
+.reviewPanel {
+	margin-top: 10px;
+	padding: 15px;
+
+	border-radius: 0.25rem;
+
+	background-color: var(--bg-dark);
+
+	overflow-y: scroll;
+}
+
+.highlightedValue {
+	padding: 5px;
+
+	color: white;
+	background-color: var(--header-bg-dark);
+
+	border-radius: 0.25rem;
+}
+
+.consultantSelectorMenu {
 	display: flex;
 	flex-direction: column;
-
-	align-items: center;
-	justify-content: center;
-
-	border: solid 1px black;
-	
 }
 
-.martavandi {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	image-resolution: 330px;
-	border-image: fill;
-}
-
-.IFRAME {
-	display: flex;
-	background-color: #f5b942;
-}
-
-.GO3RIZZ {
+.consultantSelectorButtons {
 	display: flex;
 	flex-direction: row;
-	justify-content: right;
-	align-items: right;
-
-} 
-
-.seksikasmees {
-	display: flex;
-	flex-grow: var(--sbe-dark-green);
-	align-items: baseline;
-	justify-content: safe;
-	
+	align-items: center;
+	justify-content: start;
 }
 
+.consultantPagination {
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 5px;
 
+	border-radius: 0.25rem;
 
+	background-color: var(--header-bg-dark);
+}
 
+.consultantProfile {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+}
 
+.consultantProfile img {
+	border-radius: 0.25rem;
+}
 
+.consultantProfileText {
+	display: flex;
+	flex-direction: column;
 
+	margin-left: 10px;
+}
 
+.consultantProfile .bold-label {
+	margin-bottom: 5px;
+}
+
+.consultantSelector_nextHide {
+	animation: slide-fade-right 0.2s ease-in forwards;
+}
+
+.consultantSelector_nextAppear {
+	animation: slide-appear-left 0.2s ease-in forwards;
+}
+
+.consultantSelector_prevHide {
+	animation: slide-fade-left 0.2s ease-in forwards;
+}
+
+.consultantSelector_prevAppear {
+	animation: slide-appear-right 0.2s ease-in forwards;
+}
+
+@keyframes slide-fade-right {
+	from {
+		transform: initial;
+		opacity: 1;
+	}
+
+	to {
+		transform: translateX(100px);
+		opacity: 0;
+	}
+}
+
+@keyframes slide-appear-left {
+	from {
+		transform: translateX(-100px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes slide-fade-left {
+	from {
+		transform: initial;
+		opacity: 1;
+	}
+
+	to {
+		transform: translateX(-100px);
+		opacity: 0;
+	}
+}
+
+@keyframes slide-appear-right {
+	from {
+		transform: translateX(100px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
