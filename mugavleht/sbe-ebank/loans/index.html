@@ -17,9 +17,15 @@
 			rel="icon"
 			type="image/x-icon"
 			href="/mugavleht/assets/sbe-logo.svg" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+			rel="stylesheet" />
 		<title>SBE erakliendi laenuportaal</title>
 	</head>
 	<body class="loans">
+
+		<div class="interaction-blocker"></div>
+
 		<div class="loans top-bar">
 			<div class="loans header">
 				<div
@@ -35,6 +41,10 @@
 			</div>
 		</div>
 
+		<div class="modal-popup-area">
+			
+		</div>
+
 		<div class="panel primaryPanel">
 			<div class="panelTitle">SBE laenuportaal</div>
 			<div class="panelInner">
@@ -43,11 +53,11 @@
 					<select
 						name="loanSelector"
 						id="loanSelector">
-						<option value="loan_1">SBE Hüperlaen 56%</option>
-						<option value="loan_2">SBE Kiirlaen 71%</option>
-						<option value="loan_3">SBE Megalaen 66%</option>
-						<option value="loan_4">SBE Ekstramegasuperduperlaen 40%</option>
-						<option value="loan_5">SBE Tavalaen 10%</option>
+						<option value="loan_1" interest="56%">SBE Hüperlaen 56%</option>
+						<option value="loan_2" interest="71%">SBE Kiirlaen 71%</option>
+						<option value="loan_3" interest="66%">SBE Megalaen 66%</option>
+						<option value="loan_4" interest="40%">SBE Ekstramegasuperduperlaen 40%</option>
+						<option value="loan_5" interest="10%">SBE Tavalaen 10%</option>
 					</select>
 				</div>
 				<hr class="generic-divider" />
@@ -100,32 +110,54 @@
 					<div class="bold-label">Kinnitage tingimused</div>
 					<div class="reviewPanel">
 						<div class="bold-label">
-							Laenupakett: <span class="highlightedValue">SBE Hüperlaen</span>
+							Laenupakett: <span class="highlightedValue loanTypeLabel">SBE Hüperlaen</span>
 						</div>
 						<br />
 						<div class="bold-label">
-							Intressimäär: <span class="highlightedValue">199%</span>
+							Intressimäär: <span class="highlightedValue interestLabel">199%</span>
 						</div>
 						<br />
 						<div class="bold-label">
-							Laenusumma: <span class="highlightedValue">29 990 EUR</span>
+							Laenusumma: <span class="highlightedValue sumLabel">29 990 EUR</span>
 						</div>
 						<br />
 						<div class="bold-label">
 							Laenukonsultant:
-							<span class="highlightedValue">Peeter Sitasoo</span>
+							<span class="highlightedValue consultantLabel">Peeter Sitasoo</span>
 						</div>
 					</div>
 					<br />
 					<button
 						class="primaryButton"
-						style="margin-bottom: 10px; font-size: 20px">
+						style="margin-bottom: 10px; font-size: 20px"
+						onclick="showDefinedModal(7, {}, () => {showNotification('Teie otsust valideeritakse. Palun oodake.', 2, 5000)})"
+						>
 						Kinnitan, et valitud laenutingimused on korrektsed
 					</button>
 				</div>
 			</div>
 		</div>
 
+		<div class="notification-area-wrapper">
+			<div class="hover-notification">
+				<span
+					class="material-symbols-outlined notificationIcon"
+					style="margin-right: auto; margin-left: 20px"
+					>warning
+				</span>
+				<br />
+				<span class="notificationText"></span>
+				<br />
+				<span
+					class="material-symbols-outlined notificationIcon"
+					style="margin-left: auto; margin-right: 20px"
+					>warning
+				</span>
+			</div>
+		</div>
+
 		<script src="/mugavleht/js/loans.js"></script>
+		<script src="/mugavleht/js/util.js"></script>
+		<script src="/mugavleht/js/modals.js"></script>
 	</body>
 </html>

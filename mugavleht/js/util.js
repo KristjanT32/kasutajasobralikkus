@@ -142,6 +142,10 @@ function formatCreditCardNumber(s) {
 		.replace(/(.{4})/g, '$1 ').trim();
 }
 
+function formatFunds(funds) {
+	return parseFloat(funds).toLocaleString("et");
+}
+
 /**
  * Logs the provided string to the console.
  * This function automatically determines, whether the logged message is an error or not based on the content.
