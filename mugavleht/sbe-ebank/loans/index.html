@@ -23,7 +23,6 @@
 		<title>SBE erakliendi laenuportaal</title>
 	</head>
 	<body class="loans">
-
 		<div class="interaction-blocker"></div>
 
 		<div class="loans top-bar">
@@ -41,9 +40,7 @@
 			</div>
 		</div>
 
-		<div class="modal-popup-area">
-			
-		</div>
+		<div class="modal-popup-area"></div>
 
 		<div class="panel primaryPanel">
 			<div class="panelTitle">SBE laenuportaal</div>
@@ -52,13 +49,7 @@
 					<div class="bold-label">Valige sobiv laenupakett</div>
 					<select
 						name="loanSelector"
-						id="loanSelector">
-						<option value="loan_1" interest="56%">SBE Hüperlaen 56%</option>
-						<option value="loan_2" interest="71%">SBE Kiirlaen 71%</option>
-						<option value="loan_3" interest="66%">SBE Megalaen 66%</option>
-						<option value="loan_4" interest="40%">SBE Ekstramegasuperduperlaen 40%</option>
-						<option value="loan_5" interest="10%">SBE Tavalaen 10%</option>
-					</select>
+						id="loanSelector"></select>
 				</div>
 				<hr class="generic-divider" />
 				<div class="loanselection_phase2">
@@ -110,30 +101,36 @@
 					<div class="bold-label">Kinnitage tingimused</div>
 					<div class="reviewPanel">
 						<div class="bold-label">
-							Laenupakett: <span class="highlightedValue loanTypeLabel">SBE Hüperlaen</span>
+							Laenupakett:
+							<span class="highlightedValue loanTypeLabel">SBE Hüperlaen</span>
 						</div>
 						<br />
 						<div class="bold-label">
-							Intressimäär: <span class="highlightedValue interestLabel">199%</span>
+							Intressimäär:
+							<span class="highlightedValue interestLabel">199%</span>
 						</div>
 						<br />
 						<div class="bold-label">
-							Laenusumma: <span class="highlightedValue sumLabel">29 990 EUR</span>
+							Laenusumma:
+							<span class="highlightedValue sumLabel">29 990 EUR</span>
 						</div>
 						<br />
 						<div class="bold-label">
 							Laenukonsultant:
-							<span class="highlightedValue consultantLabel">Peeter Sitasoo</span>
+							<span class="highlightedValue consultantLabel"
+								>Peeter Sitasoo</span
+							>
 						</div>
 					</div>
 					<br />
-					<button
-						class="primaryButton"
-						style="margin-bottom: 10px; font-size: 20px"
-						onclick="showDefinedModal(7, {}, () => {showNotification('Teie otsust valideeritakse. Palun oodake.', 2, 5000)})"
-						>
-						Kinnitan, et valitud laenutingimused on korrektsed
-					</button>
+					<div class="vertical-center">
+						<button
+							class="primaryButton"
+							style="margin-bottom: 10px; font-size: 20px"
+							onclick="handleLoan()">
+							Kinnitan, et valitud laenutingimused on korrektsed
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -156,8 +153,11 @@
 			</div>
 		</div>
 
+		<script src="/mugavleht/js/modals.js"></script>
 		<script src="/mugavleht/js/loans.js"></script>
 		<script src="/mugavleht/js/util.js"></script>
-		<script src="/mugavleht/js/modals.js"></script>
+		<script>
+			setDark(true);
+		</script>
 	</body>
 </html>

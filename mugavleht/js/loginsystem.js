@@ -18,7 +18,7 @@ function login(usr = cached_username, pass = document.querySelector("#psswrd").v
 
 	if (loadFromSessionStorage("user_" + usr) != undefined) {
 		if (pass == loadFromSessionStorage("user_" + usr)) {
-			createOrInitSession(username)
+			createOrInitSession(usr)
 			window.location = DASHBOARD_PATH;
 		} else {
 			showNotification("Vale parool!", 1, 1000);

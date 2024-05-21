@@ -2,6 +2,10 @@ let currentSession = undefined;
 let sessionTimer = 0;
 let sessionTimerInterval = -1;
 
+
+const MIN_SESSION_LENGTH = 10;
+const MAX_SESSION_LENGTH = 120;
+
 const sessionTimerLabel = document.querySelector('.session-timer-label > .time-box');
 const expirationNotice = document.querySelector(".sessionExpiredBlur");
 
@@ -10,11 +14,11 @@ function initSession() {
     if (JSON.parse(loadFromSessionStorage("currentsession")).nosess) { return; }
 
     if (currentSession == undefined) {
-        sessionTimer = getRandomInteger(450)
+        sessionTimer = getRandomInteger(MIN_SESSION_LENGTH, MAX_SESSION_LENGTH)
         sessionTimerInterval = setInterval(() => {
             if (sessionTimer > 0) {
                 sessionTimer--;
-                sessionTimerLabel.innerText = formatTime(sessionTimer);
+                sessionTimerLabel.innerHTML = formatTime(sessionTimer);
             } else {
                 sessionTimer = 0;
                 clearInterval(sessionTimerInterval);
@@ -31,12 +35,22 @@ function initSession() {
     }
 }
 
-function createOrInitSession(username, isAdmin = false) {
-    let session = loadFromSessionStorage("currentsession") == undefined ? {user: username, sessionStart: Date.now(), nosess: false} : loadFromSessionStorage("currentsession");
+function sessionExists() {
+    return loadFromSessionStorage("currentsession") == undefined;
+}
 
-    if (!isAdmin) {
-        saveToSessionStorage("currentsession", JSON.stringify(session))
+function createOrInitSession(username, isAdmin = false) {
+    let session;
+    if (!sessionExists()) {
+        session = { user: username, sessionStart: Date.now(), nosess: false };
+        if (!isAdmin) {
+            saveToSessionStorage("currentsession", JSON.stringify(session))
+        } else {
+            saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now(), balance: 69420, accno: "EE133769420666777360", nosess: true }))
+        }
     } else {
-        saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now(), balance: 69420, accno: "EE133769420666777360", nosess: true }))
+        if (isAdmin) {
+            saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now(), balance: 69420, accno: "EE133769420666777360", nosess: true }))
+        }
     }
 }

@@ -329,7 +329,7 @@
 }
 
 .sessionExpiredBlur {
-	position: absolute;
+	position: fixed;
 	z-index: 3;
 
 	background-color: rgba(96, 50, 50, 0.957);

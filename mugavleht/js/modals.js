@@ -8,6 +8,9 @@ const interactionBlocker = document.querySelector(".interaction-blocker");
 // The duration of the modal popup hide animation, in milliseconds.
 const HIDE_ANIM_DURATION = 200;
 
+// Whether the modals shown are to be dark.
+let darkModals = false;
+
 const modals = [
 	`<div class="modal-popup-defined">
   <div class="modal-dismiss-button" >
@@ -135,7 +138,7 @@ const modals = [
 		  <div class="description"></div>
 		  <br style="margin-top: 20px">
 		  <div class="vertical-center">
-			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel teie nime õigsust ja vastavust <a href="https://www.example.org">SBE nimesobivuseeskirjadega</a>.</b>
+			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel Teie nime õigsust ja vastavust <a href="https://www.example.org">SBE nimesobivuseeskirjadega</a>.</b>
 			  <div class="generic-label">
 				  Valideerimine võtab vaid mõne hetke. Palun oodake.
 			  </div>
@@ -157,7 +160,7 @@ const modals = [
 		  <div class="description"></div>
 		  <br style="margin-top: 20px">
 		  <div class="vertical-center">
-			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel teie valiku õigsust ja vastavust <a href="https://www.example.org">SBE valikusobivuseeskirjadega</a>.</b>
+			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel Teie valiku õigsust ja vastavust <a href="https://www.example.org">SBE valikusobivuseeskirjadega</a>.</b>
 			  <div class="generic-label">
 				  Valideerimine võtab vaid mõne hetke. Palun oodake.
 			  </div>
@@ -244,7 +247,7 @@ const modals = [
 		</div>
 	</div>
 </div>`,
-`<div class="modal-popup-defined">
+	`<div class="modal-popup-defined">
 		<div class="modal-dismiss-button" >
     		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   		</div>
@@ -257,7 +260,7 @@ const modals = [
 		  <div class="description"></div>
 		  <br style="margin-top: 20px">
 		  <div class="vertical-center">
-			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel teie laenutingimuste saadavust ja vastavust <a href="https://www.example.org">SBE laenuväljastusüldpõhireeglistikuga</a>.</b>
+			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel Teie laenutingimuste saadavust ja vastavust <a href="https://www.example.org">SBE laenuväljastusüldpõhireeglistikuga</a>.</b>
 			  <div class="generic-label">
 				  Valideerimine võtab vaid mõne hetke. Palun oodake.
 			  </div>
@@ -266,7 +269,43 @@ const modals = [
   </div>
   <br>
 </div>`,
+	`<div class="modal-popup-defined">
+		<div class="modal-dismiss-button" >
+    		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+  		</div>
+
+  <div class="text-container">
+	  <div class="modal-content">
+	  	  <br style="margin-top: 10px" />
+	  	  <span class="material-symbols-outlined" style='font-size: 80px;'>emergency_home</span>
+		  <div class="title">Kahjuks pole see laen saadaval</div>
+		  <br>
+		  <div class="description">Teie poolt valitud laenupakett ei ole hetkel saadaval. Kui soovite, saate valida muu paketi.</div>
+	  </div>
+  </div>
+  <br>
+</div>`,
+	`<div class="modal-popup-defined">
+		<div class="modal-dismiss-button" >
+    		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
+  		</div>
+
+  <div class="text-container">
+	  <div class="modal-content">
+	  <br style="margin-top: 10px" />
+	  <span class="material-symbols-outlined" style='font-size: 80px;'>verified</span>
+		  <div class="title">Laenutaotlus esitatud</div>
+		  <br>
+		  <div class="description">Saatsime Teie laenutaotluse SBE panga laenuosakonda. Teiega võetakse ühendust.</div>
+	  </div>
+  </div>
+  <br>
+</div>`
 ];
+
+function setDark(enabled) {
+	darkModals = enabled;
+}
 
 /**
  * Shows a predefined modal by its ID.
@@ -288,7 +327,7 @@ function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModa
 				modals[modalID]
 					.replaceAll('{title}', settings.title)
 					.replaceAll('{description}', settings.desc)
-                    .replaceAll('modal-popup-defined', 'modal-popup-defined dark')
+					.replaceAll('modal-popup-defined', darkModals ? 'modal-popup-defined dark' : 'modal-popup-defined')
 			);
 
 			let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
@@ -308,7 +347,7 @@ function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModa
 			modals[modalID]
 				.replaceAll('{title}', settings.title)
 				.replaceAll('{description}', settings.desc)
-                .replaceAll('modal-popup-defined', 'modal-popup-defined dark')
+				.replaceAll('modal-popup-defined', darkModals ? 'modal-popup-defined dark' : 'modal-popup-defined')
 		);
 
 		let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");

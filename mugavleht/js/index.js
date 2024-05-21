@@ -4,8 +4,6 @@ const modalDesc = document.querySelector(".modal-popup .description");
 const modalDismiss = document.querySelector(
 	".modal-popup .modal-dismiss-button"
 );
-const modalArea = document.querySelector(".modal-popup-area");
-const interactionBlocker = document.querySelector(".interaction-blocker");
 
 const modalContent = document.querySelector(".modal-popup .modal-content");
 const modalClosing = document.querySelector(".modal-popup .modal-closing");

@@ -197,14 +197,6 @@ const ads = {
   },
 }
 
-/*
-const tehingud = {
-0:{
-  from:"Mitchel'O Hara"
-  text: 
-}
-}
-*/
 
 
 init()
@@ -245,6 +237,7 @@ function refreshView() {
 
   document.querySelector(".exchangeRateTitle").innerText = "Valuutakurss (" + selectedCurrency.name + ")";
 
+  transactionList.innerHTML = "";
   for (let i = 0; i < len(transactions); i++) {
     let transaction = transactions[i];
     transactionList.insertAdjacentHTML('beforeend', `<div class="generic-transaction">
@@ -325,6 +318,7 @@ function toggleAccountNumber() {
 function closeUpShop() {
   const shop = document.querySelector(".dozer-area");
   const dozer = document.querySelector(".dozer-img");
+  greetingText.innerText = "Oli tore Teid teada, " + sessionData.user;
   dozer.style.display = "block";
   if (!shop.classList.contains("bank-closed")) {
     shop.classList.add("bank-closed");
@@ -390,11 +384,11 @@ function kasiino() {
   else {
     sessionData.balance = sessionData.balance + 1000;
     saveToSessionStorage("currentsession", JSON.stringify(sessionData));
-    refreshView();  
+    refreshView();
   }
 }
 
-let  laste_arv = 0
+let laste_arv = 0
 function laps() {
   if (laste_arv < 4) {
     sessionData.balance = sessionData.balance + 10000;
