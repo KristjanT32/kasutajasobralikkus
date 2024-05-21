@@ -33,7 +33,9 @@ let timerLabel = document.querySelector(".estimated-processing-time");
 let loadingStatus = document.querySelector(".loading-status");
 let accessibilityButton = document.querySelector(".ligipaasetavus-nupp");
 let messageboard = document.querySelector(".messageboard");
-
+let kasiino = document.querySelector(".kasiino");
+let laps = document.querySelector(".laps");
+let mafia = document.querySelector(".mafia");
 
 let modalShown = false;
 let secondaryModalShown = false;

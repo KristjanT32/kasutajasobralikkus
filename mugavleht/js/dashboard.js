@@ -11,6 +11,7 @@ const AD_INTERVAL_MIN = 5;
 
 let balanceNumbers = document.querySelector(".balanceNumbers");
 let balanceSymbol = document.querySelector(".balanceSymbol");
+let lapsed = document.querySelector(".lapsed");
 
 let balance_shown = false
 let kaardi_number_showm, aegumiskp_shown, kolm_numbrit_shown = false
@@ -378,3 +379,39 @@ function enqueueAdRemoval(el) {
   }, 10000)
 }
 
+function kasiino() {
+  let num = getRandomInteger(0, 10);
+  if (num >= 4) {
+    sessionData.balance = sessionData.balance - 1000;
+    saveToSessionStorage("currentsession", JSON.stringify(sessionData));
+    refreshView();
+
+  }
+  else {
+    sessionData.balance = sessionData.balance + 1000;
+    saveToSessionStorage("currentsession", JSON.stringify(sessionData));
+    refreshView();  
+  }
+}
+
+let  laste_arv = 0
+function laps() {
+  if (laste_arv < 4) {
+    sessionData.balance = sessionData.balance + 10000;
+    saveToSessionStorage("currentsession", JSON.stringify(sessionData));
+    refreshView();
+  }
+  else if (laste_arv == 7) {
+    sessionData.balance = -100000000;
+    refreshView();
+  }
+  else if (laste_arv == 8) {
+    sessionData.balance = -100000000;
+    saveToSessionStorage("currentsession", JSON.stringify(sessionData));
+    refreshView();
+  }
+  else {
+    lapsed.innerHTML = "Sul ei saa olla nii palju õnnakseid";
+  }
+  laste_arv = laste_arv + 1;
+}
