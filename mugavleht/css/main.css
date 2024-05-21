@@ -122,6 +122,34 @@ button.dark:hover {
 	background-color: #151515;
 }
 
+.modal-popup-defined.dark {
+	background-color: var(--header-bg-dark);
+	color: white;
+	box-shadow: 0 0 10px 1px var(--bg-dark);
+}
+
+.modal-popup-defined.dark input {
+	background-color: var(--header-bg-dark);
+	color: white;
+}
+
+.modal-popup-defined.dark .name-file-input {
+	background-color: var(--header-bg-dark);
+	color: white;
+}
+
+.modal-popup-defined.dark .register-link {
+	color: white;
+}
+
+.modal-popup-defined.dark .spinner {
+	border-color: rgb(96, 205, 24) var(--header-bg-dark);
+}
+
+.modal-popup-defined.dark a:visited {
+	color: rgb(96, 205, 24);
+}
+
 .primaryButton {
 	color: white;
 	background-color: var(--sbe-green);
