@@ -444,7 +444,7 @@ function mafia() {
 } else {
   mafian.innerHTML = "Olete vaene, maffia ei võta nii vähe!!";
   setTimeout(() => {
-    mafian.innerHTML = "Andke Läti maffiale raha"
+    mafian.innerHTML = "Olen nõus annetama Läti maffiale osa oma finantsidest"
   }, 5000);
     
 } 
