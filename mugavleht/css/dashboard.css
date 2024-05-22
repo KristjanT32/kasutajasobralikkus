@@ -182,6 +182,31 @@
 
 .servicesPanel {
 	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+
+	height: auto;
+}
+
+.servicesPanel br {
+	display: block;
+	margin-top: auto;
+	margin-bottom: 0;
+}
+
+.servicesPanel button {
+	min-width: 200px;
+}
+
+.servicesPanel .container {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.servicesPanel span.bold-label {
+	margin-right: auto;
+	margin-left: 0;
 }
 
 .transactionsPanel {

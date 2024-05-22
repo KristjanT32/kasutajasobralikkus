@@ -1034,3 +1034,13 @@ select {
 		opacity: 1;
 	}
 }
+
+@keyframes rainbow-border {
+	from {
+		background-position-x: 0%;
+	}
+
+	to {
+		background-position-x: 100%;
+	}
+}
