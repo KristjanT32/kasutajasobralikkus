@@ -28,7 +28,7 @@ const consultants = [
 
 	{
 		name: "Kuldar Taunsoo",
-		desc: "Kahtlane tüüp. Osad väidavad, et näevad teda vahepeal koeradega malet mängimas.",
+		desc: "Kahtlane tüüp. Osa inimesi väidab, et näevad teda vahepeal koeradega malet mängimas.",
 		img: "/mugavleht/assets/img/people/person002.jpeg"
 	},
 

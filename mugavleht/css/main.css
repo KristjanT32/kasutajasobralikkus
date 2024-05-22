@@ -47,6 +47,7 @@
 	--sbe-green: #45b400;
 	--sbe-dark-green: #2e7900;
 	--sbe-gray: rgb(184, 184, 184);
+	--angle: 0deg;
 }
 
 /* Styles */
@@ -1033,4 +1034,17 @@ select {
 		transform: translateX(0px);
 		opacity: 1;
 	}
+}
+
+.mahub img{
+ width: 600px;
+ height: 770px;
+ border-radius: 10%;
+ border: solid 2px red;
+ 
+}
+
+.mahub-center {
+	display: flex;
+	justify-content: center;
 }
