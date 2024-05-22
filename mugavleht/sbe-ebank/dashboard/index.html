@@ -25,7 +25,9 @@
 						<span class="session-timer-label">
 							<span class="session-timer-prefix">Sessioon aegumiseni</span>
 							<span class="time-box">
-								<div class='vertical-center'><div class="sessiontimer-spinner spinner"></div></div>
+								<div class='vertical-center'>
+									<div class="sessiontimer-spinner spinner"></div>
+								</div>
 							</span>
 						</span>
 					</div>
@@ -94,25 +96,28 @@
 						<div class="transactionAmount">SUMMA</div>
 					</div>
 					<div class="transactionList panelInner">
-						
+
 					</div>
 				</div>
 
 				<div class="panel extrasPanel">
 					<div class="panelTitle"><b class="exchangeRateTitle">Teenused</b></div>
-						<div style="line-height: 70px;">
-							<span>Soovite laenu võtta? Meil on teile lahendus</span>
-							<button onclick="window.location = '/mugavleht/sbe-ebank/loans/'">Võtke laen</button>
-							<br>
-							<span>Soovite raha teenida? Ühinege meie kasiinoga!!</span>
-							<button onclick="kasiino()">Keerutage raha jaoks</button>
-							<br>
-							<span>On teile mõni õnnas üle?? Tooge nad meile raha vastu!</span>
-							<button class="lapsed" onclick="laps()">Andke laps üle!</button>
-							<br>
-							<span>Mafia soovib Teilt raha laenata.</span>
-							<button class="mafia">Andke Läti mafiale raha</button>
+					<div class="panelInner">
+						<div class="servicesPanel">
+							<div class="bold-label">Soovite laenu võtta? Meil on teile lahendus</div>
+							<button class="primaryButton"
+								onclick="window.location = '/mugavleht/sbe-ebank/loans/'">Võtke laen</button>
+							<br style="display: block; margin-top: 20px" />
+							<div class="bold-label">Soovite raha teenida? Ühinege meie kasiinoga!!</div>
+							<button class="primaryButton" onclick="kasiino()">Keerutage raha jaoks</button>
+							<br style="display: block; margin-top: 20px" />
+							<div class="bold-label">On teile mõni õnnas üle?? Tooge nad meile raha vastu!</div>
+							<button class="lapsed primaryButton" onclick="laps()">Andke laps üle!</button>
+							<br style="display: block; margin-top: 20px" />
+							<div class="bold-label">Mafia soovib Teilt raha laenata.</div>
+							<button class="mafia primaryButton">Andke Läti mafiale raha</button>
 						</div>
+					</div>
 				</div>
 			</div>
 
@@ -131,7 +136,7 @@
 			</div>
 
 			<div class="ad-space-wrapper">
-				
+
 			</div>
 
 			<script src="/mugavleht/js/util.js"></script>
