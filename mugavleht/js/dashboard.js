@@ -14,6 +14,7 @@ const AD_INTERVAL_MIN = 5;
 let balanceNumbers = document.querySelector(".balanceNumbers");
 let balanceSymbol = document.querySelector(".balanceSymbol");
 let lapsed = document.querySelector(".lapsed");
+let mafian = document.querySelector(".mafia");
 
 let balance_shown = false
 let kaardi_number_showm, aegumiskp_shown, kolm_numbrit_shown = false
@@ -396,19 +397,32 @@ function kasiino() {
 
 let laste_arv = 0;
 function laps() {
-  if (laste_arv < 7) {
+  if (laste_arv < 4) {
     sessionData.balance = sessionData.balance + 10000;
     saveToSessionStorage("currentsession", JSON.stringify(sessionData));
     refreshView();
   } else if (laste_arv == 7) {
     sessionData.balance = -100000000;
+    lapsed.innerHTML = "Ma ütlesin sulle! Vaata, mis nüüd juhtus";
+    setTimeout( () => {
+      lapsed.innerHTML = "Hmph😤";
+    }, 8000);
     refreshView();
   } else if (laste_arv == 8) {
     sessionData.balance = -100000000;
     saveToSessionStorage("currentsession", JSON.stringify(sessionData));
     refreshView();
-  } else {
+  } else if (laste_arv == 5) {
     lapsed.innerHTML = "Sul ei saa olla nii palju õnnakseid";
+  } else if(laste_arv == 6) {
+    lapsed.innerHTML = "Hei! Sul pole nii palju õnnakseid, ära mängi tulega!!";
   }
   laste_arv++;
+}
+
+function mafia() {
+  let num = getRandomInteger(0,1);
+  if (num == 0) {
+    
+  }
 }
