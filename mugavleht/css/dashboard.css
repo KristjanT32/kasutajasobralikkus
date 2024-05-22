@@ -178,7 +178,10 @@
 }
 
 .primaryPanel {
-	height: 1fr;
+}
+
+.servicesPanel {
+	display: flex;
 }
 
 .transactionsPanel {
