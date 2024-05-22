@@ -13,6 +13,12 @@ TODO:
 
 6. fake sõnumid, et keegi sai/saatis raha
 
+
+
+
+https://www.example.org
+
+
 7. pangaarvete ajalugu
 
 8. goofy pildid list(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNtsWOqG5mADWzEVq1DoU4JL-SJjSrsPfXhxv-Cr4fxQ&s)

@@ -36,7 +36,24 @@ const consultants = [
 		name: "Juhan Juhaan",
 		desc: "See on tegelikult ka tema nimi.",
 		img: "/mugavleht/assets/img/people/person003.jpeg"
-	}
+	},
+
+	{
+		name: "Tõnis Niinemets",
+		desc: "KACHOW! Ma LEIDSIN sinu.",
+		img: "/mugavleht/assets/img/people/19091709.jfif"
+	},
+
+	{
+		name: "Jüri Ratas",
+		desc: "Arvasid, et olen ainult poliitik? HAHAHAHAH, tule siia",
+		img: "https://f7.pmo.ee/YUZqkvptMwUA_e_KgwHUVI7P0ns=/685x0/filters:focal(329x102:519x318)/nginx/o/2023/10/10/15646334t1hac5e.png"
+	},
+	{
+		name: "Märt Avandi",
+		desc: "Vist aitab sind, mdea, pole talt küsind",
+		img: "/mugavleht/assets/img/people/avandi.PNG"
+	},
 ]
 
 const loanPlans = [

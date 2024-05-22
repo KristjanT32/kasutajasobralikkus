@@ -138,7 +138,7 @@ const modals = [
 		  <div class="description"></div>
 		  <br style="margin-top: 20px">
 		  <div class="vertical-center">
-			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel Teie nime õigsust ja vastavust <a href="https://www.example.org">SBE nimesobivuseeskirjadega</a>.</b>
+			  <b class="generic-label">SBE kvalifitseeritud tiim valideerib hetkel Teie nime õigsust ja vastavust <a href="https://www.youtube.com/watch?v=iOztnsBPrAA&list=PL3tRBEVW0hiDL09lO0xjKEix84OY27xet">SBE nimesobivuseeskirjadega</a>.</b>
 			  <div class="generic-label">
 				  Valideerimine võtab vaid mõne hetke. Palun oodake.
 			  </div>

@@ -1040,20 +1040,9 @@ select {
  height: 770px;
  border-radius: 10%;
  border: solid 5px pink;
- 
 }
 
 .mahub-center {
 	display: flex;
 	justify-content: center;
-}
-
-@keyframes rainbow-border {
-	from {
-		background-position-x: 0%;
-	}
-
-	to {
-		background-position-x: 100%;
-	}
 }
