@@ -36,7 +36,12 @@ const consultants = [
 		name: "Juhan Juhaan",
 		desc: "See on tegelikult ka tema nimi.",
 		img: "/mugavleht/assets/img/people/person003.jpeg"
-	}
+	},
+	{
+		name: "Kuldar Taunsoo",
+		desc: "Kahtlane tüüp. Osa inimesi väidab, et näevad teda vahepeal koeradega malet mängimas.",
+		img: "/mugavleht/assets/img/people/person002.jpeg"
+	},
 ]
 
 const loanPlans = [
@@ -125,7 +130,7 @@ function handleLoan() {
 			case 3: {
 				showNotification("Aitab küll, naljamees. Kasi minema siit.", 1, 3000);
 				setTimeout(() => {
-					window.location = "/mugavleht/index.html";
+					window.location = "https://youtu.be/umDr0mPuyQc?&t=3";
 				}, 1000);
 				return;
 			}

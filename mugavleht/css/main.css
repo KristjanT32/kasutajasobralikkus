@@ -810,17 +810,40 @@ select {
 }
 
 .messageboard {
-	width: 500px;
-	height: 150px;
-	bottom: 0;
-	right: 0;
-	background: #f5b942;
-	position: fixed;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	position: fixed;
+	width: 500px;
+	height: 150px;
+
+	bottom: 25px;
+	right: 25px;
+
+	background: #f5b942;
+
+	border-radius: .25rem;
+
 	opacity: 0;
 	z-index: 4;
+
+	font-family: "SEB Medium", Arial, sans-serif;
+	font-size: 20px;
+}
+
+.messageboard_content {
+	display: flex;
+	width: 100%;
+	margin-left: 40px;
+	margin-right: 40px;
+	
+	text-align: center;
+	align-items: center;
+}
+
+.messageboard_content button {
+	width: 200px;
 }
 
 .admin-login-code {
@@ -859,11 +882,11 @@ select {
 
 @keyframes spawn {
 	from {
-		transform: initial;
+		bottom: -25px;
 	}
 
 	to {
-		transform: translateY(-100px);
+		bottom: 25px;
 	}
 }
 
