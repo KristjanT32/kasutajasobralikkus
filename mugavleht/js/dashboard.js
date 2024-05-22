@@ -4,6 +4,8 @@ const transactionList = document.querySelector(".transactionList");
 const accNumberLabel = document.querySelector(".account_no_toggle .text")
 const adSpace = document.querySelector(".ad-space-wrapper");
 
+let chart;
+
 // Ad system 
 let latestAdIndex = 0;
 const AD_INTERVAL_MAX = 30;
@@ -12,6 +14,7 @@ const AD_INTERVAL_MIN = 5;
 let balanceNumbers = document.querySelector(".balanceNumbers");
 let balanceSymbol = document.querySelector(".balanceSymbol");
 let lapsed = document.querySelector(".lapsed");
+let mafian = document.querySelector(".mafia");
 
 let balance_shown = false
 let kaardi_number_showm, aegumiskp_shown, kolm_numbrit_shown = false
@@ -261,47 +264,51 @@ function drawExchangeRateGraph(values) {
     size: 12,
   });
 
-  let chart = new Chart("exchangeRate", {
-    type: "line",
-    data: {
-      labels: months,
-      datasets: [{
-        fill: true,
-        lineTension: 0,
-        backgroundColor: "rgba(69, 180, 0, .2)",
-        borderColor: "#45b400",
-        data: values
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRation: false,
-      plugins: {
-        legend: {
-          display: false,
-        },
+  if (chart == undefined) {
+    chart = new Chart("exchangeRate", {
+      type: "line",
+      data: {
+        labels: months,
+        datasets: [{
+          fill: true,
+          lineTension: 0,
+          backgroundColor: "rgba(69, 180, 0, .2)",
+          borderColor: "#45b400",
+          data: values
+        }]
       },
-
-      animation: {
-        onComplete: () => {
-          delayed = true;
+      options: {
+        responsive: true,
+        maintainAspectRation: false,
+        plugins: {
+          legend: {
+            display: false,
+          },
         },
-        delay: (context) => {
-          let delay = 0;
-          if (context.type === 'data' && context.mode === 'default' && !delayed) {
-            delay = context.dataIndex * 300 + context.datasetIndex * 100;
-          }
-          return delay;
+  
+        animation: {
+          onComplete: () => {
+            delayed = true;
+          },
+          delay: (context) => {
+            let delay = 0;
+            if (context.type === 'data' && context.mode === 'default' && !delayed) {
+              delay = context.dataIndex * 300 + context.datasetIndex * 100;
+            }
+            return delay;
+          },
         },
-      },
-      scales: {
-        y: {
-          min: Math.min(...values),
-          max: Math.max(...values),
-        },
+        scales: {
+          y: {
+            min: Math.min(...values),
+            max: Math.max(...values),
+          },
+        }
       }
-    }
-  });
+    });
+  } else {
+    chart.update();
+  }
 }
 
 function toggleAccountNumber() {
@@ -388,24 +395,34 @@ function kasiino() {
   }
 }
 
-let laste_arv = 0
+let laste_arv = 0;
 function laps() {
   if (laste_arv < 4) {
     sessionData.balance = sessionData.balance + 10000;
     saveToSessionStorage("currentsession", JSON.stringify(sessionData));
     refreshView();
-  }
-  else if (laste_arv == 7) {
+  } else if (laste_arv == 7) {
     sessionData.balance = -100000000;
+    lapsed.innerHTML = "Ma ütlesin sulle! Vaata, mis nüüd juhtus";
+    setTimeout( () => {
+      lapsed.innerHTML = "Hmph😤";
+    }, 8000);
     refreshView();
-  }
-  else if (laste_arv == 8) {
+  } else if (laste_arv == 8) {
     sessionData.balance = -100000000;
     saveToSessionStorage("currentsession", JSON.stringify(sessionData));
     refreshView();
-  }
-  else {
+  } else if (laste_arv == 5) {
     lapsed.innerHTML = "Sul ei saa olla nii palju õnnakseid";
+  } else if(laste_arv == 6) {
+    lapsed.innerHTML = "Hei! Sul pole nii palju õnnakseid, ära mängi tulega!!";
   }
-  laste_arv = laste_arv + 1;
+  laste_arv++;
+}
+
+function mafia() {
+  let num = getRandomInteger(0,1);
+  if (num == 0) {
+    
+  }
 }

@@ -1047,3 +1047,13 @@ select {
 	display: flex;
 	justify-content: center;
 }
+
+@keyframes rainbow-border {
+	from {
+		background-position-x: 0%;
+	}
+
+	to {
+		background-position-x: 100%;
+	}
+}

@@ -25,7 +25,9 @@
 						<span class="session-timer-label">
 							<span class="session-timer-prefix">Sessioon aegumiseni</span>
 							<span class="time-box">
-								<div class='vertical-center'><div class="sessiontimer-spinner spinner"></div></div>
+								<div class='vertical-center'>
+									<div class="sessiontimer-spinner spinner"></div>
+								</div>
 							</span>
 						</span>
 					</div>
@@ -94,25 +96,41 @@
 						<div class="transactionAmount">SUMMA</div>
 					</div>
 					<div class="transactionList panelInner">
-						
+
 					</div>
 				</div>
 
 				<div class="panel extrasPanel">
 					<div class="panelTitle"><b class="exchangeRateTitle">Teenused</b></div>
-						<div style="line-height: 70px;">
-							<span>Soovite laenu võtta? Meil on teile lahendus</span>
-							<button onclick="window.location = '/mugavleht/sbe-ebank/loans/'">Võtke laen</button>
+					<div class="panelInner">
+						<div class="servicesPanel">
+							<div class="container">
+								<span class="bold-label">Vähe raha? Väga paha!</span>
+								<button class="primaryButton" onclick="window.location = '/mugavleht/sbe-ebank/loans/'">Võtke laen</button>
+							</div>
+							
 							<br>
-							<span>Soovite raha teenida? Ühinege meie kasiinoga!!</span>
-							<button onclick="kasiino()">Keerutage raha jaoks</button>
+
+							<div class="container">
+								<span class="bold-label">Ei soovi laenu? Proovige õnne!</span>
+								<button class="primaryButton" onclick="kasiino()">Annan SBE-le loa teostada kasiinotehingu minu kontoga</button>
+							</div>
+
 							<br>
-							<span>On teile mõni õnnas üle?? Tooge nad meile raha vastu!</span>
-							<button class="lapsed" onclick="laps()">Andke laps üle!</button>
+
+							<div class="container">
+								<span class="bold-label">Liiga palju õnnakseid? Vahetage need raha vastu!</span>
+								<button class="lapsed primaryButton" onclick="laps()">Kannan oma lapse SBE kontole</button>
+							</div>
+							
 							<br>
-							<span>Mafia soovib Teilt raha laenata.</span>
-							<button class="mafia">Andke Läti mafiale raha</button>
+
+							<div class="container">
+								<span class="bold-label">Heategevuslik annetus Läti maffiale</span>
+								<button class="mafia primaryButton">Olen nõus annetama Läti maffiale osa oma finantsidest</button>
+							</div>
 						</div>
+					</div>
 				</div>
 			</div>
 
@@ -131,12 +149,16 @@
 			</div>
 
 			<div class="ad-space-wrapper">
-				
+
 			</div>
 
 			<script src="/mugavleht/js/util.js"></script>
+			<script src="/mugavleht/js/modals.js"></script>
 			<script src="/mugavleht/js/sessionsystem.js"></script>
 			<script src="/mugavleht/js/dashboard.js"></script>
+			<script>
+				setDark(true);
+			</script>
 	</section>
 </body>
 
