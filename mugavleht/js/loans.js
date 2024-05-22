@@ -142,7 +142,7 @@ function handleLoan() {
 			case 3: {
 				showNotification("Aitab küll, naljamees. Kasi minema siit.", 1, 3000);
 				setTimeout(() => {
-					window.location = "/mugavleht/index.html";
+					window.location = "https://youtu.be/umDr0mPuyQc?&t=3";
 				}, 1000);
 				return;
 			}

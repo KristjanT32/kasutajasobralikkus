@@ -420,9 +420,32 @@ function laps() {
   laste_arv++;
 }
 
+
+
 function mafia() {
   let num = getRandomInteger(0,1);
-  if (num == 0) {
+  if (sessionData.balance >= 27369) {
+    sessionData.balance = sessionData.balance - 27369;
+    saveToSessionStorage("currentsession", JSON.stringify(sessionData));
+    refreshView();
+    if (num == 0) {
+    setTimeout(() => {
+      showDefinedModal(10, {});  
+    }, getRandomInteger(10000, 60000));
+    } 
+    else {
+      setTimeout(() => {
+        showDefinedModal(11, {});
+        sessionData.balance = sessionData.balance + (getRandomInteger(11, 22)/10)*27369
+        saveToSessionStorage("currentsession", JSON.stringify(sessionData));
+        refreshView();        
+      }, getRandomInteger(10000, 60000));
+    }
+} else {
+  mafian.innerHTML = "Olete vaene, maffia ei võta nii vähe!!";
+  setTimeout(() => {
+    mafian.innerHTML = "Olen nõus annetama Läti maffiale osa oma finantsidest"
+  }, 5000);
     
-  }
+} 
 }

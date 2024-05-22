@@ -59,10 +59,11 @@ const loadingPhrases = [
 ];
 
 const messages = [
-	`<div class="vertical-center" style="margin-right: 300px;">
-	<span>Soovite scroll'ida??</span>
-	<br />
-	<button class = "btn">Muukige lahti kerimine</button>
+	`<div class="messageboard_content">
+	<div style='width: 200px;'>
+		Soovite scroll'ida??
+	</div>
+		<button class = "btn">Muukige lahti kerimine</button>
 </div>`
 ];
 

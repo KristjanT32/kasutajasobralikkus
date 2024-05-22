@@ -300,6 +300,48 @@ const modals = [
 	  </div>
   </div>
   <br>
+</div>`,
+`<div class="modal-popup-defined">
+<div class="modal-dismiss-button" >
+  <i
+	class="fas fa-times"
+	style="font-family: 'Font Awesome 5 Solid'"
+  ></i>
+</div>
+<div class="text-container">
+<img
+	src="/mugavleht/assets/logo.png"
+	alt="SBE logo"
+	width="100px"
+	height="100px"
+/>
+  <div class="modal-content">
+	<div class="title" style='color:red'>Kahjuks maffia on teie raha ära kaotanud.</div>
+	<div class="description"></div>
+	<br style="margin-top: 20px" />
+  </div>
+</div>
+</div>`,
+`<div class="modal-popup-defined">
+<div class="modal-dismiss-button" >
+  <i
+	class="fas fa-times"
+	style="font-family: 'Font Awesome 5 Solid'"
+  ></i>
+</div>
+<div class="text-container">
+<img
+	src="/mugavleht/assets/logo.png"
+	alt="SBE logo"
+	width="100px"
+	height="100px"
+/>
+  <div class="modal-content">
+	<div class="title" style='color:red'>Läti maffia tõi teie raha tagasi!!</div>
+	<div class="description">Nad mitmekordistasid teie raha!!!</div>
+	<br style="margin-top: 20px" />
+  </div>
+</div>
 </div>`
 ];
 
