@@ -1035,12 +1035,8 @@ select {
 	}
 }
 
-@keyframes rainbow-border {
-	from {
-		background-position-x: 0%;
-	}
-
+@keyframes rotate {
 	to {
-		background-position-x: 100%;
+		--angle: 360deg;
 	}
 }
