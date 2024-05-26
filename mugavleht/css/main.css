@@ -1,1072 +1,1073 @@
 /* Font definitions */
 @font-face {
-	font-family: "SEB Regular";
-	src: url("/mugavleht/assets/fonts/SEBSansSerif-Regular.woff") format("woff");
+    font-family: "SEB Regular";
+    src: url("../assets/fonts/SEBSansSerif-Regular.woff") format("woff");
 }
 
 @font-face {
-	font-family: "SEB Bold";
-	src: url("/mugavleht/assets/fonts/SEBSansSerif-Bold.woff") format("woff");
+    font-family: "SEB Bold";
+    src: url("../assets/fonts/SEBSansSerif-Bold.woff") format("woff");
 }
 
 @font-face {
-	font-family: "SEB Medium";
-	src: url("/mugavleht/assets/fonts/SEBSansSerif-Medium.woff") format("woff");
+    font-family: "SEB Medium";
+    src: url("../assets/fonts/SEBSansSerif-Medium.woff") format("woff");
 }
 
 @font-face {
-	font-family: "SEB Light";
-	src: url("/mugavleht/assets/fonts/SEBSansSerif-Light.woff") format("woff");
+    font-family: "SEB Light";
+    src: url("../assets/fonts/SEBSansSerif-Light.woff") format("woff");
 }
 
 @font-face {
-	font-family: "Comic Sans";
-	src: url("/mugavleht/assets/fonts/Comic Sans MS.ttf") format("ttf");
+    font-family: "Comic Sans";
+    src: url("../assets/fonts/Comic Sans MS.ttf") format("ttf");
 }
 
 @font-face {
-	font-family: "Font Awesome 5 Solid";
-	src: url("/mugavleht/assets/fonts/fa-solid-900.woff2") format("woff2");
+    font-family: "Font Awesome 5 Solid";
+    src: url("../assets/fonts/fa-solid-900.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Font Awesome 5 Regular";
-	src: url("/mugavleht/assets/fonts/fa-regular-400.woff2") format("woff2");
+    font-family: "Font Awesome 5 Regular";
+    src: url("../assets/fonts/fa-regular-400.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Font Awesome 5 Brands";
-	src: url("/mugavleht/assets/fonts/fa-brands-400.woff2") format("woff2");
+    font-family: "Font Awesome 5 Brands";
+    src: url("../assets/fonts/fa-brands-400.woff2") format("woff2");
 }
 
 :root {
-	--header-bg-dark: #222222;
-	--header-bg-light: #ffffff;
-	--bg-dark: #121212;
-	--bg-light: #ffffff;
-	--sbe-green: #45b400;
-	--sbe-dark-green: #2e7900;
-	--sbe-gray: rgb(184, 184, 184);
-	--angle: 0deg;
+    --header-bg-dark: #222222;
+    --header-bg-light: #ffffff;
+    --bg-dark: #121212;
+    --bg-light: #ffffff;
+    --sbe-green: #45b400;
+    --sbe-dark-green: #2e7900;
+    --sbe-gray: rgb(184, 184, 184);
+    --angle: 0deg;
 }
 
 /* Styles */
 
 body.loans {
-	margin: 0px;
-	background-color: var(--bg-dark);
+    margin: 0px;
+    background-color: var(--bg-dark);
 }
 
 body.ebank {
-	margin: 0px;
-	background-color: var(--bg-dark);
+    margin: 0px;
+    background-color: var(--bg-dark);
 }
 
 body {
-	margin: 0px;
-	background-color: var(--bg-light);
+    margin: 0px;
+    background-color: var(--bg-light);
 }
 
 input {
-	border: 1px solid #cecece;
-	border-radius: 4px;
+    border: 1px solid #cecece;
+    border-radius: 4px;
 
-	background-color: white;
-	color: black;
+    background-color: white;
+    color: black;
 
-	padding: 10px;
+    padding: 10px;
 
-	min-height: 20px;
-	min-width: 300px;
+    min-height: 20px;
+    min-width: 300px;
 
-	font-family: "SBE Medium", Arial, sans-serif;
+    font-family: "SBE Medium", Arial, sans-serif;
 }
 
 input.centered {
-	text-align: center;
+    text-align: center;
 }
 
 button {
-	border: 1px solid #cecece;
-	border-radius: 4px;
+    border: 1px solid #cecece;
+    border-radius: 4px;
 
-	color: black;
+    color: black;
 
-	min-height: 20px;
-	min-width: 100px;
+    min-height: 20px;
+    min-width: 100px;
 
-	font-family: "SEB Medium", Arial, sans-serif;
+    font-family: "SEB Medium", Arial, sans-serif;
 
-	padding: 10px;
+    padding: 10px;
 
-	cursor: pointer;
+    cursor: pointer;
 }
 
 button.dark {
-	border: 1px solid var(--bg-dark);
-	border-radius: 4px;
+    border: 1px solid var(--bg-dark);
+    border-radius: 4px;
 
-	color: white;
-	background-color: var(--header-bg-dark);
+    color: white;
+    background-color: var(--header-bg-dark);
 
-	min-height: 20px;
-	min-width: 100px;
+    min-height: 20px;
+    min-width: 100px;
 
-	font-family: "SEB Medium", Arial, sans-serif;
+    font-family: "SEB Medium", Arial, sans-serif;
 
-	padding: 10px;
+    padding: 10px;
 
-	cursor: pointer;
+    cursor: pointer;
 }
 
 button.dark:hover {
-	background-color: #151515;
+    background-color: #151515;
 }
 
 .modal-popup-defined.dark {
-	background-color: var(--header-bg-dark);
-	color: white;
-	box-shadow: 0 0 10px 1px var(--bg-dark);
+    background-color: var(--header-bg-dark);
+    color: white;
+    box-shadow: 0 0 10px 1px var(--bg-dark);
 }
 
 .modal-popup-defined.dark input {
-	background-color: var(--header-bg-dark);
-	color: white;
+    background-color: var(--header-bg-dark);
+    color: white;
 }
 
 .modal-popup-defined.dark .name-file-input {
-	background-color: var(--header-bg-dark);
-	color: white;
+    background-color: var(--header-bg-dark);
+    color: white;
 }
 
 .modal-popup-defined.dark .register-link, .login-link, .a[href] {
-	color: white;
+    color: white;
 }
 
 .modal-popup-defined.dark .spinner {
-	border-color: rgb(96, 205, 24) var(--header-bg-dark);
+    border-color: rgb(96, 205, 24) var(--header-bg-dark);
 }
+
 .modal-popup-defined.dark a:not(:visited) {
-	color: rgb(96, 205, 24);
+    color: rgb(96, 205, 24);
 }
 
 .modal-popup-defined.dark a:visited {
-	color: rgb(70, 148, 18);
+    color: rgb(70, 148, 18);
 }
 
 .primaryButton {
-	color: white;
-	background-color: var(--sbe-green);
-	border-color: var(--sbe-green);
+    color: white;
+    background-color: var(--sbe-green);
+    border-color: var(--sbe-green);
 
-	font-family: "SEB Regular";
+    font-family: "SEB Regular";
 
-	padding: 10px;
+    padding: 10px;
 }
 
 label {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .login {
-	background-color: var(--sbe-green);
-	border-color: var(--sbe-green);
-	color: white;
+    background-color: var(--sbe-green);
+    border-color: var(--sbe-green);
+    color: white;
 
-	font-size: 15px;
+    font-size: 15px;
 }
 
 .login:hover,
 .register:hover {
-	background-color: var(--sbe-dark-green);
-	border-color: var(--sbe-dark-green);
+    background-color: var(--sbe-dark-green);
+    border-color: var(--sbe-dark-green);
 }
 
 .register {
-	background-color: var(--sbe-green);
-	border-color: var(--sbe-green);
-	color: white;
+    background-color: var(--sbe-green);
+    border-color: var(--sbe-green);
+    color: white;
 
-	font-size: 15px;
+    font-size: 15px;
 }
 
 select {
-	border: 1px solid #cecece;
-	border-radius: 4px;
+    border: 1px solid #cecece;
+    border-radius: 4px;
 
-	background-color: white;
-	color: black;
+    background-color: white;
+    color: black;
 
-	padding: 10px;
+    padding: 10px;
 
-	min-height: 20px;
-	min-width: 300px;
+    min-height: 20px;
+    min-width: 300px;
 
-	padding: 10px;
+    padding: 10px;
 }
 
 .nameselect {
-	width: 325px;
+    width: 325px;
 }
 
 .name-file-input {
-	border: 1px solid #cecece;
-	border-radius: 4px;
+    border: 1px solid #cecece;
+    border-radius: 4px;
 
-	background-color: white;
-	color: black;
+    background-color: white;
+    color: black;
 
-	padding: 10px;
+    padding: 10px;
 
-	min-height: 20px;
-	min-width: 300px;
+    min-height: 20px;
+    min-width: 300px;
 
-	cursor: pointer;
+    cursor: pointer;
 
-	font-family: "SEB Medium";
-	box-shadow: none;
+    font-family: "SEB Medium";
+    box-shadow: none;
 }
 
 .name-file-input input[type="file"] {
-	display: none;
+    display: none;
 }
 
 .register-link,
 .register-link:visited,
 .login-link,
 .login-link:visited {
-	text-decoration: none;
-	color: black;
+    text-decoration: none;
+    color: black;
 
-	font-family: "SEB Medium", Arial, sans-serif;
-	font-size: 18px;
+    font-family: "SEB Medium", Arial, sans-serif;
+    font-size: 18px;
 }
 
 .register-link:hover,
 .login-link:hover {
-	color: var(--sbe-green);
+    color: var(--sbe-green);
 }
 
 .modal-popup-defined label {
-	font-family: "SEB Medium", Arial, sans-serif;
+    font-family: "SEB Medium", Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {
-	display: none;
+    display: none;
 }
 
 .top-bar {
 }
 
 .header {
-	display: flex;
+    display: flex;
 
-	width: 100vw;
-	height: 100px;
+    width: 100vw;
+    height: 100px;
 
-	margin: 0;
+    margin: 0;
 
-	background-color: var(--header-bg-light);
+    background-color: var(--header-bg-light);
 }
 
 .loans .header {
-	display: flex;
+    display: flex;
 
-	width: 100vw;
-	height: 100px;
+    width: 100vw;
+    height: 100px;
 
-	margin: 0;
+    margin: 0;
 
-	background-color: var(--header-bg-dark);
+    background-color: var(--header-bg-dark);
 }
 
 .loans .top-bar {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .ebank .header {
-	display: flex;
+    display: flex;
 
-	width: 100vw;
-	height: 95px;
+    width: 100vw;
+    height: 95px;
 
-	margin: 0;
+    margin: 0;
 
-	background-color: var(--header-bg-dark);
+    background-color: var(--header-bg-dark);
 }
 
 .ebank .header::before {
-	background-color: #333;
-	content: "";
-	width: 100vw;
-	height: 2px;
-	top: 93px;
-	left: 0;
-	position: absolute;
-	z-index: 4;
+    background-color: #333;
+    content: "";
+    width: 100vw;
+    height: 2px;
+    top: 93px;
+    left: 0;
+    position: absolute;
+    z-index: 4;
 }
 
 .subheader {
-	width: 100vw;
-	height: 65px;
+    width: 100vw;
+    height: 65px;
 
-	background-color: #1a1a1a;
+    background-color: #1a1a1a;
 }
 
 .subheader-menu {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-	height: 100%;
+    height: 100%;
 }
 
 .header-menu {
-	font-family: "SEB Medium";
+    font-family: "SEB Medium";
 
-	width: 100vw;
-	height: auto;
+    width: 100vw;
+    height: auto;
 
-	padding: 20px;
+    padding: 20px;
 
-	align-self: center;
+    align-self: center;
 }
 
 .header-menu > nav {
-	display: flex;
+    display: flex;
 
-	justify-content: left;
-	align-items: center;
+    justify-content: left;
+    align-items: center;
 
-	gap: 16px;
+    gap: 16px;
 }
 
 .header-menu nav > a:first-child {
-	text-decoration: none;
-	color: #45b400;
+    text-decoration: none;
+    color: #45b400;
 }
 
 .header-menu nav > a {
-	text-decoration: none;
-	color: #333333;
+    text-decoration: none;
+    color: #333333;
 }
 
 .header-menu nav > a:hover:not(:first-child),
 .header-menu-secondary nav > a:hover {
-	color: #0092e1;
+    color: #0092e1;
 }
 
 .header-menu-secondary {
-	font-family: "SEB Medium";
+    font-family: "SEB Medium";
 
-	width: 100vw;
-	height: auto;
+    width: 100vw;
+    height: auto;
 
-	padding: 20px;
-	align-self: center;
+    padding: 20px;
+    align-self: center;
 }
 
 .header-menu-secondary > nav {
-	display: flex;
-	justify-content: right;
-	align-items: center;
+    display: flex;
+    justify-content: right;
+    align-items: center;
 
-	gap: 16px;
+    gap: 16px;
 }
 
 .header-menu-secondary nav > a {
-	text-decoration: none;
-	color: #333333;
+    text-decoration: none;
+    color: #333333;
 }
 
 .modal-popup-area {
-	position: fixed;
+    position: fixed;
 
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
 
-	z-index: 3;
-	pointer-events: none;
+    z-index: 3;
+    pointer-events: none;
 
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .interaction-blocker {
-	position: fixed;
-	width: 100%;
-	height: 100%;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 
-	z-index: 2;
+    z-index: 2;
 
-	background-color: #33333344;
+    background-color: #33333344;
 
-	cursor: not-allowed;
-	user-select: none;
+    cursor: not-allowed;
+    user-select: none;
 
-	display: none;
+    display: none;
 }
 
 .vertical-center {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-	justify-content: center;
-	align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .absolute-vertical-center {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-	height: 100%;
+    height: 100%;
 
-	justify-content: center;
-	align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-popup {
-	position: relative;
-	pointer-events: auto;
+    position: relative;
+    pointer-events: auto;
 
-	top: 0;
-	left: 0;
+    top: 0;
+    left: 0;
 
-	width: 600px;
-	height: fit-content;
-	min-height: 500px;
-	max-height: 70%;
+    width: 600px;
+    height: fit-content;
+    min-height: 500px;
+    max-height: 70%;
 
-	margin: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
 
-	background-color: white;
-	box-shadow: 0 0 10px 1px grey;
+    background-color: white;
+    box-shadow: 0 0 10px 1px grey;
 
-	display: none;
+    display: none;
 }
 
 .modal-popup-defined {
-	display: flex;
+    display: flex;
 
-	position: relative;
-	pointer-events: auto;
+    position: relative;
+    pointer-events: auto;
 
-	align-items: start;
-	justify-content: center;
+    align-items: start;
+    justify-content: center;
 
-	top: 0;
-	left: 0;
+    top: 0;
+    left: 0;
 
-	width: 600px;
-	height: fit-content;
-	max-height: 80%;
+    width: 600px;
+    height: fit-content;
+    max-height: 80%;
 
-	padding-bottom: 50px;
-	margin: 10px 0 10px 0;
+    padding-bottom: 50px;
+    margin: 10px 0 10px 0;
 
-	background-color: white;
-	box-shadow: 0 0 10px 1px grey;
+    background-color: white;
+    box-shadow: 0 0 10px 1px grey;
 
-	animation: modal-show 0.5s forwards;
+    animation: modal-show 0.5s forwards;
 }
 
 .modal-popup-show {
-	display: block;
-	animation: modal-show 0.2s forwards;
+    display: block;
+    animation: modal-show 0.2s forwards;
 }
 
 .modal-popup-hide {
-	display: block;
-	animation: modal-hide 0.2s forwards;
+    display: block;
+    animation: modal-hide 0.2s forwards;
 }
 
 .modal-popup .text-container,
 .modal-popup-defined .text-container {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
 
-	margin: 20px;
+    margin: 20px;
 }
 
 .modal-popup .title,
 .modal-popup-defined .title {
-	font-size: 25px;
-	font-family: "SEB Bold";
+    font-size: 25px;
+    font-family: "SEB Bold";
 
-	margin-top: 40px;
+    margin-top: 40px;
 }
 
 .modal-popup .description,
 .modal-popup-defined .description {
-	font-size: 20px;
-	font-family: "SEB Regular";
+    font-size: 20px;
+    font-family: "SEB Regular";
 
-	margin-top: 40px;
+    margin-top: 40px;
 }
 
 .generic-label {
-	font-family: "SEB Regular", Arial, sans-serif;
+    font-family: "SEB Regular", Arial, sans-serif;
 }
 
 .modal-popup .close-button-fake {
-	padding: 20px;
+    padding: 20px;
 
-	font-family: "SEB Regular";
-	font-size: 30px;
+    font-family: "SEB Regular";
+    font-size: 30px;
 
-	width: 500px;
-	height: 200px;
+    width: 500px;
+    height: 200px;
 
-	border-radius: 0.25rem;
-	border: solid 1px rgb(96, 205, 24);
+    border-radius: 0.25rem;
+    border: solid 1px rgb(96, 205, 24);
 
-	background-color: rgb(96, 205, 24);
-	color: white;
+    background-color: rgb(96, 205, 24);
+    color: white;
 
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .modal-popup .modal-dismiss-button,
 .modal-popup-defined .modal-dismiss-button {
-	position: absolute;
-	right: 0;
+    position: absolute;
+    right: 0;
 
-	margin: 5px 10px 10px 5px;
-	cursor: pointer;
+    margin: 5px 10px 10px 5px;
+    cursor: pointer;
 }
 
 .modal-popup .timer-description {
-	font-family: "SEB Regular", Arial, sans-serif;
-	font-size: 15px;
+    font-family: "SEB Regular", Arial, sans-serif;
+    font-size: 15px;
 }
 
 .modal-popup .modal-spinner {
-	margin: 100px auto;
+    margin: 100px auto;
 }
 
 .estimated-processing-time {
-	font-family: "SEB Bold";
-	font-size: 40px;
+    font-family: "SEB Bold";
+    font-size: 40px;
 
-	background-color: rgb(184, 184, 184);
+    background-color: rgb(184, 184, 184);
 
-	border: solid 1px rgb(184, 184, 184);
-	border-radius: 0.25rem;
+    border: solid 1px rgb(184, 184, 184);
+    border-radius: 0.25rem;
 
-	width: 300px;
+    width: 300px;
 
-	padding: 2.5px;
+    padding: 2.5px;
 }
 
 .time-box {
-	font-family: "SEB Bold";
+    font-family: "SEB Bold";
 
-	background-color: rgb(184, 184, 184);
+    background-color: rgb(184, 184, 184);
 
-	border: solid 1px rgb(184, 184, 184);
-	border-radius: 0.25rem;
+    border: solid 1px rgb(184, 184, 184);
+    border-radius: 0.25rem;
 
-	padding: 2.5px;
+    padding: 2.5px;
 
-	display: flexbox;
-	align-content: center;
-	justify-content: center;
+    display: flexbox;
+    align-content: center;
+    justify-content: center;
 }
 
 .loading-status {
-	font-family: "SEB Regular", Arial, sans-serif;
-	font-size: 20px;
-	font-weight: bold;
+    font-family: "SEB Regular", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 
-	margin-top: 15px;
+    margin-top: 15px;
 }
 
 .modal-popup .close-button-fake:hover {
-	background-color: rgb(70, 149, 17);
+    background-color: rgb(70, 149, 17);
 }
 
 .modal-popup .close-button-real:hover {
-	background-color: rgb(123, 15, 15);
+    background-color: rgb(123, 15, 15);
 }
 
 .gold-tier {
-	font-family: "Comic Sans MS";
-	color: gold;
-	text-shadow: yellow;
+    font-family: "Comic Sans MS";
+    color: gold;
+    text-shadow: yellow;
 }
 
 .ebanking-button {
-	background-color: #0092e1;
+    background-color: #0092e1;
 
-	border: solid 1px #0092e1;
-	border-radius: 0.25rem;
+    border: solid 1px #0092e1;
+    border-radius: 0.25rem;
 
-	padding: 0.5625rem 1rem;
+    padding: 0.5625rem 1rem;
 
-	font-family: "SEB Medium";
-	font-weight: 500;
-	color: white;
-	text-decoration: none;
-	line-height: 1.5;
+    font-family: "SEB Medium";
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    line-height: 1.5;
 
-	margin-left: auto;
-	margin-right: 10px;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .lock-icon::after {
-	font-family: "Font Awesome 5 Regular";
-	content: \f023;
+    font-family: "Font Awesome 5 Regular";
+    content: \f023;
 
-	display: inline-block;
-	font-style: normal;
-	font-variant: normal;
-	text-rendering: auto;
-	line-height: 1;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
 }
 
 .header-logo {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .harold-img {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .KULD-nupp {
-	background-color: var(--sbe-green);
-	border-color: var(--sbe-green);
-	color: white;
+    background-color: var(--sbe-green);
+    border-color: var(--sbe-green);
+    color: white;
 
-	font-size: 15px;
+    font-size: 15px;
 }
 
 .img-overlay-text {
-	display: flex;
+    display: flex;
 
-	position: absolute;
-	top: 350px;
-	left: 0;
+    position: absolute;
+    top: 350px;
+    left: 0;
 
-	width: 100%;
-	height: 200px;
+    width: 100%;
+    height: 200px;
 
-	z-index: 1;
+    z-index: 1;
 
-	justify-content: center;
-	align-items: center;
+    justify-content: center;
+    align-items: center;
 
-	color: white;
-	background-color: #333333a9;
+    color: white;
+    background-color: #333333a9;
 }
 
 .img-overlay-text .text {
-	font-family: "SEB Bold", Arial, sans-serif;
-	font-weight: bold;
-	font-size: 80px;
+    font-family: "SEB Bold", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 80px;
 
-	text-align: center;
+    text-align: center;
 }
 
 @keyframes modal-show {
-	from {
-		opacity: 0;
-		transform: translateY(-20px);
-	}
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
 
-	to {
-		opacity: 1;
-		transform: translateY(20px);
-	}
+    to {
+        opacity: 1;
+        transform: translateY(20px);
+    }
 }
 
 @keyframes modal-hide {
-	from {
-		opacity: 1;
-		transform: translateY(20px);
-	}
+    from {
+        opacity: 1;
+        transform: translateY(20px);
+    }
 
-	to {
-		opacity: 0;
-		transform: translateY(-20px);
-	}
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
 }
 
 .spinner {
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	border: 9px solid;
-	border-color: rgb(96, 205, 24) white;
-	animation: spinner-spin 1s infinite;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 9px solid;
+    border-color: rgb(96, 205, 24) white;
+    animation: spinner-spin 1s infinite;
 }
 
-.sessiontimer-spinner  {
-	width: 15px;
-	height: 15px;
-	border: 6px solid;
-	border-color: rgb(255, 255, 255) rgb(238, 81, 81);
+.sessiontimer-spinner {
+    width: 15px;
+    height: 15px;
+    border: 6px solid;
+    border-color: rgb(255, 255, 255) rgb(238, 81, 81);
 }
 
 @keyframes spinner-spin {
-	to {
-		transform: rotate(0.5turn);
-	}
+    to {
+        transform: rotate(0.5turn);
+    }
 }
 
 .notification-area-wrapper {
-	position: fixed;
+    position: fixed;
 
-	bottom: 50px;
-	right: 30%;
-	left: 30%;
+    bottom: 50px;
+    right: 30%;
+    left: 30%;
 
-	display: flex;
-	justify-content: center;
-	text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 
-	user-select: none;
-	pointer-events: none;
+    user-select: none;
+    pointer-events: none;
 }
 
 .hover-notification {
-	position: relative;
+    position: relative;
 
-	visibility: hidden;
+    visibility: hidden;
 
-	min-width: 60vh;
-	min-height: 6vh;
+    min-width: 60vh;
+    min-height: 6vh;
 
-	border: solid 1px rgb(255, 192, 192);
-	border-radius: 0.25rem;
+    border: solid 1px rgb(255, 192, 192);
+    border-radius: 0.25rem;
 
-	box-shadow: 0 0 3px 1px rgb(255, 86, 86);
+    box-shadow: 0 0 3px 1px rgb(255, 86, 86);
 
-	background-color: rgb(255, 192, 192);
+    background-color: rgb(255, 192, 192);
 
-	font-family: "SBE Medium", Arial, sans-serif;
+    font-family: "SBE Medium", Arial, sans-serif;
 
-	z-index: 3;
+    z-index: 3;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .notification-show {
-	visibility: visible;
-	animation: move-up 0.6s ease-in-out forwards;
+    visibility: visible;
+    animation: move-up 0.6s ease-in-out forwards;
 }
 
 .notification-hide {
-	visibility: visible;
-	animation: move-down 0.6s ease-in-out forwards;
+    visibility: visible;
+    animation: move-down 0.6s ease-in-out forwards;
 }
 
 .notificationText {
-	font-weight: bolder;
-	font-size: 1rem;
+    font-weight: bolder;
+    font-size: 1rem;
 
-	margin-left: 20px;
-	margin-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 
-	text-align: center;
+    text-align: center;
 }
 
 .material-symbols-outlined {
-	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 @keyframes move-up {
-	from {
-		transform: translateY(40px);
-		opacity: 0%;
-	}
+    from {
+        transform: translateY(40px);
+        opacity: 0%;
+    }
 
-	to {
-		transform: translateY(-10px);
-		opacity: 100%;
-	}
+    to {
+        transform: translateY(-10px);
+        opacity: 100%;
+    }
 }
 
 @keyframes move-down {
-	from {
-		transform: translateY(-10px);
-		opacity: 100%;
-	}
+    from {
+        transform: translateY(-10px);
+        opacity: 100%;
+    }
 
-	to {
-		transform: translateY(40px);
-		opacity: 0%;
-	}
+    to {
+        transform: translateY(40px);
+        opacity: 0%;
+    }
 }
 
 .ligipaasetavus-nupp {
-	background-color: #1a1a1a;
-	border-color: #1a1a1a;
-	color: #1a1a1a;
+    background-color: #1a1a1a;
+    border-color: #1a1a1a;
+    color: #1a1a1a;
 }
 
 .messageboard {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-	position: fixed;
-	width: 500px;
-	height: 150px;
+    position: fixed;
+    width: 500px;
+    height: 150px;
 
-	bottom: 25px;
-	right: 25px;
+    bottom: 25px;
+    right: 25px;
 
-	background: #f5b942;
+    background: #f5b942;
 
-	border-radius: .25rem;
+    border-radius: .25rem;
 
-	opacity: 0;
-	z-index: 4;
+    opacity: 0;
+    z-index: 4;
 
-	font-family: "SEB Medium", Arial, sans-serif;
-	font-size: 20px;
+    font-family: "SEB Medium", Arial, sans-serif;
+    font-size: 20px;
 }
 
 .messageboard_content {
-	display: flex;
-	width: 100%;
-	margin-left: 40px;
-	margin-right: 40px;
-	
-	text-align: center;
-	align-items: center;
+    display: flex;
+    width: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    text-align: center;
+    align-items: center;
 }
 
 .messageboard_content button {
-	width: 200px;
+    width: 200px;
 }
 
 .admin-login-code {
-	margin-bottom: 25px;
-	padding: 10px;
+    margin-bottom: 25px;
+    padding: 10px;
 
-	background-color: whitesmoke;
-	color: var(--sbe-green);
+    background-color: whitesmoke;
+    color: var(--sbe-green);
 
-	height: 50px;
+    height: 50px;
 
-	font-family: "Consolas", Arial, sans-serif;
-	font-size: 50px;
+    font-family: "Consolas", Arial, sans-serif;
+    font-size: 50px;
 }
 
 .admin-login-buttons {
-	display: grid;
-	grid-template-columns: repeat(3, 50px);
-	grid-template-rows: repeat(4, 50px);
-	gap: 15px;
-	justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(4, 50px);
+    gap: 15px;
+    justify-content: center;
 }
 
 .number-button {
-	display: flex;
+    display: flex;
 
-	min-width: 60px;
-	min-height: 60px;
+    min-width: 60px;
+    min-height: 60px;
 
-	justify-content: center;
+    justify-content: center;
 
-	font-family: "SEB Medium";
-	font-weight: bold;
-	font-size: 30px;
+    font-family: "SEB Medium";
+    font-weight: bold;
+    font-size: 30px;
 }
 
 @keyframes spawn {
-	from {
-		bottom: -25px;
-	}
+    from {
+        bottom: -25px;
+    }
 
-	to {
-		bottom: 25px;
-	}
+    to {
+        bottom: 25px;
+    }
 }
 
 #loanSelector {
-	color: white;
-	background-color: var(--header-bg-dark);
-	border-color: var(--bg-dark);
+    color: white;
+    background-color: var(--header-bg-dark);
+    border-color: var(--bg-dark);
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 
-	margin-top: 10px;
+    margin-top: 10px;
 
-	font-family: "SEB Regular";
+    font-family: "SEB Regular";
 }
 
 #loanSumInput {
-	color: white;
-	background-color: var(--header-bg-dark);
-	border-color: var(--bg-dark);
+    color: white;
+    background-color: var(--header-bg-dark);
+    border-color: var(--bg-dark);
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 
-	margin-top: 10px;
+    margin-top: 10px;
 
-	font-family: "SEB Regular";
+    font-family: "SEB Regular";
 }
 
 .generic-divider {
-	border-top: solid 2.5px;
-	border-radius: 0.25rem;
+    border-top: solid 2.5px;
+    border-radius: 0.25rem;
 
-	margin-top: 20px;
-	margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .bold-label {
-	font-family: "SEB Medium";
-	font-size: 20px;
+    font-family: "SEB Medium";
+    font-size: 20px;
 }
 
 .generic-description {
-	font-family: "SEB Regular";
-	color: #cecece;
+    font-family: "SEB Regular";
+    color: #cecece;
 }
 
 .reviewPanel {
-	margin-top: 10px;
-	padding: 15px;
+    margin-top: 10px;
+    padding: 15px;
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 
-	background-color: var(--bg-dark);
+    background-color: var(--bg-dark);
 
-	overflow-y: scroll;
+    overflow-y: scroll;
 }
 
 .highlightedValue {
-	padding: 5px;
+    padding: 5px;
 
-	color: white;
-	background-color: var(--header-bg-dark);
+    color: white;
+    background-color: var(--header-bg-dark);
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 }
 
 .consultantSelectorMenu {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .consultantSelectorButtons {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
 }
 
 .consultantPagination {
-	margin-left: 5px;
-	margin-right: 5px;
-	padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 
-	background-color: var(--header-bg-dark);
+    background-color: var(--header-bg-dark);
 }
 
 .consultantProfile {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
 }
 
 .consultantProfile img {
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 }
 
 .consultantProfileText {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-	margin-left: 10px;
+    margin-left: 10px;
 }
 
 .consultantProfile .bold-label {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .consultantSelector_nextHide {
-	animation: slide-fade-right 0.2s ease-in forwards;
+    animation: slide-fade-right 0.2s ease-in forwards;
 }
 
 .consultantSelector_nextAppear {
-	animation: slide-appear-left 0.2s ease-in forwards;
+    animation: slide-appear-left 0.2s ease-in forwards;
 }
 
 .consultantSelector_prevHide {
-	animation: slide-fade-left 0.2s ease-in forwards;
+    animation: slide-fade-left 0.2s ease-in forwards;
 }
 
 .consultantSelector_prevAppear {
-	animation: slide-appear-right 0.2s ease-in forwards;
+    animation: slide-appear-right 0.2s ease-in forwards;
 }
 
 @keyframes slide-fade-right {
-	from {
-		transform: initial;
-		opacity: 1;
-	}
+    from {
+        transform: initial;
+        opacity: 1;
+    }
 
-	to {
-		transform: translateX(100px);
-		opacity: 0;
-	}
+    to {
+        transform: translateX(100px);
+        opacity: 0;
+    }
 }
 
 @keyframes slide-appear-left {
-	from {
-		transform: translateX(-100px);
-		opacity: 0;
-	}
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
 
-	to {
-		transform: translateX(0px);
-		opacity: 1;
-	}
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
 }
 
 @keyframes slide-fade-left {
-	from {
-		transform: initial;
-		opacity: 1;
-	}
+    from {
+        transform: initial;
+        opacity: 1;
+    }
 
-	to {
-		transform: translateX(-100px);
-		opacity: 0;
-	}
+    to {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
 }
 
 @keyframes slide-appear-right {
-	from {
-		transform: translateX(100px);
-		opacity: 0;
-	}
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
 
-	to {
-		transform: translateX(0px);
-		opacity: 1;
-	}
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
 }
 
-.mahub img{
- width: 600px;
- height: 770px;
- border-radius: 10%;
- border: solid 5px pink;
+.mahub img {
+    width: 600px;
+    height: 770px;
+    border-radius: 10%;
+    border: solid 5px pink;
 }
 
 .mahub-center {
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
 }

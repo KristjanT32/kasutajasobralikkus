@@ -1,163 +1,163 @@
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<link
-			rel="stylesheet"
-			href="/mugavleht/css/main.css" />
-		<link
-			rel="stylesheet"
-			href="/mugavleht/css/dashboard.css" />
-		<link
-			rel="stylesheet"
-			href="/mugavleht/css/fontawesome/all.css" />
-		<link
-			rel="icon"
-			type="image/x-icon"
-			href="/mugavleht/assets/sbe-logo.svg" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-			rel="stylesheet" />
-		<title>SBE erakliendi laenuportaal</title>
-	</head>
-	<body class="loans">
-		<div class="interaction-blocker"></div>
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            content="width=device-width, initial-scale=1.0"
+            name="viewport"/>
+    <link
+            href="css/main.css"
+            rel="stylesheet"/>
+    <link
+            href="css/dashboard.css"
+            rel="stylesheet"/>
+    <link
+            href="css/fontawesome/all.css"
+            rel="stylesheet"/>
+    <link
+            href="assets/sbe-logo.svg"
+            rel="icon"
+            type="image/x-icon"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"/>
+    <title>SBE erakliendi laenuportaal</title>
+</head>
+<body class="loans">
+<div class="interaction-blocker"></div>
 
-		<div class="loans top-bar">
-			<div class="loans header">
-				<div
-					class="header-logo"
-					onclick="window.location = '/mugavleht'">
-					<img
-						src="/mugavleht/assets/logo.png"
-						alt="SBE logo"
-						width="95px"
-						;
-						height="95px" />
-				</div>
-			</div>
-		</div>
+<div class="loans top-bar">
+    <div class="loans header">
+        <div
+                class="header-logo"
+                onclick="window.location = '/mugavleht'">
+            <img
+                    ;
+                    alt="SBE logo"
+                    height="95px"
+                    src="assets/logo.png"
+                    width="95px"/>
+        </div>
+    </div>
+</div>
 
-		<div class="modal-popup-area"></div>
+<div class="modal-popup-area"></div>
 
-		<div class="panel primaryPanel">
-			<div class="panelTitle">SBE laenuportaal</div>
-			<div class="panelInner">
-				<div class="loanselection_phase1">
-					<div class="bold-label">Valige sobiv laenupakett</div>
-					<select
-						name="loanSelector"
-						id="loanSelector"></select>
-				</div>
-				<hr class="generic-divider" />
-				<div class="loanselection_phase2">
-					<div class="bold-label">Valige laenusumma</div>
-					<input
-						type="number"
-						id="loanSumInput" />
-				</div>
-				<hr class="generic-divider" />
-				<div class="loanselection_phase3">
-					<div class="bold-label">Valige laenukonsultant</div>
-					<div class="generic-description">
-						Laenukonsultant aitab teil toime tulla laenujärgsete sümptomitega
-						(sh. kõhulahtisus, köha, kopsuvähk, pangakontoontühiooma viirus,
-						surm jms.)
-					</div>
-					<div class="reviewPanel">
-						<div class="consultantSelectorMenu">
-							<div class="consultantProfile">
-								<img
-									src="/mugavleht/assets/img/harold.webp"
-									alt=""
-									style="width: 100px; height: 100px" />
-								<div class="consultantProfileText">
-									<div class="bold-label name">Konsultant</div>
-									<div class="generic-description desc">
-										Väga tubli. Natuke lõhnav.
-									</div>
-								</div>
-							</div>
-							<div class="consultantSelectorButtons">
-								<button
-									class="dark prevConsultantButton"
-									onclick="prevConsultant()">
-									Eelmine
-								</button>
-								<div class="generic-label consultantPagination"></div>
-								<button
-									class="dark nextConsultantButton"
-									onclick="nextConsultant()">
-									Järgmine
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<hr class="generic-divider" />
-				<div class="loanselection_review">
-					<div class="bold-label">Kinnitage tingimused</div>
-					<div class="reviewPanel">
-						<div class="bold-label">
-							Laenupakett:
-							<span class="highlightedValue loanTypeLabel">SBE Hüperlaen</span>
-						</div>
-						<br />
-						<div class="bold-label">
-							Intressimäär:
-							<span class="highlightedValue interestLabel">199%</span>
-						</div>
-						<br />
-						<div class="bold-label">
-							Laenusumma:
-							<span class="highlightedValue sumLabel">29 990 EUR</span>
-						</div>
-						<br />
-						<div class="bold-label">
-							Laenukonsultant:
-							<span class="highlightedValue consultantLabel"
-								>Peeter Sitasoo</span
-							>
-						</div>
-					</div>
-					<br />
-					<div class="vertical-center">
-						<button
-							class="primaryButton"
-							style="margin-bottom: 10px; font-size: 20px"
-							onclick="handleLoan()">
-							Kinnitan, et valitud laenutingimused on korrektsed
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="panel primaryPanel">
+    <div class="panelTitle">SBE laenuportaal</div>
+    <div class="panelInner">
+        <div class="loanselection_phase1">
+            <div class="bold-label">Valige sobiv laenupakett</div>
+            <select
+                    id="loanSelector"
+                    name="loanSelector"></select>
+        </div>
+        <hr class="generic-divider"/>
+        <div class="loanselection_phase2">
+            <div class="bold-label">Valige laenusumma</div>
+            <input
+                    id="loanSumInput"
+                    type="number"/>
+        </div>
+        <hr class="generic-divider"/>
+        <div class="loanselection_phase3">
+            <div class="bold-label">Valige laenukonsultant</div>
+            <div class="generic-description">
+                Laenukonsultant aitab teil toime tulla laenujärgsete sümptomitega
+                (sh. kõhulahtisus, köha, kopsuvähk, pangakontoontühiooma viirus,
+                surm jms.)
+            </div>
+            <div class="reviewPanel">
+                <div class="consultantSelectorMenu">
+                    <div class="consultantProfile">
+                        <img
+                                alt=""
+                                src="assets/img/harold.webp"
+                                style="width: 100px; height: 100px"/>
+                        <div class="consultantProfileText">
+                            <div class="bold-label name">Konsultant</div>
+                            <div class="generic-description desc">
+                                Väga tubli. Natuke lõhnav.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="consultantSelectorButtons">
+                        <button
+                                class="dark prevConsultantButton"
+                                onclick="prevConsultant()">
+                            Eelmine
+                        </button>
+                        <div class="generic-label consultantPagination"></div>
+                        <button
+                                class="dark nextConsultantButton"
+                                onclick="nextConsultant()">
+                            Järgmine
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="generic-divider"/>
+        <div class="loanselection_review">
+            <div class="bold-label">Kinnitage tingimused</div>
+            <div class="reviewPanel">
+                <div class="bold-label">
+                    Laenupakett:
+                    <span class="highlightedValue loanTypeLabel">SBE Hüperlaen</span>
+                </div>
+                <br/>
+                <div class="bold-label">
+                    Intressimäär:
+                    <span class="highlightedValue interestLabel">199%</span>
+                </div>
+                <br/>
+                <div class="bold-label">
+                    Laenusumma:
+                    <span class="highlightedValue sumLabel">29 990 EUR</span>
+                </div>
+                <br/>
+                <div class="bold-label">
+                    Laenukonsultant:
+                    <span class="highlightedValue consultantLabel"
+                    >Peeter Sitasoo</span
+                    >
+                </div>
+            </div>
+            <br/>
+            <div class="vertical-center">
+                <button
+                        class="primaryButton"
+                        onclick="handleLoan()"
+                        style="margin-bottom: 10px; font-size: 20px">
+                    Kinnitan, et valitud laenutingimused on korrektsed
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
-		<div class="notification-area-wrapper">
-			<div class="hover-notification">
+<div class="notification-area-wrapper">
+    <div class="hover-notification">
 				<span
-					class="material-symbols-outlined notificationIcon"
-					style="margin-right: auto; margin-left: 20px"
-					>warning
+                        class="material-symbols-outlined notificationIcon"
+                        style="margin-right: auto; margin-left: 20px"
+                >warning
 				</span>
-				<br />
-				<span class="notificationText"></span>
-				<br />
-				<span
-					class="material-symbols-outlined notificationIcon"
-					style="margin-left: auto; margin-right: 20px"
-					>warning
+        <br/>
+        <span class="notificationText"></span>
+        <br/>
+        <span
+                class="material-symbols-outlined notificationIcon"
+                style="margin-left: auto; margin-right: 20px"
+        >warning
 				</span>
-			</div>
-		</div>
+    </div>
+</div>
 
-		<script src="/mugavleht/js/modals.js"></script>
-		<script src="/mugavleht/js/loans.js"></script>
-		<script src="/mugavleht/js/util.js"></script>
-		<script>
-			setDark(true);
-		</script>
-	</body>
+<script src="js/modals.js"></script>
+<script src="js/loans.js"></script>
+<script src="js/util.js"></script>
+<script>
+    setDark(true);
+</script>
+</body>
 </html>

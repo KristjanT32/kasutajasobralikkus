@@ -11,7 +11,9 @@ const expirationNotice = document.querySelector(".sessionExpiredBlur");
 
 function initSession() {
 
-    if (JSON.parse(loadFromSessionStorage("currentsession")).nosess) { return; }
+    if (JSON.parse(loadFromSessionStorage("currentsession")).nosess) {
+        return;
+    }
 
     if (currentSession == undefined) {
         sessionTimer = getRandomInteger(MIN_SESSION_LENGTH, MAX_SESSION_LENGTH)
@@ -24,7 +26,7 @@ function initSession() {
                 clearInterval(sessionTimerInterval);
 
 
-                const soundSource = new Audio("/mugavleht/assets/audio/alarm.mp3")
+                const soundSource = new Audio("assets/audio/alarm.mp3")
                 soundSource.volume = .5;
                 soundSource.play()
 
@@ -42,15 +44,27 @@ function sessionExists() {
 function createOrInitSession(username, isAdmin = false) {
     let session;
     if (!sessionExists()) {
-        session = { user: username, sessionStart: Date.now(), nosess: false };
+        session = {user: username, sessionStart: Date.now(), nosess: false};
         if (!isAdmin) {
             saveToSessionStorage("currentsession", JSON.stringify(session))
         } else {
-            saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now(), balance: 69420, accno: "EE133769420666777360", nosess: true }))
+            saveToSessionStorage("currentsession", JSON.stringify({
+                user: username,
+                sessionStart: Date.now(),
+                balance: 69420,
+                accno: "EE133769420666777360",
+                nosess: true
+            }))
         }
     } else {
         if (isAdmin) {
-            saveToSessionStorage("currentsession", JSON.stringify({ user: username, sessionStart: Date.now(), balance: 69420, accno: "EE133769420666777360", nosess: true }))
+            saveToSessionStorage("currentsession", JSON.stringify({
+                user: username,
+                sessionStart: Date.now(),
+                balance: 69420,
+                accno: "EE133769420666777360",
+                nosess: true
+            }))
         }
     }
 }
