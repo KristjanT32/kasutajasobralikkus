@@ -21,7 +21,7 @@ const modals = [
   </div>
   <div class="text-container">
   <img
-      src="/assets/logo.png"
+      src="assets/logo.png"
       alt="SBE logo"
       width="100px"
       height="100px"
@@ -43,7 +43,7 @@ const modals = [
   </div>
   <div class="text-container">
     <img
-      src="/assets/logo.png"
+      src="assets/logo.png"
       alt="SBE logo"
       width="100px"
       height="100px" />
@@ -94,13 +94,14 @@ const modals = [
     <i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   </div>
   <div class="text-container">
-    <img src="/assets/logo.png" alt="SBE logo" width="100px" height="100px" />
+    <img src="assets/logo.png" alt="SBE logo" width="100px" height="100px" />
     <div class="modal-content">
       <div class="title">Registreeri ennast kasutajaks</div>
       <br>
       <div class="vertical-center">
         <label for="name2">Valige nimi</label>
-        <select class='nameselect'><!-- Automatically filled --></select>
+        <select class='nameselect' style="display: none"><!-- Automatically filled --></select>
+        <div class="spinner modal-spinner nameselect_loader"></div>
 
         <br style="display: block; margin-top: 15px;">
 
@@ -178,7 +179,7 @@ const modals = [
 </div>
 <div class="text-container">
 <img
-	src="/assets/logo.png"
+	src="assets/logo.png"
 	alt="SBE logo"
 	width="100px"
 	height="100px"
@@ -310,7 +311,7 @@ const modals = [
 </div>
 <div class="text-container">
 <img
-	src="/assets/logo.png"
+	src="assets/logo.png"
 	alt="SBE logo"
 	width="100px"
 	height="100px"
@@ -331,7 +332,7 @@ const modals = [
 </div>
 <div class="text-container">
 <img
-	src="/assets/logo.png"
+	src="assets/logo.png"
 	alt="SBE logo"
 	width="100px"
 	height="100px"
@@ -372,6 +373,8 @@ function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModa
                     .replaceAll('modal-popup-defined', darkModals ? 'modal-popup-defined dark' : 'modal-popup-defined')
             );
 
+            initModal(modalID, settings);
+
             let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
             dismissButton.addEventListener('click', () => {
                 onDismissCallback();
@@ -392,6 +395,8 @@ function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModa
                 .replaceAll('modal-popup-defined', darkModals ? 'modal-popup-defined dark' : 'modal-popup-defined')
         );
 
+        initModal(modalID, settings);
+
         let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
         dismissButton.addEventListener('click', () => {
             onDismissCallback();
@@ -402,8 +407,6 @@ function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModa
 
         currentCloseCallback = onCloseCallback;
     }
-
-    initModal(modalID, settings);
 }
 
 function hideDefinedModal() {
@@ -441,7 +444,7 @@ function hideDefinedModal() {
 function initModal(modalID, settings) {
     switch (modalID) {
         case 1:
-            let selector = document.querySelector(".name-file-input > input");
+            let selector = document.querySelector(".name-file-input #name");
             selector.addEventListener("change", (event) => {
                 let label = document.querySelector(".name-file-input > b");
                 label.innerText = "Nimefail: " + selector.files[0].name;
@@ -455,21 +458,20 @@ function initModal(modalID, settings) {
             adminPromptButton.addEventListener('click', () => {
                 showDefinedModal(6, {});
             });
-
-            break;
+            return;
 
         case 2:
-            if (currentNames.length == 0) {
-                fetchRandomNames(Math.ceil(Math.random() * MAX_RANDOM_NAMES));
+            if (currentNames.length === 0) {
+                fetchRandomNames(Math.ceil(getRandomInteger(1, MAX_RANDOM_NAMES)));
             } else {
                 refreshNameSelector();
             }
-            break;
+            return;
 
         case 3:
             setTimeout(() => {
                 hideDefinedModal();
             }, getRandomInteger(10) * 1000);
-            break;
+            return;
     }
 }
