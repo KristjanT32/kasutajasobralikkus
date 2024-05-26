@@ -50,7 +50,7 @@ const loadingPhrases = [
     "Analüüsime vastust...",
     "Värskendame SBE andmeõigsuseeskirju...",
     "Valideerime valikuid...",
-    "Loome kunstilist pingetunnet...",
+    "Loome kunstlikku pingetunnet...",
     "Kustutame alla keskmise teenivate klientide kontosid...",
     "Arvutame intresse...",
     "Suhtleme keskpangaga...",

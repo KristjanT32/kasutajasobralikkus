@@ -1,27 +1,27 @@
 <html lang="en">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.umd.js"></script>
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="css/main.css" />
-	<link rel="stylesheet" href="css/dashboard.css" />
-	<link rel="stylesheet" href="css/fontawesome/all.css" />
-	<link rel="icon" type="image/x-icon" href="assets/sbe-logo.svg" />
-	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="../../css/main.css" rel="stylesheet"/>
+    <link href="../../css/dashboard.css" rel="stylesheet"/>
+    <link href="../../css/fontawesome/all.css" rel="stylesheet"/>
+    <link href="../../assets/sbe-logo.svg" rel="icon" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 
-	<title>SBE erakliendi avaleht</title>
+    <title>SBE erakliendi avaleht</title>
 </head>
 
 <body class="ebank">
-	<div class="ebank top-bar">
-		<div class="ebank header">
-			<div class="header-logo" onclick="window.location = '/mugavleht'">
-				<img src="assets/logo.png" alt="SBE logo" width="95px" ; height="95px" />
-			</div>
-			<div class="session-panel-container">
-				<div class="session-panel">
-					<div class="vertical-center">
+<script src=" https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js "></script>
+<div class="ebank top-bar">
+    <div class="ebank header">
+        <div class="header-logo" onclick="window.location = '/'">
+            <img alt="SBE logo" height="95px" src="../../assets/logo.png" width="95px"/>
+        </div>
+        <div class="session-panel-container">
+            <div class="session-panel">
+                <div class="vertical-center">
 						<span class="session-timer-label">
 							<span class="session-timer-prefix">Sessioon aegumiseni</span>
 							<span class="time-box">
@@ -30,25 +30,25 @@
 								</div>
 							</span>
 						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-	<div class="modal-popup-area">
+<div class="modal-popup-area">
 
-	</div>
+</div>
 
-	<div class="sessionExpiredBlur">
-		<div class="absolute-vertical-center">
-			<div class="message">
+<div class="sessionExpiredBlur">
+    <div class="absolute-vertical-center">
+        <div class="message">
 				<span class="title">
-					<i style="font-family: 'Font Awesome 5 Solid'; color: white;"
-						class="fa-solid fa-lock lock-icon"></i>
+					<i class="fa-solid fa-lock lock-icon"
+                       style="font-family: 'Font Awesome 5 Solid'; color: white;"></i>
 					<span style="margin-left: 20px;">Teie sessioon aegus!</span>
 				</span>
-				<span class="desc">
+            <span class="desc">
 					Teie sessioon aegus, ning me pole enam teie identiteedis kindlad.
 					<br>
 					<br>
@@ -58,109 +58,116 @@
 					<br>
 					vajutage <a href="#">siia</a>, et jätkata selle sessiooni kasutamist.
 				</span>
-			</div>
-			<div class="sessionRestore">
+        </div>
+        <div class="sessionRestore">
 
-			</div>
-		</div>
-	</div>
+        </div>
+    </div>
+</div>
 
-	<h2 class="greetingLabel"></h2>
-	<section class="dozer-area">
-		<img src="assets/img/dozer.png" alt="Dozer" class="dozer-img">
+<h2 class="greetingLabel"></h2>
+<section class="dozer-area">
+    <img alt="Dozer" class="dozer-img" src="../../assets/img/dozer.png">
 
-		<div class="menu">
-			<div class="panel primaryPanel">
-				<div class="panelTitle"><b>Konto hetkeseis</b></div>
-				<div class="accountBackground">
-					<div><b>Arvelduskonto</b> <span style="color: darkgray;" class="account_no_toggle hidden"
-							onclick="toggleAccountNumber()"><span class="text">EE00000000000000000000</span></span>
-					</div>
-					<div style="margin-top: 10px; font-size: 13px; font-family: 'SEB Medium';">Kokku vabad vahendid
-					</div>
-					<div style="text-align: left; margin-top: 2.5px;">
-						<span class="balanceNumbers">0.00</span><span class="balanceSymbol"></span>
-					</div>
-				</div>
+    <div class="menu">
+        <div class="panel primaryPanel">
+            <div class="panelTitle"><b>Konto hetkeseis</b></div>
+            <div class="accountBackground">
+                <div><b>Arvelduskonto</b> <span class="account_no_toggle hidden" onclick="toggleAccountNumber()"
+                                                style="color: darkgray;"><span
+                        class="text">EE00000000000000000000</span></span>
+                </div>
+                <div style="margin-top: 10px; font-size: 13px; font-family: 'SEB Medium';">Kokku vabad vahendid
+                </div>
+                <div style="text-align: left; margin-top: 2.5px;">
+                    <span class="balanceNumbers">0.00</span><span class="balanceSymbol"></span>
+                </div>
+            </div>
 
-				<div class="panelTitle"><b class="exchangeRateTitle">Valuutakurss</b></div>
-				<div class="panelInner exchangeRateChart">
-					<canvas id="exchangeRate"></canvas>
-				</div>
-			</div>
-			<div class="rightPanel">
-				<div class="panel transactionsPanel">
-					<div class="panelTitle"><b class="exchangeRateTitle">Tehingud</b></div>
-					<div class="transactionListLabel">
-						<div class="transactionSender">SAATJA</div>
-						<div class="transactionReceiver">SAAJA</div>
-						<div class="transactionAmount">SUMMA</div>
-					</div>
-					<div class="transactionList panelInner">
+            <div class="panelTitle"><b class="exchangeRateTitle">Valuutakurss</b></div>
+            <div class="panelInner exchangeRateChart">
+                <canvas id="exchangeRate"></canvas>
+            </div>
+        </div>
+        <div class="rightPanel">
+            <div class="panel transactionsPanel">
+                <div class="panelTitle"><b class="exchangeRateTitle">Tehingud</b></div>
+                <div class="transactionListLabel">
+                    <div class="transactionSender">SAATJA</div>
+                    <div class="transactionReceiver">SAAJA</div>
+                    <div class="transactionAmount">SUMMA</div>
+                </div>
+                <div class="transactionList panelInner">
 
-					</div>
-				</div>
+                </div>
+            </div>
 
-				<div class="panel extrasPanel">
-					<div class="panelTitle"><b class="exchangeRateTitle">Teenused</b></div>
-					<div class="panelInner">
-						<div class="servicesPanel">
-							<div class="container">
-								<span class="bold-label">Vähe raha? Väga paha!</span>
-								<button class="primaryButton" onclick="window.location = 'sbe-ebank/loans/'">Võtke laen</button>
-							</div>
-							
-							<br>
+            <div class="panel extrasPanel">
+                <div class="panelTitle"><b class="exchangeRateTitle">Teenused</b></div>
+                <div class="panelInner">
+                    <div class="servicesPanel">
+                        <div class="container">
+                            <span class="bold-label">Vähe raha? Väga paha!</span>
+                            <button class="primaryButton" onclick="window.location = '/sbe-ebank/loans/'">Võtke laen
+                            </button>
+                        </div>
 
-							<div class="container">
-								<span class="bold-label">Ei soovi laenu? Proovige õnne!</span>
-								<button class="primaryButton" onclick="kasiino()">Annan SBE-le loa teostada kasiinotehingu minu kontoga</button>
-							</div>
+                        <br>
 
-							<br>
+                        <div class="container">
+                            <span class="bold-label">Ei soovi laenu? Proovige õnne!</span>
+                            <button class="primaryButton" onclick="kasiino()">Annan SBE-le loa teostada kasiinotehingu
+                                minu kontoga
+                            </button>
+                        </div>
 
-							<div class="container">
-								<span class="bold-label">Liiga palju õnnakseid? Vahetage need raha vastu!</span>
-								<button class="lapsed primaryButton" onclick="laps()">Kannan oma lapse SBE kontole</button>
-							</div>
-							
-							<br>
+                        <br>
 
-							<div class="container">
-								<span class="bold-label">Heategevuslik annetus Läti maffiale</span>
-								<button class="mafia primaryButton" onclick="mafia()">Olen nõus annetama Läti maffiale osa oma finantsidest</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                        <div class="container">
+                            <span class="bold-label">Liiga palju õnnakseid? Vahetage need raha vastu!</span>
+                            <button class="lapsed primaryButton" onclick="laps()">Kannan oma lapse SBE kontole</button>
+                        </div>
 
-			<div class="notification-area-wrapper">
-				<div class="hover-notification">
+                        <br>
+
+                        <div class="container">
+                            <span class="bold-label">Heategevuslik annetus Läti maffiale</span>
+                            <button class="mafia primaryButton" onclick="mafia()">Olen nõus annetama Läti maffiale osa
+                                oma finantsidest
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notification-area-wrapper">
+            <div class="hover-notification">
 					<span class="material-symbols-outlined notificationIcon"
-						style="margin-right: auto; margin-left: 20px">warning
+                          style="margin-right: auto; margin-left: 20px">warning
 					</span>
-					<br />
-					<span class="notificationText"></span>
-					<br />
-					<span class="material-symbols-outlined notificationIcon"
-						style="margin-left: auto; margin-right: 20px">warning
+                <br/>
+                <span class="notificationText"></span>
+                <br/>
+                <span class="material-symbols-outlined notificationIcon"
+                      style="margin-left: auto; margin-right: 20px">warning
 					</span>
-				</div>
-			</div>
+            </div>
+        </div>
 
-			<div class="ad-space-wrapper">
+        <div class="ad-space-wrapper">
 
-			</div>
+        </div>
 
-			<script src="js/util.js"></script>
-			<script src="js/modals.js"></script>
-			<script src="js/sessionsystem.js"></script>
-			<script src="js/dashboard.js"></script>
-			<script>
-				setDark(true);
-			</script>
-	</section>
+        <script src="../../js/util.js"></script>
+        <script src="../../js/modals.js"></script>
+        <script src="../../js/sessionsystem.js"></script>
+        <script src="../../js/dashboard.js"></script>
+        <script>
+            setDark(true);
+        </script>
+    </div>
+</section>
 </body>
 
 </html>
