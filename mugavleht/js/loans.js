@@ -23,25 +23,25 @@ const consultants = [
     {
         name: "Peeter Sitarson",
         desc: "Mitmeaastase staažiga abivalmis härra. Vahepeal natuke mõrvatujuline.",
-        img: "assets/img/people/person001.jpeg"
+        img: "../../assets/img/people/person001.jpeg"
     },
 
     {
         name: "Kuldar Taunsoo",
         desc: "Kahtlane tüüp. Osa inimesi väidab, et näevad teda vahepeal koeradega malet mängimas.",
-        img: "assets/img/people/person002.jpeg"
+        img: "../../assets/img/people/person002.jpeg"
     },
 
     {
         name: "Juhan Juhaan",
         desc: "See on tegelikult ka tema nimi.",
-        img: "assets/img/people/person003.jpeg"
+        img: "../../assets/img/people/person003.jpeg"
     },
 
     {
         name: "Tõnis Niinemets",
         desc: "KACHOW! Ma LEIDSIN sinu.",
-        img: "assets/img/people/19091709.jfif"
+        img: "../../assets/img/people/19091709.jfif"
     },
 
     {
@@ -52,7 +52,7 @@ const consultants = [
     {
         name: "Märt Avandi",
         desc: "Vist aitab sind, mdea, pole talt küsind",
-        img: "assets/img/people/avandi.PNG"
+        img: "../../assets/img/people/avandi.PNG"
     },
 ]
 

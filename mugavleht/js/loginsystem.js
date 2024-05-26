@@ -1,4 +1,4 @@
-const DASHBOARD_PATH = "sbe-ebank/dashboard/";
+const DASHBOARD_PATH = "/sbe-ebank/dashboard/";
 
 const admin_acc = {
     name: "admin",

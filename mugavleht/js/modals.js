@@ -21,7 +21,7 @@ const modals = [
   </div>
   <div class="text-container">
   <img
-      src="assets/logo.png"
+      src="/assets/logo.png"
       alt="SBE logo"
       width="100px"
       height="100px"
@@ -43,7 +43,7 @@ const modals = [
   </div>
   <div class="text-container">
     <img
-      src="assets/logo.png"
+      src="/assets/logo.png"
       alt="SBE logo"
       width="100px"
       height="100px" />
@@ -94,7 +94,7 @@ const modals = [
     <i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   </div>
   <div class="text-container">
-    <img src="assets/logo.png" alt="SBE logo" width="100px" height="100px" />
+    <img src="/assets/logo.png" alt="SBE logo" width="100px" height="100px" />
     <div class="modal-content">
       <div class="title">Registreeri ennast kasutajaks</div>
       <br>
@@ -179,7 +179,7 @@ const modals = [
 </div>
 <div class="text-container">
 <img
-	src="assets/logo.png"
+	src="/assets/logo.png"
 	alt="SBE logo"
 	width="100px"
 	height="100px"
@@ -311,7 +311,7 @@ const modals = [
 </div>
 <div class="text-container">
 <img
-	src="assets/logo.png"
+	src="/assets/logo.png"
 	alt="SBE logo"
 	width="100px"
 	height="100px"
@@ -332,7 +332,7 @@ const modals = [
 </div>
 <div class="text-container">
 <img
-	src="assets/logo.png"
+	src="/assets/logo.png"
 	alt="SBE logo"
 	width="100px"
 	height="100px"

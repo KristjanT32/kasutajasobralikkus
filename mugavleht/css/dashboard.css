@@ -1,302 +1,311 @@
 .panga_sisu {
-	margin-top: 50px;
-	line-height: 50px;
+    margin-top: 50px;
+    line-height: 50px;
 }
 
 
 .ad-space-wrapper {
-	position: absolute;
+    position: absolute;
 
-	bottom: 50px;
-	right: auto;
-	left: 50px;
+    bottom: 50px;
+    right: auto;
+    left: 50px;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 
-	user-select: none;
-	pointer-events: none;
+    user-select: none;
+    pointer-events: none;
 }
 
 .ad-block {
-	position: relative;
-	border: solid 1px #222222;
-	border-radius: .25rem;
+    position: relative;
+    border: solid 1px #222222;
+    border-radius: .25rem;
 
-	min-width: 300px;
-	min-height: 70px;
+    min-width: 300px;
+    min-height: 70px;
 
-	padding: 20px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 
-	background-color: #700000;
+    background-color: #700000;
 }
+
 .ad-appear {
-	animation: forwards 1s float-in ease-in;
+    animation: forwards 1s float-in ease-in;
 }
 
 .ad-disappear {
-	animation: forwards 1s float-down ease-out;
+    animation: forwards 1s float-down ease-out;
 }
 
 .ad-block .profile-pic {
-	width: 200px;
-	height: 200px;
+    width: 200px;
+    height: 200px;
 }
 
 .ad-block .ad-align-left {
-	display: flex;
-	justify-content: left;
+    display: flex;
+    justify-content: left;
 }
 
 .ad-block .ad-info {
-	display: flex;
-	flex-direction: column;
-	justify-content: top;
-	align-items: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
 
-	color: white;
+    color: white;
 
-	margin-left: 20px;
+    margin-left: 20px;
 }
 
 .ad-block .ad-info > .title {
-	font-family: "SEB Medium", Arial, sans-serif;
-	text-align: center;
+    font-family: "SEB Medium", Arial, sans-serif;
+    text-align: center;
 }
 
 .ad-block .ad-info {
-	font-family: "SEB Regular", Arial, sans-serif;
+    font-family: "SEB Regular", Arial, sans-serif;
 }
 
 .transactionList {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-	background-color: #3b3b3b;
+    background-color: #3b3b3b;
 
-	min-height: 50px;
-	max-height: 60%;
+    min-height: 50px;
+    max-height: 60%;
 
-	
 
-	padding: 10px;
-	margin: 5px 10px 10px 10px;
+    padding: 10px;
+    margin: 5px 10px 10px 10px;
 
-	justify-content: start;
-	align-items: center;
+    justify-content: start;
+    align-items: center;
+
+    overflow-x: hidden;
 }
 
 .transactionListLabel {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-	justify-content: left;
-	align-items: center;
+    justify-content: left;
+    align-items: center;
 
-	margin-top: 10px;
-	margin-left: 20px;
-	margin-right: 20px;
-	padding: 5px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
 
-	border-radius: 0.25rem;
-	background-color: #3b3b3b;
+    border-radius: 0.25rem;
+    background-color: #3b3b3b;
 
-	font-family: "SEB Medium";
-	font-size: 13px;
+    font-family: "SEB Medium";
+    font-size: 13px;
 }
 
-.transactionListLabel .transactionSender, .transactionReceiver {
-	width: 300px;
+.transactionListLabel .transactionSender, .transactionListLabel .transactionReceiver {
+    width: 300px;
+    border-right: solid 1px var(--sbe-gray);
 }
 
 
 .generic-transaction {
-	display: flex;
-	flex-direction: row;
-	
-	align-items: center;
-	justify-content: start;
+    display: flex;
+    flex-direction: row;
 
-	text-align: center;
+    align-items: center;
+    justify-content: start;
 
-	margin-bottom: 20px;
+    text-align: center;
 
-	width: 100%;
-	height: 100%;
+    margin-bottom: 20px;
+
+    width: 100%;
+    height: 100%;
 }
 
 .transactionReceiver, .transactionSender {
-	text-align: left;
+    text-align: left;
+}
+
+.generic-transaction {
+    background-color: var(--header-bg-dark);
+    padding: .25rem;
+    border-radius: .25rem;
+}
+
+.generic-transaction .transactionReceiver, .generic-transaction .transactionSender {
 }
 
 .transactionAmount {
-	margin-left: auto;
-	margin-right: 0;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .transactionAmount .text {
-	padding: 2.5px;
-	 
-	border: solid 2px;
-	border-radius: .25rem;
+    padding: 2.5px;
+
+    border: solid 2px;
+    border-radius: .25rem;
 }
 
 .transactionReceiver, .transactionSender {
-	width: 300px;
-	margin-left: 5px;
-	margin-right: 5px;
+    width: 300px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 
 .transactionAmount .text.sent {
-	background-color: rgb(187, 54, 54);
-	border-color: rgb(119, 0, 0);
+    background-color: rgb(187, 54, 54);
+    border-color: rgb(119, 0, 0);
 }
 
 .transactionAmount .text.received {
-	background-color: rgb(52, 172, 72);
-	border-color: rgb(0, 112, 15);
+    background-color: rgb(52, 172, 72);
+    border-color: rgb(0, 112, 15);
 }
 
 
-
-
-
 .menu {
-	display: grid;
-	grid-template-columns: 40fr 60fr;
-	grid-template-rows: repeat(1, 1fr);
-	grid-column-gap: 10px;
-	grid-row-gap: 10px;
+    display: grid;
+    grid-template-columns: 40fr 60fr;
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
 
-	padding: 20px;
-	margin: 10px;
+    padding: 20px;
+    margin: 10px;
 }
 
 .primaryPanel {
 }
 
 .servicesPanel {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
-	height: auto;
+    height: auto;
 }
 
 .servicesPanel br {
-	display: block;
-	margin-top: auto;
-	margin-bottom: 0;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 .servicesPanel button {
-	min-width: 200px;
+    min-width: 200px;
 }
 
 .servicesPanel .container {
-	display: flex;
-	align-items: center;
-	width: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 .servicesPanel span.bold-label {
-	margin-right: auto;
-	margin-left: 0;
+    margin-right: auto;
+    margin-left: 0;
 }
 
 .transactionsPanel {
-	height: 50%;
-	
+    height: 50%;
+
 }
 
 .extrasPanel {
-	height: 50%;
+    height: 50%;
 }
 
 .rightPanel {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .accountBackground {
-	width: 0.8vl;
-	height: 90px;
+    width: 0.8vl;
+    height: 90px;
 
-	margin: 20px;
+    margin: 20px;
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 
-	text-align: left;
+    text-align: left;
 
-	padding: 20px;
+    padding: 20px;
 
-	background-color: #3b3b3b;
+    background-color: #3b3b3b;
 }
 
 .panelInner {
-	margin: 10px 20px 20px 20px;
-	padding: 10px 10px 5px 10px;
+    margin: 10px 20px 20px 20px;
+    padding: 10px 10px 5px 10px;
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 
-	background-color: #3b3b3b;
+    background-color: #3b3b3b;
 
-	overflow-y: scroll;
+    overflow-y: scroll;
 }
 
 .panelInner.exchangeRateChart {
-	position: relative;
+    position: relative;
 
-	width: 1fr;
-	height: 35vh;
+    width: 1fr;
+    height: 35vh;
 }
 
 .panel {
-	font-family: "SBE Medium", Arial, sans-serif;
-	color: white;
+    font-family: "SBE Medium", Arial, sans-serif;
+    color: white;
 
-	padding: 10px;
+    padding: 10px;
 
-	background-color: #222222;
-	border: solid 2px #222222;
-	border-radius: 0.25rem;
-	box-shadow: 0 0 2px 1px #353535;
+    background-color: #222222;
+    border: solid 2px #222222;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 2px 1px #353535;
 
-	margin: 10px;
+    margin: 10px;
 }
 
 .account_no_toggle {
-	user-select: none;
-	letter-spacing: 1.25px;
+    user-select: none;
+    letter-spacing: 1.25px;
 }
 
 .account_no_toggle.shown {
-	background-color: #616161;
+    background-color: #616161;
 
-	padding: 2.5px;
+    padding: 2.5px;
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .account_no_toggle.hidden {
-	background-color: #616161;
+    background-color: #616161;
 
-	padding: 2.5px;
+    padding: 2.5px;
 
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .account_no_toggle.hidden > .text {
-	opacity: 0;
+    opacity: 0;
 }
 
 .shown {
@@ -306,201 +315,201 @@
 }
 
 .dozer-img {
-	transform: rotateY(180deg);
-	display: none;
+    transform: rotateY(180deg);
+    display: none;
 }
 
 .bank-content {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .bank-closed {
-	animation: close-up-shop ease-out 10s forwards;
+    animation: close-up-shop ease-out 10s forwards;
 }
 
 .balanceNumbers {
-	font-family: "SEB Bold", Arial, sans-serif;
-	font-size: 40px;
+    font-family: "SEB Bold", Arial, sans-serif;
+    font-size: 40px;
 }
 
 .balanceSymbol {
-	font-family: "SEB Regular", Arial, sans-serif;
-	text-transform: uppercase;
-	font-size: 20px;
+    font-family: "SEB Regular", Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
 .panelTitle {
-	font-family: "SEB Bold", Arial, sans-serif;
-	font-size: 25px;
-	text-align: left;
+    font-family: "SEB Bold", Arial, sans-serif;
+    font-size: 25px;
+    text-align: left;
 
-	margin-left: 20px;
-	margin-top: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .greetingLabel {
-	font-family: "SEB Medium", Arial, sans-serif;
-	font-weight: bold;
-	color: #ffffff;
+    font-family: "SEB Medium", Arial, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
 
-	margin-left: 30px;
-	margin-top: 20px;
-	margin-bottom: 10px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 
-	transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 
 .greetingLabel:hover {
-	transform: translateY(-5px);
-	transition: 0.2s ease-in-out;
+    transform: translateY(-5px);
+    transition: 0.2s ease-in-out;
 }
 
 .sessionExpiredBlur {
-	position: fixed;
-	z-index: 3;
+    position: fixed;
+    z-index: 3;
 
-	background-color: rgba(96, 50, 50, 0.957);
+    background-color: rgba(96, 50, 50, 0.957);
 
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 
-	display: none;
+    display: none;
 }
 
 .sessionExpiredBlur .lock-icon {
-	font-size: 50px;
+    font-size: 50px;
 }
 
 .sessionExpiredBlur .message {
-	background-color: rgba(187, 98, 98, 0.957);
+    background-color: rgba(187, 98, 98, 0.957);
 
-	border: solid 3px lightcoral;
-	border-radius: 10px;
+    border: solid 3px lightcoral;
+    border-radius: 10px;
 
-	padding: 20px;
+    padding: 20px;
 }
 
 .sessionExpiredBlur .title {
-	display: flex;
+    display: flex;
 
-	align-items: center;
-	text-align: left;
+    align-items: center;
+    text-align: left;
 
-	font-family: "SEB Bold";
-	font-size: 35px;
+    font-family: "SEB Bold";
+    font-size: 35px;
 
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 
-	color: white;
+    color: white;
 }
 
 .sessionExpiredBlur .desc {
-	color: white;
+    color: white;
 
-	font-size: 20px;
-	font-family: "SEB Regular", Arial, sans-serif;
+    font-size: 20px;
+    font-family: "SEB Regular", Arial, sans-serif;
 
-	text-align: center;
+    text-align: center;
 }
 
 .session-timer-prefix {
-	font-size: 20px;
-	font-family: "SEB Bold", Arial, sans-serif;
+    font-size: 20px;
+    font-family: "SEB Bold", Arial, sans-serif;
 
-	margin-right: 10px;
+    margin-right: 10px;
 
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .session-timer-label .time-box {
-	font-family: "SEB Bold";
+    font-family: "SEB Bold";
 
-	background-color: rgb(238, 81, 81);
+    background-color: rgb(238, 81, 81);
 
-	border: solid 2.5px rgb(133, 0, 0);
-	border-radius: 0.25rem;
+    border: solid 2.5px rgb(133, 0, 0);
+    border-radius: 0.25rem;
 
-	padding: 7.5px;
+    padding: 7.5px;
 
-	display: flexbox;
-	align-content: center;
-	justify-content: center;
+    display: flexbox;
+    align-content: center;
+    justify-content: center;
 }
 
 .session-panel-container {
-	padding: 10px;
+    padding: 10px;
 
-	margin-right: 0;
-	margin-left: auto;
+    margin-right: 0;
+    margin-left: auto;
 
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .session-panel {
-	font-family: "SEB Medium", Arial, sans-serif;
+    font-family: "SEB Medium", Arial, sans-serif;
 
-	width: 400px;
-	height: 100%;
+    width: 400px;
+    height: 100%;
 
-	display: flex;
-	justify-content: right;
+    display: flex;
+    justify-content: right;
 }
 
 .session-panel-title {
-	margin-top: 10px;
+    margin-top: 10px;
 
-	font-size: 10px;
-	font-family: "SEB Regular", Arial, sans-serif;
+    font-size: 10px;
+    font-family: "SEB Regular", Arial, sans-serif;
 
-	color: white;
+    color: white;
 }
 
 .session-timer-label {
-	display: flex;
+    display: flex;
 
-	align-items: center;
-	justify-content: center;
+    align-items: center;
+    justify-content: center;
 
-	font-size: 30px;
+    font-size: 30px;
 
-	padding: 5px;
+    padding: 5px;
 
-	color: white;
+    color: white;
 }
 
 @keyframes close-up-shop {
-	from {
-		padding-right: initial;
-	}
+    from {
+        padding-right: initial;
+    }
 
-	to {
-		padding-left: 200%;
-	}
+    to {
+        padding-left: 200%;
+    }
 }
 
 @keyframes float-down {
-	from {
-		transform: translateY(0);
-		opacity: 1;
-	}
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
 
-	to {
-		transform: translateY(200px);
-		opacity: 0;
-	}
+    to {
+        transform: translateY(200px);
+        opacity: 0;
+    }
 }
 
 @keyframes float-in {
-	from {
-		transform: translateX(-50px);
-		opacity: 0;
-	}
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
 
-	to {
-		transform: translateX(0px);
-		opacity: 1;
-	}
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
 }
