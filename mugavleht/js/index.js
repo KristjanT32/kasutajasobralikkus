@@ -21,8 +21,8 @@ let currentNames = [];
 
 let namesGenerated = false;
 
-// The maximum amount of random names to fetch.
-const MAX_RANDOM_NAMES = 20;
+// The maximum number of random names to fetch.
+const MAX_RANDOM_NAMES = 20.0;
 
 let timerLabel = document.querySelector(".estimated-processing-time");
 let loadingStatus = document.querySelector(".loading-status");
@@ -267,13 +267,18 @@ function register() {
 
 function refreshNameSelector() {
     const selector = document.querySelector(".nameselect");
+    const selectorLoader = document.querySelector(".nameselect_loader");
 
-    for (let i = 0; i < selector.options.length; i++) {
-        selector.options.remove(i);
-    }
+    selectorLoader.style.display = "block";
+    selector.style.display = "none";
+
+    selector.innerHTML = "";
     currentNames.forEach((name) => {
         selector.innerHTML += "<option>" + name + "</option>";
     });
+
+    selectorLoader.style.display = "none";
+    selector.style.display = "block";
 }
 
 function openNameFileSelector() {

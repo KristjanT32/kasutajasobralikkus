@@ -12,7 +12,7 @@ const HIDE_ANIM_DURATION = 200;
 let darkModals = false;
 
 const modals = [
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
   <div class="modal-dismiss-button" >
     <i
       class="fas fa-times"
@@ -33,7 +33,7 @@ const modals = [
     </div>
   </div>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
   <div
     class="modal-dismiss-button"
     >
@@ -89,7 +89,7 @@ const modals = [
     </div>
   </div>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
   <div class="modal-dismiss-button" >
     <i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   </div>
@@ -100,7 +100,8 @@ const modals = [
       <br>
       <div class="vertical-center">
         <label for="name2">Valige nimi</label>
-        <select class='nameselect'><!-- Automatically filled --></select>
+        <select class='nameselect' style="display: none"><!-- Automatically filled --></select>
+        <div class="spinner modal-spinner nameselect_loader"></div>
 
         <br style="display: block; margin-top: 15px;">
 
@@ -125,7 +126,7 @@ const modals = [
     </div>
   </div>
   </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 		<div class="modal-dismiss-button" >
     		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   		</div>
@@ -147,7 +148,7 @@ const modals = [
   </div>
   <br>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 		<div class="modal-dismiss-button" >
     		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   		</div>
@@ -169,7 +170,7 @@ const modals = [
   </div>
   <br>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 <div class="modal-dismiss-button" >
   <i
 	class="fas fa-times"
@@ -213,7 +214,7 @@ const modals = [
   </div>
 </div>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 	<div class="modal-dismiss-button">
 		<i
 			class="fas fa-times"
@@ -247,7 +248,7 @@ const modals = [
 		</div>
 	</div>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 		<div class="modal-dismiss-button" >
     		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   		</div>
@@ -269,7 +270,7 @@ const modals = [
   </div>
   <br>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 		<div class="modal-dismiss-button" >
     		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   		</div>
@@ -285,7 +286,7 @@ const modals = [
   </div>
   <br>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 		<div class="modal-dismiss-button" >
     		<i class="fas fa-times" style="font-family: 'Font Awesome 5 Solid'"></i>
   		</div>
@@ -301,7 +302,7 @@ const modals = [
   </div>
   <br>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 <div class="modal-dismiss-button" >
   <i
 	class="fas fa-times"
@@ -322,7 +323,7 @@ const modals = [
   </div>
 </div>
 </div>`,
-  `<div class="modal-popup-defined">
+    `<div class="modal-popup-defined">
 <div class="modal-dismiss-button" >
   <i
 	class="fas fa-times"
@@ -346,7 +347,7 @@ const modals = [
 ];
 
 function setDark(enabled) {
-  darkModals = enabled;
+    darkModals = enabled;
 }
 
 /**
@@ -356,81 +357,83 @@ function setDark(enabled) {
  * @param {function} onDismissCallback - the callback for when the user attempts to dismiss the modal. Defaults to closing the modal.
  */
 function showDefinedModal(modalID, settings, onDismissCallback = hideDefinedModal, onCloseCallback = undefined) {
-  if (modals[modalID] == undefined) {
-    showNotification(`Modaalakent indeksiga ${modalID} ei ole olemas. Suurim võimalik indeks on ${modals.length - 1}.`, 1, 5000);
-    return;
-  }
+    if (modals[modalID] == undefined) {
+        showNotification(`Modaalakent indeksiga ${modalID} ei ole olemas. Suurim võimalik indeks on ${modals.length - 1}.`, 1, 5000);
+        return;
+    }
 
-  if (secondaryModalShown) {
-    hideDefinedModal();
-    setTimeout(() => {
-      modalArea.insertAdjacentHTML(
-        "beforeend",
-        modals[modalID]
-          .replaceAll('{title}', settings.title)
-          .replaceAll('{description}', settings.desc)
-          .replaceAll('modal-popup-defined', darkModals ? 'modal-popup-defined dark' : 'modal-popup-defined')
-      );
+    if (secondaryModalShown) {
+        hideDefinedModal();
+        setTimeout(() => {
+            modalArea.insertAdjacentHTML(
+                "beforeend",
+                modals[modalID]
+                    .replaceAll('{title}', settings.title)
+                    .replaceAll('{description}', settings.desc)
+                    .replaceAll('modal-popup-defined', darkModals ? 'modal-popup-defined dark' : 'modal-popup-defined')
+            );
 
-      let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
-      dismissButton.addEventListener('click', () => {
-        onDismissCallback();
-      });
+            initModal(modalID, settings);
+
+            let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
+            dismissButton.addEventListener('click', () => {
+                onDismissCallback();
+            });
 
 
-      secondaryModalShown = true;
-      interactionBlocker.style.display = "block";
+            secondaryModalShown = true;
+            interactionBlocker.style.display = "block";
 
-      currentCloseCallback = onCloseCallback;
-    }, HIDE_ANIM_DURATION);
-  } else {
-    modalArea.insertAdjacentHTML(
-      "beforeend",
-      modals[modalID]
-        .replaceAll('{title}', settings.title)
-        .replaceAll('{description}', settings.desc)
-        .replaceAll('modal-popup-defined', darkModals ? 'modal-popup-defined dark' : 'modal-popup-defined')
-    );
+            currentCloseCallback = onCloseCallback;
+        }, HIDE_ANIM_DURATION);
+    } else {
+        modalArea.insertAdjacentHTML(
+            "beforeend",
+            modals[modalID]
+                .replaceAll('{title}', settings.title)
+                .replaceAll('{description}', settings.desc)
+                .replaceAll('modal-popup-defined', darkModals ? 'modal-popup-defined dark' : 'modal-popup-defined')
+        );
 
-    let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
-    dismissButton.addEventListener('click', () => {
-      onDismissCallback();
-    });
+        initModal(modalID, settings);
 
-    secondaryModalShown = true;
-    interactionBlocker.style.display = "block";
+        let dismissButton = document.querySelector(".modal-popup-defined .modal-dismiss-button");
+        dismissButton.addEventListener('click', () => {
+            onDismissCallback();
+        });
 
-    currentCloseCallback = onCloseCallback;
-  }
+        secondaryModalShown = true;
+        interactionBlocker.style.display = "block";
 
-  initModal(modalID, settings);
+        currentCloseCallback = onCloseCallback;
+    }
 }
 
 function hideDefinedModal() {
-  if (!secondaryModalShown) return;
-  document
-    .querySelector(".modal-popup-defined")
-    .classList.remove("modal-popup-show");
-  document
-    .querySelector(".modal-popup-defined")
-    .classList.add("modal-popup-hide");
-
-  setTimeout(() => {
+    if (!secondaryModalShown) return;
     document
-      .querySelector(".modal-popup-defined")
-      .classList.remove("modal-popup-hide");
-    document.querySelector(".modal-popup-defined").remove();
+        .querySelector(".modal-popup-defined")
+        .classList.remove("modal-popup-show");
+    document
+        .querySelector(".modal-popup-defined")
+        .classList.add("modal-popup-hide");
 
-    secondaryModalShown = false;
-    interactionBlocker.style.display = "none";
-  }, HIDE_ANIM_DURATION);
+    setTimeout(() => {
+        document
+            .querySelector(".modal-popup-defined")
+            .classList.remove("modal-popup-hide");
+        document.querySelector(".modal-popup-defined").remove();
 
-  // Run the onCloseCallback for the modal, if any
-  if (currentCloseCallback != undefined) {
-    log("Running the onClose callback...")
-    currentCloseCallback();
-    currentCloseCallback = undefined;
-  }
+        secondaryModalShown = false;
+        interactionBlocker.style.display = "none";
+    }, HIDE_ANIM_DURATION);
+
+    // Run the onCloseCallback for the modal, if any
+    if (currentCloseCallback != undefined) {
+        log("Running the onClose callback...")
+        currentCloseCallback();
+        currentCloseCallback = undefined;
+    }
 }
 
 /**
@@ -439,37 +442,36 @@ function hideDefinedModal() {
  * @param {object} settings The settings for the modal.
  */
 function initModal(modalID, settings) {
-  switch (modalID) {
-    case 1:
-      let selector = document.querySelector(".name-file-input > input");
-      selector.addEventListener("change", (event) => {
-        let label = document.querySelector(".name-file-input > b");
-        label.innerText = "Nimefail: " + selector.files[0].name;
-        getNameFileContents(selector.files[0], 30).then((val) => {
-          showNotification(`Tere tulemast, ${val}`, 3, 5000);
-        }
-        );
-      });
+    switch (modalID) {
+        case 1:
+            let selector = document.querySelector(".name-file-input #name");
+            selector.addEventListener("change", (event) => {
+                let label = document.querySelector(".name-file-input > b");
+                label.innerText = "Nimefail: " + selector.files[0].name;
+                getNameFileContents(selector.files[0], 30).then((val) => {
+                        showNotification(`Tere tulemast, ${val}`, 3, 5000);
+                    }
+                );
+            });
 
-      const adminPromptButton = document.querySelector("#admin-entry-button");
-      adminPromptButton.addEventListener('click', () => {
-        showDefinedModal(6, {});
-      });
+            const adminPromptButton = document.querySelector("#admin-entry-button");
+            adminPromptButton.addEventListener('click', () => {
+                showDefinedModal(6, {});
+            });
+            return;
 
-      break;
+        case 2:
+            if (currentNames.length === 0) {
+                fetchRandomNames(Math.ceil(getRandomInteger(1, MAX_RANDOM_NAMES)));
+            } else {
+                refreshNameSelector();
+            }
+            return;
 
-    case 2:
-      if (currentNames.length == 0) {
-        fetchRandomNames(Math.ceil(Math.random() * MAX_RANDOM_NAMES));
-      } else {
-        refreshNameSelector();
-      }
-      break;
-
-    case 3:
-      setTimeout(() => {
-        hideDefinedModal();
-      }, getRandomInteger(10) * 1000);
-      break;
-  }
+        case 3:
+            setTimeout(() => {
+                hideDefinedModal();
+            }, getRandomInteger(10) * 1000);
+            return;
+    }
 }
